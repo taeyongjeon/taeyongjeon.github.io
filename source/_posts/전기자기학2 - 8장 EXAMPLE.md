@@ -1,3 +1,12 @@
+---
+title: 전기자기학2 - 8장 EXAMPLE
+date: 2019-11-18 01:12:50
+tags:
+categories:
+- [4학기(2019-2), 전기자기학2]
+mathjax: true
+---
+
 #### 8-2.4 전자기파 $\tilde{\mathbf{E}}=\mathbf{a}_{x} E_{o} e^{-0.3 z} e^{-j z / 2}$ 가 $\mu=\mu_{o}, \varepsilon^{\prime}=2 \varepsilon_{o}$ 인 손실매질에서 진행한다. 이 매질의 고유임피던스를 구하라.
 1. 개념
     1. $\hat{\eta}=\sqrt{\frac{\mu}{\hat{\varepsilon}}}=\sqrt{\frac{\mu}{\varepsilon^{\prime}-j \varepsilon^{\prime \prime}}}$
