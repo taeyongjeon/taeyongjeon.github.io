@@ -160,3 +160,25 @@ mathjax: true
             $=\omega \sqrt{\frac{\mu \varepsilon^{\prime}}{2}}(\sqrt{1+\left(\frac{\varepsilon^{\prime \prime}}{\varepsilon^{\prime}}\right)^{2}}+1)^{1 / 2}(\mathrm{rad} / \mathrm{m})$
         1. 손실매질의 고유 고유임피던스
             1. $\eta_{c}=\frac{E_{0}}{H_{0}}=\sqrt{\frac{\mu}{\varepsilon_{c}}}=\sqrt{\frac{\mu}{\varepsilon^{\prime}-j \varepsilon^{\prime \prime}}}$
+            1. 임피던스가 허수인 경우 전기장과 자기장의 위상이 다름.
+    1. 표피심도
+        1. 표피심도: 도체 내부에서 전자기파 진폭이 63% 줄어드는 이동거리
+        1. $\delta_{S}$로 표현한다.
+        $\left|\frac{E\left(z=3 \delta_{S}\right)}{E(z=0)}\right|=\frac{E_{0} e^{-3}}{E_{0}}$
+    1. 저손실부도체
+        1. 생략
+1. 전기장과 자기장의 상호관계
+    1. 임의 방향 전기장의 식
+        1. $\tilde{\mathbf{E}}(x, y, z)$
+        $=\tilde{\mathbf{E}}_{0} e^{-j \mathbf{k} \cdot \mathbf{r}}$
+        $=\tilde{\mathbf{E}}_{0} e^{-j\left(k_{x} x+k_{y} y+k z\right)}$
+    1. 진동방향과 진행방향의 관계
+        1. 둘은 항상 수직임.
+    1. 전기장과 자기장의 관계
+        1. 전기장 방향 X 자기장 방향 = 진행방향이다.
+        1. $\tilde{H}(\vec{r})=\frac{1}{\eta} \hat{k} \times \tilde{E}(\vec{r})(A / m)$
+        1. 예제
+            1. $\overrightarrow{\mathrm{H}}(z, t)=H_{0} \cos (\omega t-k z) \hat{\mathrm{y}}$
+            진행방향은 z, 자기장 진동방향은 y이므로 전기장 진동방향은 x이다.
+            $\frac EH=\eta$이므로
+            $\overrightarrow{\mathrm{E}}(z, t)=\sqrt{\frac{\mu_{0}}{\varepsilon_{0}}} H_{0} \cos (\omega t-k z) \hat{\mathbf{x}}(\mathrm{V} / \mathrm{m})$
