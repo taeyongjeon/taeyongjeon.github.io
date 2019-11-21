@@ -84,24 +84,15 @@ mathjax: true
             &nbsp;
 1. 부도체(무손실매질) 내부의 평면파 자기장
     1. E로부터 자기장을 구해보자. $\overrightarrow{\mathrm{H}}(z, t)=H_{0} \cos (\omega t-k z) \hat{\mathbf{y}}(\mathrm{A} / \mathrm{m})$
-        1. $\tilde{\mathrm{E}}(\overrightarrow{\mathbf{r}})=\tilde{E}_{x} \hat{\mathbf{x}}+\tilde{E}_{y} \hat{\mathbf{y}}+\tilde{E}_{z} \hat{\mathbf{z}}$
-        $\tilde{\mathbf{H}}(\overrightarrow{\mathbf{r}})=\tilde{H}_{x} \hat{\mathbf{x}}+\tilde{H}_{y} \hat{\mathbf{y}}+\tilde{H}_{z} \hat{\mathbf{z}}$
-        &nbsp;
-        위 식에서
-        &nbsp;
+        1. $\tilde{\mathrm{E}}(\overrightarrow{\mathbf{r}})=\tilde{E}{x} \hat{\mathbf{x}}+\tilde{E}{y} \hat{\mathbf{y}}+\tilde{E}{z} \hat{\mathbf{z}}\tilde{\mathbf{H}}(\overrightarrow{\mathbf{r}})=\tilde{H}{x} \hat{\mathbf{x}}+\tilde{H}{y} \hat{\mathbf{y}}+\tilde{H}{z} \hat{\mathbf{z}}$
+        $\quad$위 식에서
         $\nabla \times \overrightarrow{\mathbf{E}}=-\mu \frac{\partial \overrightarrow{\mathbf{H}}}{\partial t}$
-        위 맥스웰 방정식을 적용하면
-        $\frac{\partial \tilde{E}_{x}}{\partial z}=-j \omega \mu \tilde{H}_{y}$
-        H에 대해 정리하면
-        $\tilde{H}_{y}(z)$
-        $=-\frac{1}{j \omega \mu} \frac{\partial \tilde{E}_{x}}{\partial z}$
-        $=-\frac{1}{j \omega \mu}(-j k) E_{0} e^{-j k z}$
-        $=E_{0} \sqrt{\frac{\varepsilon}{\mu}} e^{-j k z}$
-        따라서
-        $\overrightarrow{\mathrm{H}}(z, t)$
-        $=H_{y} \hat{\mathbf{y}}$
-        $=E_{0} \sqrt{\frac{\varepsilon}{\mu}} \cos (\omega t-k z) \hat{\mathbf{y}}$
-        $=H_{0} \cos (\omega t-k z) \hat{\mathbf{y}}(\mathrm{A} / \mathrm{m})$
+        $\quad$위 맥스웰 방정식을 적용하면
+        $\frac{\partial \tilde{E}{x}}{\partial z}=-j \omega \mu \tilde{H}{y}$
+        $\quad$에 대해 정리하면
+        $\tilde{H}{y}(z)=-\frac{1}{j \omega \mu} \frac{\partial \tilde{E}{x}}{\partial z}=-\frac{1}{j \omega \mu}(-j k) E_{0} e^{-j k z}=E_{0} \sqrt{\frac{\varepsilon}{\mu}} e^{-j k z}$
+        $\quad$따라서
+        $\overrightarrow{\mathrm{H}}(z, t)=H_{y} \hat{\mathbf{y}}=E_{0} \sqrt{\frac{\varepsilon}{\mu}} \cos (\omega t-k z) \hat{\mathbf{y}}=H_{0} \cos (\omega t-k z) \hat{\mathbf{y}}(\mathrm{A} / \mathrm{m})$
         &nbsp;
     1. 평면파 전기장과 자기장의 관계
         1. 위의 E와 H는 다음과 같은 성질을 포함한다.
@@ -124,21 +115,17 @@ mathjax: true
 1. 도체(손실매질) 내부의 평면파
     1. 부도체는 손실이 없는데, 도체는 손실이 생김. 이걸 감쇠라고 함.
         1. 도체 내부의 평면파 전기장
-        $\frac{\partial^{2} \tilde{E}_{x}}{\partial z^{2}}+k_{c}^{2} \tilde{E}_{x}=0$
-        이때
-        $\left(k_{c}=\omega \sqrt{\mu \varepsilon_{c}}\right)$
-        라고 두면
-        $\tilde{E}_{x}=E_{0} e^{-j k z z}$
-        전파상수에 j가 붙었으므로
-        $j k_{c}=\gamma=\alpha+j \beta$
-        라고 두면
-        $\tilde{E}_{x}(z)$
-        $=E_{0} e^{-\gamma z}$
-        $=E_{0} e^{-\alpha z} e^{-j \beta z}$
-        정리하면
-        $\overrightarrow{\mathrm{E}}(z, t)$
-        $=\operatorname{Re}\left[\tilde{E}_{x} e^{j \omega t}\right] \hat{\mathbf{x}}$
-        $=E_{0} e^{-\alpha z} \cos (\omega t-\beta z) \hat{\mathbf{x}}(\mathrm{V} / \mathrm{m})$
+        $\frac{\partial^{2} \tilde{E}{x}}{\partial z^{2}}+k{c}^{2} \tilde{E}{x}=0$
+        $\quad$이때
+        $\quad$$\left(k{c}=\omega \sqrt{\mu \varepsilon_{c}}\right)$
+        $\quad$라고 두면
+        $\tilde{E}{x}=E{0} e^{-j k z z}$
+        $\quad$전파상수에 $j$가붙었으므로
+        $\quad j k_{c}=\gamma=\alpha+j \beta$
+        $\quad$라고 두면
+        $\tilde{E}{x}(z)=E{0} e^{-\gamma z}=E_{0} e^{-\alpha z} e^{-j \beta z}$
+        $\quad$정리하면
+        $\overrightarrow{\mathrm{E}}(z, t)=\operatorname{Re}\left[\tilde{E}{x} e^{j \omega t}\right] \hat{\mathbf{x}}=E{0}$ $e^{-\alpha z} \cos (\omega t-\beta z) \hat{\mathbf{x}}(\mathrm{V} / \mathrm{m})$
         라는 값을 얻는다.
         이것이 도체 내부의 평면파 전기장이다.
     1. 감쇠일까? 증폭일까?
@@ -169,9 +156,7 @@ mathjax: true
         1. 생략
 1. 전기장과 자기장의 상호관계
     1. 임의 방향 전기장의 식
-        1. $\tilde{\mathbf{E}}(x, y, z)$
-        $=\tilde{\mathbf{E}}_{0} e^{-j \mathbf{k} \cdot \mathbf{r}}$
-        $=\tilde{\mathbf{E}}_{0} e^{-j\left(k_{x} x+k_{y} y+k z\right)}$
+        1. $=\tilde{\mathbf{E}}_{0} e^{-j \mathbf{k} \cdot \mathbf{r}}=\tilde{\mathbf{E}}_{0} e^{-j\left(k_{x} x+k_{y} y+k z\right)}$
     1. 진동방향과 진행방향의 관계
         1. 둘은 항상 수직임.
     1. 전기장과 자기장의 관계
