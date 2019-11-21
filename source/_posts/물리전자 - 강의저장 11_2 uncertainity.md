@@ -28,7 +28,7 @@ mathjax: true
                         1. 꼭 $\frac 12$일 필요는 없다. 이 값에 가까워질 수록 어두워질 뿐이다.
 1. Heisenberg's Uncertainty Principle        
     1. 하이젠베르그의 슬릿
-        1. ![](하이젠베르그_간섭.jpg)
+        1. ![](/images/물리전자/하이젠베르그_간섭.jpg)
             1. 모멘텀 p, 슬릿의 간격 a, 파동이 나아가는 방향각 $\theta$, 그리고 y 방향 모멘텀 성분인 $\triangle p$
             1. $sin\theta = \frac{\triangle p}{p_x}$
             $\quad\quad\quad$영의 이중 슬릿 실험에서 아래와 같은 식을 도출한 적이 있다.
@@ -47,7 +47,7 @@ mathjax: true
             1. 물리적으로 나타나는 현상
                 1. **변위를 좁히면 모멘텀이 크게, 변위를 키우면 모멘텀이 작게 나타난다.**
                 이게 하이젠베르그의 불확정성 원리에 대한 설명이다.
-                1. ![](변위와_모멘텀.jpg)
+                1. ![](/images/물리전자/변위와_모멘텀.jpg)
                     1. $\Delta y$가 슬릿의 길이 a이다.
                     1. $\Delta p_y$가 y방향 모멘텀이다.
     1. Localized Wave
@@ -87,7 +87,7 @@ mathjax: true
     1. Heisenberg's Uncertainty Principle
         1. 개념
             1. 입자의 위치(x값)와 모멘텀(p값)을 동시에, 정확하게 아는 것은 불가능하다.
-                1. ![](불확정성.jpg)
+                1. ![](/images/물리전자/불확정성.jpg)
             1. $\Delta x \cdot \Delta p \geq \frac{h}{2\pi} \geq \hbar$
             $\Delta t \cdot \Delta E \geq \frac{h}{2\pi} \geq \hbar$
         1. 이게 어디 쓰이는데?
@@ -96,7 +96,7 @@ mathjax: true
                 1. 입자는 여러 위치 후보값 중 하나를 가질 것이다.
                 1. 입자는 여러 모멘텀 후보값 중 하나를 가질 것이다.
                 1. Probability Cloud
-                ![](확률_구름.jpg)
+                ![](/images/물리전자/확률_구름.jpg)
             1. 그래서, 양자 세계에서 사람들은 더 이상 입자의 움직임(위치와 모멘텀)을 파악하는 걸 포기하고, 확률로 이야기하게 되었음.
         1. 예제
             1. 전자의 위치가 $\Delta x=10^{-9} \mathrm{m}$의 정확성을 갖는다. 이 때 고려할 수 있는 가장 정확한 속도값은?
@@ -105,7 +105,7 @@ mathjax: true
                 $\Delta v \geq 1.16 \times 10^{5} \mathrm{m} / \mathrm{s}$
         1. 물리적인 의미
             1. 물리적으로, 위치와 모멘텀의 곱은 모든 확률의 합과 같다.
-            1. ![](불확정성_2.jpg)
+            1. ![](/images/물리전자/불확정성_2.jpg)
                 1. 우리는 입자의 존재를 확률로 다루어야 한다고 결론지었다.
                 1. 그럼, 어떤 영역(위 그림에서는 Box)에서 입자들의 존재 확률은 (각 위치의 확률)의 총합일 것이다.
                 1. 위 그림에서, $\Delta p$와 $\Delta x$가 있다.
@@ -122,20 +122,20 @@ mathjax: true
         1. 고전역학에서 Barrier에 의해 막혀 튕겨나가는 것을 reflect라고 한다.
         1. 양자역학에선 입자 하나를 다루지 않고 파동wave을 다루기 때문에, 벽을 향해 파동이 움직인다고 가정한다. Barrier에 wave가 부딛히면 일부는 reflect되고, 일부는 통과한다(터널링).
     1. Quantum Leak
-        1. ![](터널링.jpg)
+        1. ![](/images/물리전자/터널링.jpg)
             1. Barrier를 통과할 때 wave가 나타나지 않는다.
     1. Potential Barrier Penetration
         1. 파동함수는 고전적인 운동의 한계를 넘어 potential barrier penetration이라는 현상을 일으킨다.
         1. Finite Potential Well에서(즉 V가 무한이 아님) 파동함수는 Well을 빠져나갈 수 있음.
     1. What is the Quantum Tunneling?
-        1. ![](양자_터널링.jpg)
+        1. ![](/images/물리전자/양자_터널링.jpg)
             1. 파동함수 $\Psi_1$이 barrier를 만나면 일부는 reflect되고 남은 값은 Tunneling을 통해 $\Psi_3$으로 존재하게 된다.
             1. 얼마나 터널링되느냐? 이는 Potential Barrier의 width(그림에서 길이 a)와 Potential energy에 따라서 결정된다.
         1. potential barrier width(=a)가 좁을 경우
             1. 입자는 barrier을 penetrate할 수 있다.
             그리고 다른 영역으로 나올 수 있다. 이 현상을 quantum tunneling이라 한다.
     1. Electron Density in Potential Step
-        1. ![](지수적_감소.jpg)
+        1. ![](/images/물리전자/지수적_감소.jpg)
             1. 영역 2에서 전자의 존재 확률은 지수적으로 감소한다.
             $e^{-2kx}$의 값이 곧 존재 확률이다(앞에서, 이 식이 파동함수(삼각함수 형태)의 형태가 아니라고 이미 말했다.)
             이 값이 0.1이면 10% 확률로 존재한다(=Density). 10%만이 터널링 현상을 통해 통과했다, 이런 식으로 받아들이면 된다.
@@ -167,13 +167,13 @@ mathjax: true
             T=0.36, 즉 36%의 전자가 barrier를 넘는다는 의미이다.
     1. Reflection from a lower potential
         1. 반사 확률
-        ![](reflection.jpg)
+        ![](/images/물리전자/reflection.jpg)
             1. 고전역학에서, 낮은 에너지로 내려간 입자가 돌아올 확률은 '없다'고 표현한다.
             1. 양자역학에서, 돌아올 확률은 '없다'가 아니라 '지극히 낮다'고 표현한다(0이 아니기 때문)
 1. Quantum Leak
     1. Quantum Leak나 Quantum Tunneling이나 똑같은 의미다. 같은 거라고 이해하면 된다.
     1. **그래서, 각 영역 1, 2, 3에서 실제 파동함수는 어떻게 구할까?**
-    ![](leak.jpg)
+    ![](/images/물리전자/leak.jpg)
         1. 영역 1과 3에서 퍼텐셜 에너지=0이므로(왜냐하면 그렇게 약속한 게 Potential Well이니까.) 쉽게 계산이 가능하다.
         1. 근데 영역 2는 안 그렇거든. $V=V_0$이니까 이걸 고려해야 된다.
         1. 그래서 구한 값은 위 그림과 같다.
@@ -190,8 +190,8 @@ mathjax: true
     1. Transmission/Reflection Coefficient
         1. Transmission Coefficient
             1. T라고 적는다.
-            $T=\frac{\left|\psi_{III }(x)\right|^{2}}{\left|\psi_{I}(x)\right|^{2}}=\frac{\mathrm{C}_{1}^{2}}{\mathrm{A}_{1}^{2}}=\frac{1}{1+\operatorname{Dsinh}^{2}(\alpha \mathrm{a})}$
-            $\mathrm{D}=\frac{\mathrm{V}_{\mathrm{o}}^{2}}{4 \mathrm{E}\left(\mathrm{V}_{0}-\mathrm{E}\right)}$
+            $T=\frac{\left|\psi_{I II}(x)\right|^{2}}{\left|\psi_{I}(x)\right|^{2}}=\frac{\mathrm{C} _ {1}^{2}}{\mathrm{A} _ {1}^{2}}=\frac{1}{1+\operatorname{Dsinh}^{2}(\alpha \mathrm{a})}$
+            $\mathrm{D}=\frac{\mathrm{V_0}^{2}}{4 \mathrm{E}(\mathrm{V}_0-\mathrm{E})}$
             1. 장벽에 더 넓거나 높다면, $\alpha a>>1$이 된다.
             즉, $T=T_{0} \exp (-2 \alpha a) \approx 0$가 된다.
             $\quad$ 이때 $T_{0}=\frac{16 E\left(V_{0}-E\right)}{V_{0}^{2}}$이다.
