@@ -39,9 +39,13 @@ mathjax: true
     $E_0^l=r_{01}E_0^r+t_{10}E_1^l$
     $\quad t_{01}t_{10}-r_{01}r_{10}=1$이다.
         1. 위 식을 정리하면 다음 행렬을 얻는다.
-        $\begin{bmatrix}  E_0^r \\  E_0^l  \end{bmatrix}$
-        $=\frac{1}{t_{01}}\left[\begin{array}{cc}{1} & {r_{01}} \\ {r_{01}} & {1}\end{array}\right]\left[\begin{array}{c}{E_{1}^{r}} \\ {E_{1}^{\prime}}\end{array}\right]$
-        $=D_{01}\left[\begin{array}{c}{E_{1}^{r}} \\ {E_{1}^{\prime}}\end{array}\right]$
+        $\begin{bmatrix}  E_0^r \\
+        E_0^l  \end{bmatrix}$
+        $=\frac{1}{t_{01}}\left[\begin{array}{cc}{1} & {r_{01}} \\
+        {r_{01}} & {1}\end{array}\right]\left[\begin{array}{c}{E_{1}^{r}} \\
+        {E_{1}^{\prime}}\end{array}\right]$
+        $=D_{01}\left[\begin{array}{c}{E_{1}^{r}} \\
+        {E_{1}^{\prime}}\end{array}\right]$
 1. Propagation Matrix
     1. 동일한 임피던스가 있는 구간이 있다. 길이는 $L_1$이라 하고, 구간 왼쪽을 A사이드, 오른쪽을 B사이드라 하자.
     그리고 왼쪽으로 향하면 위첨자 $l$, 오른쪽으로 향하면 위첨자 $r$이 붙었다고 하자.
@@ -56,6 +60,10 @@ mathjax: true
     왼쪽 파의 경우 다음과 같다.
     $E_A^l=E_B^le^{-jk_1L_1}$    
     1. 위 식을 정리하면 다음 행렬을 얻는다.
-    $\begin{bmatrix} E_{ A }^{ r } \\ E_{ A }^{ l } \end{bmatrix}$
-    $=\begin{bmatrix} e^{ +jk_{ 1 }L_{ 1 } } & 0 \\ 0 & e^{ -jk_{ 1 }L_{ 1 } } \end{bmatrix}\begin{bmatrix} E_{ B }^{ r } \\ E_{ B }^{ l } \end{bmatrix}$
-    $=P_1\begin{bmatrix} E_{ B }^{ r } \\ E_{ B }^{ l } \end{bmatrix}$
+    $\begin{bmatrix} E_{ A }^{ r } \\
+    E_{ A }^{ l } \end{bmatrix}$
+    $=\begin{bmatrix} e^{ +jk_{ 1 }L_{ 1 } } & 0 \\
+    0 & e^{ -jk_{ 1 }L_{ 1 } } \end{bmatrix}\begin{bmatrix} E_{ B }^{ r } \\
+    E_{ B }^{ l } \end{bmatrix}$
+    $=P_1\begin{bmatrix} E_{ B }^{ r } \\
+    E_{ B }^{ l } \end{bmatrix}$
