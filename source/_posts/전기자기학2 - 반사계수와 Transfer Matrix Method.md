@@ -7,6 +7,11 @@ categories:
 mathjax: true
 ---
 
+1. 동영상 링크
+    1. 전기자기학2 폴더에 반사계수 관련 영상 3개를 다운로드받아놓았다.
+    1. https://www.youtube.com/watch?v=XuSxmb9-viY
+    https://www.youtube.com/watch?v=dE7Yi3u9cvI
+    https://www.youtube.com/watch?v=BX_-1ei12sU
 1. 개요
     1. 경계면이 3개인 경우(즉 임피던스 n3이 존재하는 경우)부터는 반사계수를 구하기 굉장히 까다로워진다.
     1. 왜냐? n1에서 투과된 걸 n2에서 n3 경계에서 반사한 다음 이걸 n1에 투과하고... 이런 걸 다 더해야 하기 때문이다.
