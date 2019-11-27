@@ -1,5 +1,5 @@
 ---
-title: 강의저장 11_1 Wave_equation
+title: 물리전자 - 강의저장 11_1 Wave_equation
 date: 2019-11-15 21:37:20
 tags:
 categories:
