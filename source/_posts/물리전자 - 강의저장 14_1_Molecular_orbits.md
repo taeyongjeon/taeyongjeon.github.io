@@ -1,6 +1,15 @@
+---
+title: 물리전자 - 강의저장 14_1_Molecular_orbits
+date: 2019-12-18 14:36:27
+tags:
+categories:
+- [4학기(2019-2), 물리전자]
+mathjax: true
+---
+
 1. Stimulated Emission and Lasers
     1. Photon Amplication
-        1. ![](02:21 증폭.jpg)
+        1. ![](/images/물리전자/14_1_증폭.jpg)
         1. $h\nu_{32}$는 원하는 파장이 아니고, $h\nu_{21}$은 우리가 써먹으려는 파장이다.
         원하는 파장을 걸러내기 위해 거울의 초점거리를 사용한다.
         1. 특정 초점거리는 특정 파장만을 필터링시켜줄 수 있다.
@@ -15,7 +24,7 @@
             1. 텅스벤 전구랑은 다름.
 1. He-Ne laser
     1. 작동 방식
-        1. ![](08:44 He_Ne_레이저.jpg)
+        1. ![](/images/물리전자/14_1_He_Ne_레이저.jpg)
         1. He-Ne 레이저는 혼합 기체로 이루어진다.
         1. 루비 레이저와 마찬가지로 거울로 특정 파장을 필터링한다.
         1. 끝부분이 볼록거울이기 때문에, 초점거리에 맞는 빛만 평행하게 나오게 된다. 안 맞으면 반사된다.
@@ -37,7 +46,7 @@
         1. He의 전자 하나는 2s로 올라가고, 2s는 "metastable state"이므로 오래 머물 수 있다.
         1. He\*이 Ne과 충돌하여 Ne\*가 되고 population inversion이 일어난다.
         number of Ne\*($2p^55s^1$) > number of Ne($2p^53p^1$)
-        1. ![](18:52 He_Ne.jpg)
+        1. ![](/images/물리전자/14_1_He_Ne.jpg)
     1. He-Ne 레이저는 루비 레이저와 달리 충돌을 이용하기 때문에 stimulate를 통한 raging을 하지 않는다.
 1. Stimulated Emission and Lasers
     1. Laser Output Spectrum
@@ -53,7 +62,7 @@
             1. 원자가 random motion을 가지기 때문에 관측자는 주파수의 스펙트럼을 갖는다.
             $\delta \nu = \nu_2 - \nu_1$
             즉, 파장의 도플러 대역이다.
-        1. ![](24:20 도플러.jpg)
+        1. ![](/images/물리전자/14_1_도플러.jpg)
             1. 레이저가 두께가 있는 것처럼 보이는데, 이는 Doppler broadening이 존재하기 때문이다.
             1. 레이저와 거울의 반사로 특정 파장만 필터링하는 건 틀림없다(붉은색이면 632.8nm의 파장만 나온다는 소리다). 근데 관측자에 의해 그 파장이 달라지는 것이다.
 
@@ -95,7 +104,7 @@
                 1. 답변 : anti-bonding state. 에너지를 더 낮출 수 있을 때 bonding state를 형성하기 때문이다.
 1. Hydrogen Molecule
     1. Molecular Orbital Theory of Bondig
-        1. ![](42:30 bonding.jpg)
+        1. ![](/images/물리전자/14_1_bonding.jpg)
             1. Bonding
                 1. 대칭적이다.
                 1. 원자 사이에도 전자의 존재 확률을 갖는다.
@@ -112,7 +121,7 @@
             1. 설명 2 : 두개의 파동함수가 중복overlap되고, 이로부터 파동함수의 split을 만들어낸다.
             1. 새롭게 만들어진 wavefunction은 새롭게 생긴 PE를 슈뢰딩거 방정식에 넣어서 구해낸 함수이다.
         1. R값이 작아지면(가까워지면)
-            1. ![](53:49 결합.jpg)
+            1. ![](/images/물리전자/14_1_결합.jpg)
             1. R < a 전자 2개가 'spin pair' 형성. 즉, 아래쪽에 2개가 다 위치함.
             1. $\Psi$ : 고립된 수소 원자보다 더 안정적이라 선호됨.
             1. 에너지 차이 : bonding energy
@@ -134,12 +143,12 @@
             1. 즉, 결합을 형성하려면 overlap of half-occupied orbital이 필요하다.
 1. Band Theory of Solids
     1. Energy Bond Formation : 3 Hydrogen Atoms
-        1. ![](1:01:00 조합.jpg)
+        1. ![](/images/물리전자/14_1_조합.jpg)
             1. 파동함수 3개의 조합으로 3개의 새로운 파동함수가 만들어진다.
             1. 전부 다 더해지는 경우(전부 밀어냄)(a)
             파동함수 하나가 관여 안 하는 경우(b)
             하나만 빼지는 경우(c)
-        1. ![](1:01:00 조합.jpg)
+        1. ![](/images/물리전자/14_1_중첩.jpg)
             1. 3개의 중첩은 위 그림처럼 나타난다.
     1. n Li Atoms
         1. n개의 Li Atoms는 고체다.
@@ -152,14 +161,14 @@
         R=a 구간 밖에서 energy split이 일어난다.
             1. a : 원자간 거리
 1. N Li Atoms
-    1. ![](01:08:25 리튬.jpg)
+    1. ![](/images/물리전자/14_1_리튬.jpg)
         1. N개의 전자가 system에 존재한다. 왜 리튬인데 3N이 아니냐면 $1s^2$에 있는 전자들은 참여하지 않기 때문이다.
     1. 물질 속 전자는 더이상 discrete하지 않고, 특정한 대역 안의 어딘가에 있는 state에 존재한다.
     1. ***교수님 질문 : 왜 state의 절반만 채워지는가?***
         1. 답변 : 한 state에 전자가 2개씩 들어가서.
 1. Band Theory of Solids
     1. n Li Atoms
-        1. ![](01:11:27 리튬_결합.jpg)
+        1. ![](/images/물리전자/14_1_리튬_결합.jpg)
             1. 셋 다 결합할 때 가장 낮은 에너지를 갖는다.
             1. +, -, +, -로 결합할 때 가장 높은 에너지를 갖는다.
     1. ***교수님 질문 : 리튬이 모여서 분자 궤도를 만드는 이유는?***
