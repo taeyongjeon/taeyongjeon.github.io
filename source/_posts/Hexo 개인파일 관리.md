@@ -7,14 +7,15 @@ categories:
 ---
 
 ### 목적
-> &nbsp;개인 파일을 숨긴다.
+개인 파일을 숨긴다.
 
 ### 플러그인 설치
->```$ npm install hexo-hide-posts --save```
+```
+$ npm install hexo-hide-posts --save
+```
 [hexo-hide-posts](https://github.com/printempw/hexo-hide-posts)
 
 ### 사용법
->post에 ```hidden: true```를 붙인다.
 ```
 ---
 title: 'Lorem Ipsum'
