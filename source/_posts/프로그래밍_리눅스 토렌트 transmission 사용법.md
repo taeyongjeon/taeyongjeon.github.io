@@ -31,7 +31,7 @@ sudo nano /etc/transmission-daemon/settings.json # 설정 파일을 연다
 * 윈도우 웹 브라우저에서 http://(리눅스 서버의 호스트 네임 혹은 아이피):9091/ 로 접속한다.
   - * 9091은 기본 포트로 settings.json에서 변경할 수 있다.
 * 아이디, 비밀번호를 입력해준다.
-* ![트랜스미션 서비스](https://zenr.me/wp-content/uploads/2016/08/rpc.png)
+* ![트랜스미션 서비스](/images/2020/01/transmission.png)
 * 여기에 마그넷 링크나 토렌트 파일을 업로드하면 자동으로 업로드된다.
 * 모바일 : Transmission Remote 어플로 다운로드 상태를 확인할 수 있다.
 
