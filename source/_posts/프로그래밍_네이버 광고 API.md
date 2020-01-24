@@ -34,7 +34,7 @@ x_api_key = "0100040080618b186cb85dadee1530d97b60f2ab23b4f276400f282f60de1908671
 x_customer = "1234567"
 
 # X-Timestamp : 현재 시간 * 1000을 반올림한 자연수 값.
-x_timestamp = round(time.time() * 1000)
+x_timestamp = str(round(time.time() * 1000))
 
 # secret_key : 네이버 광고 - 도구 - API 사용 관리 메뉴에서 "비밀키"의 값.
 # 각 API 문서 상단에는 HTTP request가 있고, 이 때의 요청방식이 method이다.
@@ -76,7 +76,7 @@ params = {"hintKeywords":"마스크,마스크시트"}
 import requests
 import json
 
-BASE_URL = "https://api.naver.com/" # 네이버 광고 API의 기본 URL이다.
+BASE_URL = "https://api.naver.com" # 네이버 광고 API의 기본 URL이다.
 uri = "/keywordstool"
 request_url = BASE_URL + uri
 

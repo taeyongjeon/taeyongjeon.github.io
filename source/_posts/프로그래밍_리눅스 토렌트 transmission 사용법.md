@@ -13,6 +13,7 @@ sudo service transmission-daemon start
 
 ## 설정
 ```
+sudo service transmission-daemon stop # 설정 파일을 열기 전 서비스를 멈춰야 한다.
 sudo nano /etc/transmission-daemon/settings.json # 설정 파일을 연다
 ```
 
@@ -27,6 +28,10 @@ sudo nano /etc/transmission-daemon/settings.json # 설정 파일을 연다
 "download-dir": "<다운로드경로>" # 가장 중요한 다운로드 경로. 기본값은 /var/lib/transmission-daemon/downloads
 ```
 
+```
+sudo service transmission-daemon stop # 재시작
+```
+
 ## 사용
 * 윈도우 웹 브라우저에서 http://(리눅스 서버의 호스트 네임 혹은 아이피):9091/ 로 접속한다.
   - * 9091은 기본 포트로 settings.json에서 변경할 수 있다.
@@ -35,5 +40,9 @@ sudo nano /etc/transmission-daemon/settings.json # 설정 파일을 연다
 * 여기에 마그넷 링크나 토렌트 파일을 업로드하면 자동으로 업로드된다.
 * 모바일 : Transmission Remote 어플로 다운로드 상태를 확인할 수 있다.
 
+## 오류 해결
+* 403 에러 : rpc-whitelist를 false로 설정한 줄 알았는데, 변경한 게 rpc-host-whitelist인 경우가 있다. rpc-whitelist-enabled 값을 false로 바꿔야 한다.
+
 ## 참고 링크
 [남아도는 우분투 리눅스 서버가 있어서 토렌트를 설치했다.](https://zenr.me/2124)
+[403 에러](https://raspberrypi.stackexchange.com/questions/40448/transmission-web-interface-not-allowed)
