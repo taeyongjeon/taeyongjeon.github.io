@@ -96,7 +96,7 @@ theme: landscape
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/taeyongjeon/taeyongjeon.github.io
+  repo: https://github.com/tyjeon/tyjeon.github.io
 
 mathjax:
   single_dollars: true
