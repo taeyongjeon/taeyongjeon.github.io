@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>공학수학2 - 챕터 13.6-13.7 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="13.6 삼각Trigonometric, 쌍곡선Hyperbolic 함수 기본 공식들  $e^{ix}&#x3D;cosx+isinx$$e^{-ix}&#x3D;cosx-isinx$$\quad$ 위로부터 다음 두 식을 얻는다.$cosx&#x3D;{e^{ix}+e^{-ix} \over 2}$$sinx&#x3D;{e^{ix}-e^{-ix} \over 2}$ $secz&#x3D;\frac{1}{cosz}$ exce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="공학수학2 - 챕터 13.6-13.7">
+<meta property="og:url" content="http://yoursite.com/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992%20-%20%EC%B1%95%ED%84%B0%2013.6-13.7/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="13.6 삼각Trigonometric, 쌍곡선Hyperbolic 함수 기본 공식들  $e^{ix}&#x3D;cosx+isinx$$e^{-ix}&#x3D;cosx-isinx$$\quad$ 위로부터 다음 두 식을 얻는다.$cosx&#x3D;{e^{ix}+e^{-ix} \over 2}$$sinx&#x3D;{e^{ix}-e^{-ix} \over 2}$ $secz&#x3D;\frac{1}{cosz}$ exce">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-11-15T13:28:31.000Z">
+<meta property="article:modified_time" content="2020-03-18T14:12:59.042Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-4학기 - 공학수학2 - 챕터 13.6-13.7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992%20-%20%EC%B1%95%ED%84%B0%2013.6-13.7/" class="article-date">
+  <time datetime="2019-11-15T13:28:31.000Z" itemprop="datePublished">2019-11-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a>►<a class="article-category-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992/">공학수학2</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      공학수학2 - 챕터 13.6-13.7
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="13-6-삼각Trigonometric-쌍곡선Hyperbolic-함수"><a href="#13-6-삼각Trigonometric-쌍곡선Hyperbolic-함수" class="headerlink" title="13.6 삼각Trigonometric, 쌍곡선Hyperbolic 함수"></a>13.6 삼각Trigonometric, 쌍곡선Hyperbolic 함수</h2><ol>
+<li><p>기본 공식들</p>
+<ol>
+<li>$e^{ix}=cosx+isinx$<br>$e^{-ix}=cosx-isinx$<br>$\quad$ 위로부터 다음 두 식을 얻는다.<br>$cosx={e^{ix}+e^{-ix} \over 2}$<br>$sinx={e^{ix}-e^{-ix} \over 2}$</li>
+<li>$secz=\frac{1}{cosz}$ except $cosz \neq0$<br>$cscz=\frac{1}{sinz}$ except $sinz \neq0$<br>$(tanz)\prime$<br>$\quad= {cosz(cosz)-(-sinz)(sinz) \over (cosz)(cosz)}$<br>$\quad=sec^{2}z$<br>$\quad=tan^{2}z +1$<ol>
+<li>실수부와 허수부 구하기<ol>
+<li>cosz의 real과 imaginary를 구하라.<br>$cosz \<br>\quad=\frac 12 (e^{iz} + e^{-iz}) \<br>\quad=\frac 12 (e^{ix-y} + e^{-ix+y}) \<br>\quad=\frac 12 e^{-y}(cosx+isinx)+\frac 12 e^{y}(cosx-isinx) \<br>\quad=\frac 12 ((e^y+e^{-y})cosx-i(e^y-e^{-y})sinx) \<br>\quad={(e^y+e^{-y}) \over 2}cosx - i{(e^y-e^{-y}) \over 2}sinx \<br>\quad= cosxcoshy - isinxsinhy$</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>쌍곡선함수</p>
+<ol>
+<li>$\cosh(z)=\frac 12 (e^z + e^{-z})$<br>$\sinh(z) = \frac 12 (e^z - e^{-z})$</li>
+</ol>
+</li>
+<li><p>챕터 문제</p>
+<ol>
+<li><p>16번 $sinz=100$ 방정식의 모든 해 구하기</p>
+<ol>
+<li><p>지수함수에 대한 식으로 바꿔서 해를 구한다.<br>$\quad \sin z=\frac{e^{i z}-e^{-i \varepsilon}}{2 i}$이므로<br>$\sin z =100$<br>$\frac{e^{i z}-e^{-i z}}{2 i} =100$<br>$e^{2 i z}-200 i e^{i z}-1=0$<br>$\quad$ 근의 공식을 적용한다.<br>$e^{i z}=\frac{-(-200 i) \pm \sqrt{(-200 i)^{2}-4(1)(-1)}}{2(1)}$<br>$=\frac{200 i \pm \sqrt{-39996}}{2}$<br>$=100 i \pm i 3 \sqrt{1111}$<br>$\approx 0.005 i, 200 i$</p>
+</li>
+<li><p>x와 y에 대해 구한다.<br>$e^{iz}=0.005 i$<br>$\quad$ 정리하면 아래와 같다.<br>$e^{-y} \cos x+i e^{-y} \sin x=0.005 i$<br>$e^{i t}=200 i$<br>$\quad$ 정리하면 아래와 같다.<br>$e^{-y} \cos x+i e^{-y} \sin x=200 i$</p>
+<p>첫 식부터 구하면 다음과 같다.<br>$e^{-y}\cos x=0$이므로<br>$\sin ^2 + \cos ^2 = 1$로부터<br>$\sin x = 1$<br>$x=2n\pi + \frac {\pi}{2}$<br>&nbsp;</p>
+<p>$e^{-y}\sin x=0.005$이므로<br>$\sin x =1$로부터<br>$e^{-y} =0.005$<br>$y=5.29$</p>
+<p>따라서 z는 다음과 같다.<br>$z=x+iy$<br>$=2n\pi + \frac {\pi}{2} + 5.29i$</p>
+<p>&nbsp;</p>
+<p>두번째 식을 구하면 다음과 같다.<br>$e^{-y}\cos x=0$이므로<br>$\sin ^2 + \cos ^2 = 1$로부터<br>$\sin x = 1$<br>$x=2n\pi + \frac {\pi}{2}$<br>&nbsp;</p>
+<p>$e^{-y}\sin x=200$이므로<br>$\sin x =1$로부터<br>$e^{-y} =0.005$<br>$y=-5.29$</p>
+<p>따라서 z는 다음과 같다.<br>$z=x+iy$<br>$=2n\pi + \frac {\pi}{2} - 5.29i$</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="13-7-logarithm-general-power-principal-value"><a href="#13-7-logarithm-general-power-principal-value" class="headerlink" title="13.7 logarithm, general power, principal value"></a>13.7 logarithm, general power, principal value</h2><ol>
+<li>natural logarithm<ol>
+<li>자연로그<ol>
+<li>$z=x+iy$일 때의 $lnz$를 말한다.<br>$\omega = lnz$라 적고<br>$e^\omega =z$로 정의된다.</li>
+</ol>
+</li>
+<li>주값principal value<ol>
+<li>$e^\omega = e^{u+iv}=re^{i\theta}$로부터<br>$e^u=r, v=\theta$임을 알 수 있다.<br>즉, $lnz=lnr+i\theta$</li>
+<li>근데 이러면 $lnz$는 $i\theta$ 덕에 무한 개의 값을 갖는다.</li>
+<li>그래서 $ArgZ$를 갖는 $lnz$를 주값으로 약속하기로 했다.<ol>
+<li>$Lnz=ln|z|+iArgz$<br>$\quad$이로부터<br>$lnz \<br>\quad =ln|z|+iargz \<br>\quad =ln|z|+i(Argz\pm 2n\pi) \<br>\quad =Lnz \pm i2n\pi$ ($n$은 정수)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>계산과 미분<ol>
+<li>$lnz_1z_2=lnz+1+lnz_2$</li>
+<li>$ln \frac {z_1}{z_2}=lnz_1-lnz_2$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>general power일반 거듭제곱<ol>
+<li>$z^c=e^{clnz}$<br>$z^c=e^{cLnz}$</li>
+</ol>
+</li>
+<li>챕터 문제<ol>
+<li>5번<ol>
+<li>$Lnz=ln\sqrt{7^2}+i\pi$<br>$=ln7+i\pi$</li>
+</ol>
+</li>
+<li>8번<ol>
+<li>$z=1\pm i \<br>Lnz=ln\sqrt 2 + i \frac {\pi}{4} \quad (z=1+i) \<br>Lnz=ln\sqrt 2 + i \frac {\pi}{4} \quad (z=1+i) $</li>
+</ol>
+</li>
+<li>11번<ol>
+<li>$z=-ei^2=e$<br>$Lnz=lne+i\tan \frac 0e$<br>$=lne=1$</li>
+</ol>
+</li>
+<li>13번 : lnz의 모든 값 구하기<ol>
+<li>$lnz=ln1$<br>$Ln(1)=ln1+i\tan ^{-1} \frac {0}{1} = 0$<br>$Ln(1) = \pm 2n\pi i$</li>
+</ol>
+</li>
+<li>15번 : lnz의 모든 값 구하기<ol>
+<li>$lnz=lne^i$<br>$\quad$ 1. $e^i$의 크기와 각도를 구한다.<br>$e^i=\cos1+i\sin1$<br>$|z|=\left|e^{i}\right|=1$<br>$Arg z ={Arg} e^{i} =\tan^{-1}{(\tan1)}=1$<br>$\quad$ 2. $Lnz$값을 구한다.<br>$Ln z=\ln |z|+i \operatorname{Arg} z$<br>$=\ln1+1i$<br>$=i$<br>$\quad$ 3. $lnz$값을 구한다.<br>$\ln z$<br>$=\operatorname{Ln} z \pm 2 n \pi i$<br>$=i \pm 2 n \pi i$<br>따라서 $(1 \pm 2 n \pi) i, n=0,1,2, \dots$</li>
+</ol>
+</li>
+<li>23번 : $(1+i)^{1-i}$ 주값 구하기<ol>
+<li>$Lnz$를 구한다.<br>$|z| =|1+i| =\sqrt{1+1} =\sqrt{2}$<br>$\operatorname{Arg} z=\operatorname{Arg}(1+i) =\tan ^{-1}(1) =\frac{\pi}{4}$<br>$\operatorname{Ln} z =\ln \sqrt{2}+\frac{\pi i}{4}$</li>
+<li>$lnz$를 구한다.<br>$\ln (1+i)=\ln \sqrt{2}+\frac{\pi i}{4} \pm 2 n \pi i$</li>
+<li>원래 값을 지수함수 형태로 표현한다.<br>$(1+i)^{1-i} $<br>$=e^{(1-i) \ln (1+i)} $<br>$=e^{(1-i)[\ln \sqrt{2}+\frac{\pi i}{4} \pm 2 n \pi i]}$</li>
+<li>주값은 $n=0$일 때의 값이므로, $n=0$을 대입해 주값을 구한다.<br>$e^{(1-i)\left[\ln \sqrt{2}+\frac{\pi i}{4}\right]}$<br>$=e^{\ln \sqrt{2}+\frac{\pi}{4}+i\left(-\ln \sqrt{2}+\frac{\pi}{4}\right)}$<br>$=e^{\ln \sqrt{2}+\frac{\pi}{4}}\left[\cos \left(-\ln \sqrt{2}+\frac{\pi}{4}\right)+i \sin \left(-\ln \sqrt{2}+\frac{\pi}{4}\right)\right]$<br>$\approx 3.102[0.999+i0.4]$<br>$=2.838+i1.318$</li>
+</ol>
+</li>
+<li>25번 : 주값(거듭제곱)<ol>
+<li>$(-3)^{3-i}$<br>$=e^{ln{(-3)^{3-i}}}$<br>$=e^{(3-i)(ln3+i\pi \pm 2n\pi i)}$<br>$=e^{(3ln3+\pi \mp 2n\pi) + i(3\pi \pm 6n\pi - ln3)}$<br>$=2ne^{\pi}(cos(3\pi -ln3)+ isin(3\pi - ln3))$</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992%20-%20%EC%B1%95%ED%84%B0%2013.6-13.7/" data-id="ck8tqyw4v0000xkvj5w8y4beb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/18/4%ED%95%99%EA%B8%B0%20-%20%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992%20-%208%EC%9E%A5%20EXAMPLE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          전기자기학2 - 8장 EXAMPLE
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992%20-%20%EC%84%A4%EA%B5%B0%EC%9D%98%EC%97%B0%EA%B5%AC%EC%86%8C%20-%20%EC%9C%A0%ED%95%9C%EB%8F%84%EC%84%A0,%20%EB%AC%B4%ED%95%9C%EB%8F%84%EC%84%A0%EC%9D%98%20%EC%A0%84%EA%B8%B0%EC%9E%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">전기자기학2 - 설군의연구소 - 유한도선, 무한도선의 전기장</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992/">공학수학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%84%B1%EA%B2%A9%EA%B3%BC%EC%A0%81%EC%9D%91/">성격과적응</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992/">전기자기학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02/">회로이론2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/">Private</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/">게임</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/XCOM-2/">XCOM 2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC/">프로스트펑크</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EC%9D%BC%EA%B8%B0/">일기</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/">블로그 관리</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/">업무</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4/">스마트스토어</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Github/">Github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%94%EB%B2%84%EA%B9%85/">디버깅</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%97%90%EB%94%94%ED%84%B0/">에디터</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/">Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/">파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Vultur에서 윈도우 설치하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">윈도우에서 리눅스처럼 Tor 서비스 사용하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/">유튜브 다운로더 youtube-dl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

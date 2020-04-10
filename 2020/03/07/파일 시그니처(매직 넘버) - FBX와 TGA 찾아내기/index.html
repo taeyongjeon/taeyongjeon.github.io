@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="헥스 파일을 뒤적거리다하루는 심심해서 게임의 용량이 큰(40mb 정도) 파일을 서브라임 텍스트로 열어보았다. 나오는 건 의미 모를 16진수의 나열이었다. 사실 이 파일은 그림이기 때문에 이미지 뷰어로 보면 열리지 않을까? 라는 생각으로이미지 뷰어로 열어봤으나 열리지 않았다. 음악 파일도 아니고,영상 파일도 아니었는데압축 프로그램으로 연결해서 실행하니 열렸다">
+<meta property="og:type" content="article">
+<meta property="og:title" content="파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기">
+<meta property="og:url" content="http://yoursite.com/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="헥스 파일을 뒤적거리다하루는 심심해서 게임의 용량이 큰(40mb 정도) 파일을 서브라임 텍스트로 열어보았다. 나오는 건 의미 모를 16진수의 나열이었다. 사실 이 파일은 그림이기 때문에 이미지 뷰어로 보면 열리지 않을까? 라는 생각으로이미지 뷰어로 열어봤으나 열리지 않았다. 음악 파일도 아니고,영상 파일도 아니었는데압축 프로그램으로 연결해서 실행하니 열렸다">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-06T15:00:00.000Z">
+<meta property="article:modified_time" content="2020-03-18T14:12:59.073Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/" class="article-date">
+  <time datetime="2020-03-06T15:00:00.000Z" itemprop="datePublished">2020-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%94%EB%B2%84%EA%B9%85/">디버깅</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="헥스-파일을-뒤적거리다"><a href="#헥스-파일을-뒤적거리다" class="headerlink" title="헥스 파일을 뒤적거리다"></a>헥스 파일을 뒤적거리다</h1><p>하루는 심심해서 게임의 용량이 큰(40mb 정도) 파일을 서브라임 텍스트로 열어보았다. 나오는 건 의미 모를 16진수의 나열이었다.</p>
+<p><strong>사실 이 파일은 그림이기 때문에 이미지 뷰어로 보면 열리지 않을까?</strong> 라는 생각으로<br>이미지 뷰어로 열어봤으나 열리지 않았다.</p>
+<p>음악 파일도 아니고,<br>영상 파일도 아니었는데<br><strong>압축 프로그램으로 연결해서 실행하니 열렸다!</strong></p>
+<ul>
+<li>잠시 다른 이야기로 빠지자면, 의외로 파일을 암호화하지 않고 zip파일로 압축한 다음 확장자를 바꾸면 생각 이상으로 사람들이 찾아내지 못한다. 예를 들어, 삼성 노트의 파일 확장자인 sdoc는 사실 압축 파일의 확장자를 바꾼 파일이다. 열면 내가 쓴 텍스트와 그림이 담겨 있다. 물론 본문이 그대로 들어가있는 건 아니고 파싱을 좀 해야 하지만…</li>
+</ul>
+<p>이왕 열린 김에 재미가 동해서, 이 파일의 정체가 무엇일지 찾아보고자 했다. 이 파일도 16진수의 나열이었기에 앞의 방법을 똑같이 시도해보았다.</p>
+<p>그렇지만 이미지도, 음악도, 영상도, 압축 파일도 아니었다.</p>
+<p>포기할까 하다가 그냥 맨 앞에 있는 16진수를 구글링해보기로 했다. MD5라던가 Base64가 디코딩이 가능하다면 이런 16진수도 디코딩이 가능하리라고 생각해서다.</p>
+<p>4b61 7964 6172 6120 4642 5820 4269 6e61<br>7279 2020 001a 0020 1c00 0062 0700 0000<br>…</p>
+<p>이 내용을 구글에 검색했고 나는 <a href="https://qiita.com/gshirato/items/87586421de0ec37e46a6" target="_blank" rel="noopener">이 16진수를 그대로 인용한 사이트</a>를 발견했다.</p>
+<p>일본 사이트인데 구글 크롬으로 번역했다. 그냥 영어블로그인 줄 알고 나중에 확인하고는 놀랐다.</p>
+<h1 id="FBX-파일"><a href="#FBX-파일" class="headerlink" title="FBX 파일?"></a>FBX 파일?</h1><p>이 사이트의 내용에 따르면, 내가 뒤적거리던 이 파일은 FBX라는 확장자의 파일이었다.</p>
+<p>이 파일의 Magic Number가<br>4b61 7964 6172 6120 4642 5820 4269 6e61<br>7279 2020 00<br>이고, 이는 FBX를 가리킨다고 이 사이트는 설명하고 있었다.</p>
+<p>찾아보니 FBX는 Filmbox의 약자로, Kaydara에서 만든 3D 모델의 정보를 담은 파일 포맷이라 한다.<br>즉, FBX 파일을 열면 3D로 구성된 자동차라던가, 캐릭터라던가 하는 게 튀어나온다는 소리다.</p>
+<h1 id="매직-넘버가-뭐야"><a href="#매직-넘버가-뭐야" class="headerlink" title="매직 넘버가 뭐야?"></a>매직 넘버가 뭐야?</h1><p>특정 확장자의 파일은 동일한 바이너리 코드로 시작한다.<br>예를 들어, jpeg 파일을 sublime text 등으로 열면 맨 앞에서부터 21바이트까지는 완전히 동일한 코드를 공유한다는 의미이다.<br>이를 파일 시그니처 혹은 파일 매직 넘버라 한다.</p>
+<p>4b61 7964 6172 6120 4642 5820 4269 6e61<br>7279 2020 00</p>
+<p>위 코드를 해석해보자.<br>1 바이트는 16진수 2글자와 같다. 즉, 16진수 4b(0x4b라고도 표기한다)는 알파벳 하나라는 뜻이다.<br>이때,<br>4b = 0x4b = 아스키 코드 K<br>61 = 0x61 = 아스키 코드 a<br>…<br>이런 식으로 나아가서 위 매직 넘버를 해석하면<br><strong>Kaydata FBX binary 0x00</strong> 라는 글자를 얻는다.<br>즉, 헥스 코드 맨 앞에 <strong>“이 코드는 Kaydata의 FBX 파일입니다</strong> 라고 말하고 있는 셈이다.</p>
+<h1 id="그래서-어떻게-여는데"><a href="#그래서-어떻게-여는데" class="headerlink" title="그래서 어떻게 여는데?"></a>그래서 어떻게 여는데?</h1><p>이것도 찾아보았다.<br>다행히 3D 툴인 Blender가 오픈소스로 무료로 다운로드할 수 있었다.</p>
+<p>Blender를 실행한 다음 File - Import - FBX 클릭 후 이 파일을 클릭하니 3D 모델이 떡하니 나왔다.</p>
+<p>끝내 나는 이 파일의 확장자 알아낼 수 있었다.</p>
+<h1 id="시그니처가-뒤에-있을-수도-맨-앞이-아니라-맨-앞-약간-뒤에-있을-수도-있다"><a href="#시그니처가-뒤에-있을-수도-맨-앞이-아니라-맨-앞-약간-뒤에-있을-수도-있다" class="headerlink" title="시그니처가 뒤에 있을 수도, 맨 앞이 아니라 맨 앞 약간 뒤에 있을 수도 있다."></a>시그니처가 뒤에 있을 수도, 맨 앞이 아니라 맨 앞 약간 뒤에 있을 수도 있다.</h1><p>헥스 에디터로 열어봐도 대체 정체를 모르는 파일이 있었는데, <strong>맨 아랫부분</strong>의 헥스값을 보니<br>54 52 55 45 56 49 53 49 4F 4E 2D 58 46 49 4C 45 2E 00<br>이런 값이었고 번역된 아스키값은 <strong>TRUEVISION-XFILE..</strong>이었다.</p>
+<p>구글링해보니 TGA 파일이었고, tga 확장자를 이름 뒤에 붙여주니 제대로 열렸다(그림판으로는 안 열려서 그림인 줄 몰랐다.)</p>
+<p>한편, 맨앞 부분은 의미없는 값이었는데 한 5번째 줄부터<br>2710 4164<br>6f62 6520 5068 6f74 6f73 686f 7020 4343<br>2032 3031 3820 2857 696e 646f 7773 2900<br>3230 3230 3a30 323a 3230</p>
+<p>라는 값이 있었고 이는 <strong>Adobe Photoshop CC 2018 (Windows).2020:02:20</strong> 이라는 값이었다.<br>(사실 맨 앞에 ‚Exif라고 해서, 이게 어떤 값인지 나와 있긴 했다.)</p>
+<p>확장자를 jpg, tga로 바꿨더니 둘 다 제대로 표시되었다. 즉 그림파일.</p>
+<h1 id="참고문헌"><a href="#참고문헌" class="headerlink" title="참고문헌"></a>참고문헌</h1><ul>
+<li><a href="https://qiita.com/gshirato/items/87586421de0ec37e46a6" target="_blank" rel="noopener">FBX 확장자의 파일의 시그니처. 이 사이트 덕분에 답을 얻었다.</a></li>
+<li><a href="http://forensic-proof.com/archives/300" target="_blank" rel="noopener">특정 확장자의 파일은 동일한 바이너리 코드로 시작하는데, 이를 파일 시그니처 혹은 파일 매직 넘버라 한다.</a></li>
+<li><a href="https://fileinfo.com/extension/fbx" target="_blank" rel="noopener">FBX가 뭐야</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/" data-id="ck8tqyw67002lxkvjgeu91ili" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vultur에서 윈도우 설치하기</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992/">공학수학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%84%B1%EA%B2%A9%EA%B3%BC%EC%A0%81%EC%9D%91/">성격과적응</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992/">전기자기학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02/">회로이론2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/">Private</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/">게임</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/XCOM-2/">XCOM 2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC/">프로스트펑크</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EC%9D%BC%EA%B8%B0/">일기</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/">블로그 관리</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/">업무</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4/">스마트스토어</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Github/">Github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%94%EB%B2%84%EA%B9%85/">디버깅</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%97%90%EB%94%94%ED%84%B0/">에디터</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/">Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/">파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Vultur에서 윈도우 설치하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">윈도우에서 리눅스처럼 Tor 서비스 사용하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/">유튜브 다운로더 youtube-dl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>파일전송 vsftpd 설치 및 설정 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="설치12apt-get updateapt-get install vsftpd  설정1) root 계정으로의 접속을 허용하기123nano &#x2F;etc&#x2F;ftpusers# ftpusers안에 있는 사용자는 ftp 접속이 제한된다.# root계정을 사용하고싶으면 파일안에 root를 삭제하고 저장한다.  2) 외부에서 파일 쓰기(생성, 복사, 삭제)를 가">
+<meta property="og:type" content="article">
+<meta property="og:title" content="파일전송 vsftpd 설치 및 설정">
+<meta property="og:url" content="http://yoursite.com/2020/01/16/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%ED%8C%8C%EC%9D%BC%EC%A0%84%EC%86%A1%20vsftpd%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%84%A4%EC%A0%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="설치12apt-get updateapt-get install vsftpd  설정1) root 계정으로의 접속을 허용하기123nano &#x2F;etc&#x2F;ftpusers# ftpusers안에 있는 사용자는 ftp 접속이 제한된다.# root계정을 사용하고싶으면 파일안에 root를 삭제하고 저장한다.  2) 외부에서 파일 쓰기(생성, 복사, 삭제)를 가">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-16T14:46:47.000Z">
+<meta property="article:modified_time" content="2020-03-18T14:12:59.073Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-프로그래밍 - 파일전송 vsftpd 설치 및 설정" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%ED%8C%8C%EC%9D%BC%EC%A0%84%EC%86%A1%20vsftpd%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%84%A4%EC%A0%95/" class="article-date">
+  <time datetime="2020-01-16T14:46:47.000Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      파일전송 vsftpd 설치 및 설정
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install vsftpd</span><br></pre></td></tr></table></figure>
+
+<h2 id="설정"><a href="#설정" class="headerlink" title="설정"></a>설정</h2><h3 id="1-root-계정으로의-접속을-허용하기"><a href="#1-root-계정으로의-접속을-허용하기" class="headerlink" title="1) root 계정으로의 접속을 허용하기"></a>1) root 계정으로의 접속을 허용하기</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nano &#x2F;etc&#x2F;ftpusers</span><br><span class="line"># ftpusers안에 있는 사용자는 ftp 접속이 제한된다.</span><br><span class="line"># root계정을 사용하고싶으면 파일안에 root를 삭제하고 저장한다.</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-외부에서-파일-쓰기-생성-복사-삭제-를-가능하게-하기"><a href="#2-외부에서-파일-쓰기-생성-복사-삭제-를-가능하게-하기" class="headerlink" title="2) 외부에서 파일 쓰기(생성, 복사, 삭제)를 가능하게 하기"></a>2) 외부에서 파일 쓰기(생성, 복사, 삭제)를 가능하게 하기</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nano  &#x2F;etc&#x2F;vsftpd.conf # 설정파일 실행</span><br><span class="line"></span><br><span class="line">#write_enable&#x3D;YES # 위 항목 찾아서 아래와 같이 주석 제거</span><br><span class="line">write_enable&#x3D;YES</span><br><span class="line"></span><br><span class="line"># nano를 나온다.</span><br><span class="line"></span><br><span class="line">&#x2F;etc&#x2F;init.d&#x2F;vsftpd restart # 설정이 적용되게끔 재시작</span><br></pre></td></tr></table></figure>
+
+<h2 id="사용"><a href="#사용" class="headerlink" title="사용"></a>사용</h2><ul>
+<li>파일질라나 다른 프로그램으로 접속하면 된다.</li>
+<li>윈도우 폴더에서 ftp://(리눅스 IP):(포트)의 형태로도 접속 가능하다.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/16/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%ED%8C%8C%EC%9D%BC%EC%A0%84%EC%86%A1%20vsftpd%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%84%A4%EC%A0%95/" data-id="ck8tqyw7j0062xkvjhbnf0twh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/01/16/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EB%A6%AC%EB%88%85%EC%8A%A4%20%ED%86%A0%EB%A0%8C%ED%8A%B8%20transmission%20%EC%82%AC%EC%9A%A9%EB%B2%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          리눅스 토렌트 transmission 사용법
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/14/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%ED%8C%8C%EC%9D%B4%EC%84%A0%20%ED%8C%A8%ED%82%A4%EC%A7%80%20%EC%9D%BC%EB%9E%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">파이선 패키지 일람</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992/">공학수학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%84%B1%EA%B2%A9%EA%B3%BC%EC%A0%81%EC%9D%91/">성격과적응</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992/">전기자기학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02/">회로이론2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/">Private</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/">게임</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/XCOM-2/">XCOM 2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC/">프로스트펑크</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EC%9D%BC%EA%B8%B0/">일기</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/">블로그 관리</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/">업무</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4/">스마트스토어</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Github/">Github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%94%EB%B2%84%EA%B9%85/">디버깅</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%97%90%EB%94%94%ED%84%B0/">에디터</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/">Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/">파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Vultur에서 윈도우 설치하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">윈도우에서 리눅스처럼 Tor 서비스 사용하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/">유튜브 다운로더 youtube-dl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

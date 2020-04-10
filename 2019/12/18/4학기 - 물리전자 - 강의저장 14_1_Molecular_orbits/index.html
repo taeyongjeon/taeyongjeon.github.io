@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>물리전자 - 강의저장 14_1_Molecular_orbits | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Stimulated Emission and Lasers Photon Amplication  $h\nu_{32}$는 원하는 파장이 아니고, $h\nu_{21}$은 우리가 써먹으려는 파장이다.원하는 파장을 걸러내기 위해 거울의 초점거리를 사용한다. 특정 초점거리는 특정 파장만을 필터링시켜줄 수 있다.   Laser 레이저? 동위상(in phase)의 빛 다발">
+<meta property="og:type" content="article">
+<meta property="og:title" content="물리전자 - 강의저장 14_1_Molecular_orbits">
+<meta property="og:url" content="http://yoursite.com/2019/12/18/4%ED%95%99%EA%B8%B0%20-%20%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90%20-%20%EA%B0%95%EC%9D%98%EC%A0%80%EC%9E%A5%2014_1_Molecular_orbits/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Stimulated Emission and Lasers Photon Amplication  $h\nu_{32}$는 원하는 파장이 아니고, $h\nu_{21}$은 우리가 써먹으려는 파장이다.원하는 파장을 걸러내기 위해 거울의 초점거리를 사용한다. 특정 초점거리는 특정 파장만을 필터링시켜줄 수 있다.   Laser 레이저? 동위상(in phase)의 빛 다발">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EC%A6%9D%ED%8F%AD.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_He_Ne_%EB%A0%88%EC%9D%B4%EC%A0%80.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_He_Ne.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EB%8F%84%ED%94%8C%EB%9F%AC.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_bonding.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EA%B2%B0%ED%95%A9.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EC%A1%B0%ED%95%A9.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EC%A4%91%EC%B2%A9.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EB%A6%AC%ED%8A%AC.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EB%A6%AC%ED%8A%AC_%EA%B2%B0%ED%95%A9.jpg">
+<meta property="article:published_time" content="2019-12-18T05:36:27.000Z">
+<meta property="article:modified_time" content="2020-03-18T14:12:59.042Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EC%A6%9D%ED%8F%AD.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-4학기 - 물리전자 - 강의저장 14_1_Molecular_orbits" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/18/4%ED%95%99%EA%B8%B0%20-%20%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90%20-%20%EA%B0%95%EC%9D%98%EC%A0%80%EC%9E%A5%2014_1_Molecular_orbits/" class="article-date">
+  <time datetime="2019-12-18T05:36:27.000Z" itemprop="datePublished">2019-12-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a>►<a class="article-category-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      물리전자 - 강의저장 14_1_Molecular_orbits
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>Stimulated Emission and Lasers<ol>
+<li>Photon Amplication<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EC%A6%9D%ED%8F%AD.jpg" alt=""></li>
+<li>$h\nu_{32}$는 원하는 파장이 아니고, $h\nu_{21}$은 우리가 써먹으려는 파장이다.<br>원하는 파장을 걸러내기 위해 거울의 초점거리를 사용한다.</li>
+<li>특정 초점거리는 특정 파장만을 필터링시켜줄 수 있다.</li>
+</ol>
+</li>
+<li>Laser<ol>
+<li>레이저?<ol>
+<li>동위상(in phase)의 빛 다발bundle을 의미한다.</li>
+</ol>
+</li>
+<li>Ruby laser<ol>
+<li>첫 단계 Optical pumping : Xenon flashlight. 에너지가 높은 기체임.</li>
+<li>두번째 단계 Metastable state로 이동 : Cr$^{+3}$(크롬 3가)의 defect를 이용함. 크롬 3가가 루비에 들어가면 이 defect가 metastable state 역할을 한다.</li>
+<li>세번째 단계 파장 걸러내기 : 여러 거울을 써서 특정 파장만 필터링해냄.</li>
+<li>위 과정을 통해 highly coherent light with high intensity가 만들어짐.</li>
+<li>텅스벤 전구랑은 다름.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>He-Ne laser<ol>
+<li>작동 방식<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_He_Ne_%EB%A0%88%EC%9D%B4%EC%A0%80.jpg" alt=""></li>
+<li>He-Ne 레이저는 혼합 기체로 이루어진다.</li>
+<li>루비 레이저와 마찬가지로 거울로 특정 파장을 필터링한다.</li>
+<li>끝부분이 볼록거울이기 때문에, 초점거리에 맞는 빛만 평행하게 나오게 된다. 안 맞으면 반사된다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Stimulated Emission and Lasers<ol>
+<li>Helium-Neon Laser<ol>
+<li>파장 632.8nm의 붉은 색 레이저를 만든다.</li>
+<li>스위치(전원)을 누르면 He가 excited되고 충돌로 Ne도 excite된다.</li>
+<li>네온은 비활성 기체라, 한번 excite되면 5s 오비탈로까지 올라간다.<ol>
+<li>$1s^22s^22p^6 -&gt; 1s^22s^22p^55s^1$</li>
+</ol>
+</li>
+<li>헬륨 역시 비활성 기체라, 높은 오비탈로 올라간다.<ol>
+<li>$1s^2 -&gt; 1s^12s^1$</li>
+</ol>
+</li>
+<li>핵심은, He과 Ne의 충돌로 population inversion을 얻는다는 것이다. 루비 레이저는 충돌이 아니라 optical pumping을 한다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>He-Ne laser<ol>
+<li>작동 방식 - 계속<ol>
+<li>전압을 주면 전자의 방전이 일어난다(전자가 전압에 의해 움직임).<ol>
+<li>He가 전자와 충돌해서 excite된다.<br>He + $e^- -&gt; $He*$ + e^-$<br>(He*는 excite된 He)</li>
+</ol>
+</li>
+<li>He의 전자 하나는 2s로 올라가고, 2s는 “metastable state”이므로 오래 머물 수 있다.</li>
+<li>He*이 Ne과 충돌하여 Ne*가 되고 population inversion이 일어난다.<br>number of Ne*($2p^55s^1$) &gt; number of Ne($2p^53p^1$)</li>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_He_Ne.jpg" alt=""></li>
+</ol>
+</li>
+<li>He-Ne 레이저는 루비 레이저와 달리 충돌을 이용하기 때문에 stimulate를 통한 raging을 하지 않는다.</li>
+</ol>
+</li>
+<li>Stimulated Emission and Lasers<ol>
+<li>Laser Output Spectrum<ol>
+<li>레이저가 하나의 파장처럼 보이지만, 사실 아니다.<br>실제로는 특정 파장을 중심으로 하는 스펙트럼을 이룬다.</li>
+<li>도플러 효과 때문이다.<ol>
+<li>평균 운동 에너지 = $\frac 32 kT$</li>
+<li>주파수 $\nu_0$의 기체의 경우<ol>
+<li>관측자에게 다가올 경우<br>$\nu_2 = \nu_0 (1+v_x /c)$</li>
+<li>멀어질 경우<br>$\nu_2 = \nu_0 (1-v_x /c)$</li>
+</ol>
+</li>
+<li>원자가 random motion을 가지기 때문에 관측자는 주파수의 스펙트럼을 갖는다.<br>$\delta \nu = \nu_2 - \nu_1$<br>즉, 파장의 도플러 대역이다.</li>
+</ol>
+</li>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EB%8F%84%ED%94%8C%EB%9F%AC.jpg" alt=""><ol>
+<li>레이저가 두께가 있는 것처럼 보이는데, 이는 Doppler broadening이 존재하기 때문이다.</li>
+<li>레이저와 거울의 반사로 특정 파장만 필터링하는 건 틀림없다(붉은색이면 632.8nm의 파장만 나온다는 소리다). 근데 관측자에 의해 그 파장이 달라지는 것이다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="3장-끝"><a href="#3장-끝" class="headerlink" title="3장 끝"></a>3장 끝</h2><h2 id="4장-시작"><a href="#4장-시작" class="headerlink" title="4장 시작"></a>4장 시작</h2><h2 id="Modern-Theory-of-Solids"><a href="#Modern-Theory-of-Solids" class="headerlink" title="Modern Theory of Solids"></a>Modern Theory of Solids</h2><ol>
+<li>챕터 개요<ol>
+<li>양자역학에서 배운 전자들의 운동이, 분자나 그 이상(예를 들어, Solids)에서 어떻게 작용하는지를 배운다.</li>
+<li>Hydrogen Molecule<ol>
+<li>결합의 분자 오비탈 운동 이론을 배운다.</li>
+</ol>
+</li>
+<li><strong><em>교수님 질문 : Hydrogen 원자에 대해서 무엇을 배웠는가?</em></strong><ol>
+<li>답변 : Hydrogen 원자에 있는 전자는 불연속적인 에너지 state를 가진다. 즉, 현실세계에서의 에너지와 다르다.</li>
+</ol>
+</li>
+<li><strong><em>교수님 질문 : 전자의 질량은?</em></strong><ol>
+<li>$9.1 \times 10^{-31}$</li>
+</ol>
+</li>
+<li>Electron Effective Mass<ol>
+<li>전자의 질량값이 물질에선 적용이 안 된다. 충돌로 인해서 힘의 값이 변하고 뉴턴역학이 성립하지 않게 된다.</li>
+<li>이를 위해 물질 안에서 전자의 질량을 바꾼다. 심지어 마이너스로도 바꾼다. 이를 유효질량effective mass라고 부른다.</li>
+</ol>
+</li>
+<li>Density of States in an Energy Band<ol>
+<li>전자가 활용할 수 있는 에너지 state의 밀도를 배운다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Modern Theory of Solids<ol>
+<li>Molecular Orbital Theory of Bonding<ol>
+<li>수소는 2개 합쳐서 분자를 만드는데 헬륨은 2개가 안 합쳐진다. 그 이유를 배운다.</li>
+<li>원자 둘이 서로 멀리 있을 때<ol>
+<li>원자는 각각의 에너지 1s, 2s 등을 가짐.</li>
+<li>각 원자에 있는 전자의 에너지 : -13.6 eV</li>
+<li>시스템의 총 에너지 : -27.2 eV</li>
+</ol>
+</li>
+<li>원자가 더 가까워지면 새로운 wavefunction이 만들어진다.<ol>
+<li>새로운 에너지 값이 -13.6 eV보다 낮으면 수소는 분자를 이룬다. : Favorable하다 - 에너지가 더 낮아 안정적이기 때문.</li>
+<li>결합의 형성<ol>
+<li>새로운 파동함수 : 분자 궤도를 사용한다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>$H_2$ 분자<ol>
+<li>원자 두 개가 분자가 되면 파울리 배타 원리를 적용해야 한다. 수소 원자 2개가 똑같은 원자 궤도를 가질 수는 없다(1s).</li>
+<li>그래서 파동함수는 ovelap되고, 새로운 함수를 형성한다.</li>
+<li>새로운 파동함수는 선형 결합으로 이루어진다.</li>
+<li>1[](40:57 오버랩.jpg)</li>
+<li><strong><em>교수님 질문 : bonding state와 anti-bonding state 중 어느 쪽이 에너지가 더 높은가?</em></strong><ol>
+<li>답변 : anti-bonding state. 에너지를 더 낮출 수 있을 때 bonding state를 형성하기 때문이다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Hydrogen Molecule<ol>
+<li>Molecular Orbital Theory of Bondig<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_bonding.jpg" alt=""><ol>
+<li>Bonding<ol>
+<li>대칭적이다.</li>
+<li>원자 사이에도 전자의 존재 확률을 갖는다.</li>
+</ol>
+</li>
+<li>Antibonding<ol>
+<li>비대칭적이다</li>
+<li>원자 사이에 전자가 없다.</li>
+<li>그림에서는 업-다운으 그려져있지만 업업, 다운다운도 가능하다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong><em>학생 질문 : Bonding과 Antibonding의 +, - 부호에 따르면 저 그래프가 나올 수 없는 게 아닌가?</em></strong><ol>
+<li>답변 : +, -는 결합과 비결합을 나타낸 기호일 뿐이며 숫자의 덧셈, 뺄셈을 말하는 건 아니다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Electron energy of two Hydrogen Atoms<ol>
+<li>Energy split<ol>
+<li>원자가 가까워지면 particle interaction이 발생한다.</li>
+<li>particle interaction의 경우는 2가지 형태가 있고(Bonding, Antibonding), 그 결과가 energy split을 만들어낸다.</li>
+<li>설명 2 : 두개의 파동함수가 중복overlap되고, 이로부터 파동함수의 split을 만들어낸다.</li>
+<li>새롭게 만들어진 wavefunction은 새롭게 생긴 PE를 슈뢰딩거 방정식에 넣어서 구해낸 함수이다.</li>
+</ol>
+</li>
+<li>R값이 작아지면(가까워지면)<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EA%B2%B0%ED%95%A9.jpg" alt=""></li>
+<li>R &lt; a 전자 2개가 ‘spin pair’ 형성. 즉, 아래쪽에 2개가 다 위치함.</li>
+<li>$\Psi$ : 고립된 수소 원자보다 더 안정적이라 선호됨.</li>
+<li>에너지 차이 : bonding energy</li>
+<li>PE는 음의 값 : 인력이 작용함.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>RLC Resonant Circuit<ol>
+<li>공진주파수에서 전류가 흐르는데, 두 회로를 coupling했을 때 분자의 형성과 같은 형태가 나타난다.</li>
+</ol>
+</li>
+<li>Electron energy of two Hydrogen Atoms<ol>
+<li>파동함수 $\Psi_{\sigma}$<ol>
+<li>bonding state라고 부름.</li>
+<li>가장 낮은 에너지.</li>
+<li>반대로, $\Psi_{\sigma}$* 는 Anti-bonding state라고 부른다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Two He Atoms<ol>
+<li>거리가 가까워지면 $E_{\sigma}$,$E_{\sigma}$* 두 개가 생긴다.<ol>
+<li>그런데, 낮은 에너지 state에 전자 2개 넣고, 높은 에너지 state에 전자 2개 넣으면? 전체적으로 에너지의 감소가 없다.</li>
+<li>에너지의 감소가 없으므로 굳이 결합을 형성하지 않는다. 더 안정적인 형태가 아니기 때문이다.</li>
+</ol>
+</li>
+<li>예시<ol>
+<li>He-He의 결합은 Overlap of full-occupied atomic orbital states라고 부르며, 결합을 형성하지 않는다.</li>
+<li>단, energy split은 일어났다.</li>
+<li>즉, 결합을 형성하려면 overlap of half-occupied orbital이 필요하다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Band Theory of Solids<ol>
+<li>Energy Bond Formation : 3 Hydrogen Atoms<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EC%A1%B0%ED%95%A9.jpg" alt=""><ol>
+<li>파동함수 3개의 조합으로 3개의 새로운 파동함수가 만들어진다.</li>
+<li>전부 다 더해지는 경우(전부 밀어냄)(a)<br>파동함수 하나가 관여 안 하는 경우(b)<br>하나만 빼지는 경우(c)</li>
+</ol>
+</li>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EC%A4%91%EC%B2%A9.jpg" alt=""><ol>
+<li>3개의 중첩은 위 그림처럼 나타난다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>n Li Atoms<ol>
+<li>n개의 Li Atoms는 고체다.<br>리튬에서부터 energy band에 대한 이야기를 하기 시작한다.</li>
+<li>$1s^2$는 다른 Li의 영향을 받지 않는다.<br>그러나 $2s^1$의 경우 상호작용의 영향을 받는다.</li>
+<li>n개의 전자는 n개의 2s 파동함수를 $E_{2s}$에서 가진다.<br>이게 합쳐지면<br>$E_{2s}$는 n개의 에너지 레벨로 나눠진다.<br>R=a 구간 밖에서 energy split이 일어난다.<ol>
+<li>a : 원자간 거리</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>N Li Atoms<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EB%A6%AC%ED%8A%AC.jpg" alt=""><ol>
+<li>N개의 전자가 system에 존재한다. 왜 리튬인데 3N이 아니냐면 $1s^2$에 있는 전자들은 참여하지 않기 때문이다.</li>
+</ol>
+</li>
+<li>물질 속 전자는 더이상 discrete하지 않고, 특정한 대역 안의 어딘가에 있는 state에 존재한다.</li>
+<li><strong><em>교수님 질문 : 왜 state의 절반만 채워지는가?</em></strong><ol>
+<li>답변 : 한 state에 전자가 2개씩 들어가서.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Band Theory of Solids<ol>
+<li>n Li Atoms<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/14_1_%EB%A6%AC%ED%8A%AC_%EA%B2%B0%ED%95%A9.jpg" alt=""><ol>
+<li>셋 다 결합할 때 가장 낮은 에너지를 갖는다.</li>
+<li>+, -, +, -로 결합할 때 가장 높은 에너지를 갖는다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong><em>교수님 질문 : 리튬이 모여서 분자 궤도를 만드는 이유는?</em></strong><ol>
+<li>답변 : particle interaction 때문. 전자와 양성자의 상호작용에 의해 PE가 바뀌고, 이에 따라 슈뢰딩거 방정식의 값이 바뀌었기 때문.</li>
+</ol>
+</li>
+<li>지금까지 다룬 내용은 0K에서만 성립한다. 온도가 올라가면 전자가 높은 에너지로 얼마든지 올라갈 수 있게 된다. 아래쪽 state만 채워지는 건 절대0도에서만 가능하다.</li>
+<li>에너지 state의 중첩은 energy band라고 표현되며, 이 때부터 전자가 어떤 state에 있느냐는 이야기하지 않고 energy band 안에 전자가 얼마나 있느냐만 다루게 된다.<br>즉, 2s와 2p가 겹쳐지면 이게 2s에 있는지, 2p에 있는지 말할 수 없고 이를 이야기할 필요도 없어진다.</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/18/4%ED%95%99%EA%B8%B0%20-%20%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90%20-%20%EA%B0%95%EC%9D%98%EC%A0%80%EC%9E%A5%2014_1_Molecular_orbits/" data-id="ck8tqyw5a000exkvj3gq03kl9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/27/Hexo%20%EA%B0%9C%EC%9D%B8%ED%8C%8C%EC%9D%BC%20%EA%B4%80%EB%A6%AC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hexo 개인파일 관리
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/18/4%ED%95%99%EA%B8%B0%20-%20%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90%20-%20%EA%B0%95%EC%9D%98%EC%A0%80%EC%9E%A5%2015_1%20density_of_state/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">물리전자 - 강의저장 15_1 density_of_state</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992/">공학수학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%84%B1%EA%B2%A9%EA%B3%BC%EC%A0%81%EC%9D%91/">성격과적응</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992/">전기자기학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02/">회로이론2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/">Private</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/">게임</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/XCOM-2/">XCOM 2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC/">프로스트펑크</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EC%9D%BC%EA%B8%B0/">일기</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/">블로그 관리</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/">업무</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4/">스마트스토어</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Github/">Github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%94%EB%B2%84%EA%B9%85/">디버깅</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%97%90%EB%94%94%ED%84%B0/">에디터</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/">Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/">파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Vultur에서 윈도우 설치하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">윈도우에서 리눅스처럼 Tor 서비스 사용하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/">유튜브 다운로더 youtube-dl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

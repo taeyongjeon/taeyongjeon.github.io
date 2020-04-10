@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>회로이론2 - 일렉킴에듀 - 회로이론 15장_라플라스변환_01 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="라플라스 변환 왜 필요한가?  한줄요약 : 미분방정식을 안 해도 되므로. 어떤 시스템을 분석, 제어하려면 그 시스템을 수학적으로 모델링해야 한다.(전압이 얼마 나오고 전류가 얼마 나오는지) 근데 회로에서 수학적 모델링을 하면 고차(2차, 3차 이상)미분방정식이 나온다. 미분방정식은… 알다시피 쉽지 않다. 라플라스 변환은 $\frac{d}{dt}$를 전부 s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="회로이론2 - 일렉킴에듀 - 회로이론 15장_라플라스변환_01">
+<meta property="og:url" content="http://yoursite.com/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02%20-%20%EC%9D%BC%EB%A0%89%ED%82%B4%EC%97%90%EB%93%80%20-%20%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A0%2015%EC%9E%A5_%EB%9D%BC%ED%94%8C%EB%9D%BC%EC%8A%A4%EB%B3%80%ED%99%98_01/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="라플라스 변환 왜 필요한가?  한줄요약 : 미분방정식을 안 해도 되므로. 어떤 시스템을 분석, 제어하려면 그 시스템을 수학적으로 모델링해야 한다.(전압이 얼마 나오고 전류가 얼마 나오는지) 근데 회로에서 수학적 모델링을 하면 고차(2차, 3차 이상)미분방정식이 나온다. 미분방정식은… 알다시피 쉽지 않다. 라플라스 변환은 $\frac{d}{dt}$를 전부 s">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-11-15T12:54:41.000Z">
+<meta property="article:modified_time" content="2020-03-18T14:12:59.058Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-4학기 - 회로이론2 - 일렉킴에듀 - 회로이론 15장_라플라스변환_01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02%20-%20%EC%9D%BC%EB%A0%89%ED%82%B4%EC%97%90%EB%93%80%20-%20%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A0%2015%EC%9E%A5_%EB%9D%BC%ED%94%8C%EB%9D%BC%EC%8A%A4%EB%B3%80%ED%99%98_01/" class="article-date">
+  <time datetime="2019-11-15T12:54:41.000Z" itemprop="datePublished">2019-11-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a>►<a class="article-category-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02/">회로이론2</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      회로이론2 - 일렉킴에듀 - 회로이론 15장_라플라스변환_01
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="라플라스-변환"><a href="#라플라스-변환" class="headerlink" title="라플라스 변환"></a>라플라스 변환</h2><ol>
+<li><p>왜 필요한가?</p>
+<ol>
+<li>한줄요약 : 미분방정식을 안 해도 되므로.</li>
+<li>어떤 시스템을 분석, 제어하려면 그 시스템을 수학적으로 모델링해야 한다.(전압이 얼마 나오고 전류가 얼마 나오는지)</li>
+<li>근데 회로에서 수학적 모델링을 하면 고차(2차, 3차 이상)미분방정식이 나온다. 미분방정식은… 알다시피 쉽지 않다.</li>
+<li>라플라스 변환은 $\frac{d}{dt}$를 전부 s로 바꿔버린다.<ol>
+<li>$\frac{d^2}{dt^2}$은 $s^2$가 된다는 소리다.</li>
+</ol>
+</li>
+<li>다시 말해서, 라플라스 방정식은 미분방정식을 대수학의 형태로 만든다는 것이다.<ol>
+<li>시간 t의 함수를 s의 함수로 바꾼다고도 표현한다.</li>
+</ol>
+</li>
+<li>이렇게 쉽게 계산을 한 뒤, <strong>라플라스 역변환</strong> 과정을 통해 원래 형태 식의 결과물로 되돌린다.</li>
+<li>s는 복소주파수라고 한다.</li>
+</ol>
+</li>
+<li><p>라플라스 변환의 정의</p>
+<ol>
+<li>$L[f(t)]=\int_{ 0 }^{ \infty  }{ f(t){ e }^{ -st }dt } =F(s)$<ol>
+<li><strong>주의 : 학교에서는 적분 범위가 0 대신 $-\infty$일 수도 있다.</strong></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>변환 유도</p>
+<ol>
+<li>단위계단함수<ol>
+<li>$F(s)=\frac{1}{s}$</li>
+<li>$L[u(t)]=\int_{ 0 }^{ \infty  }{ 1\times{ e }^{ -st }dt }=-\frac{1}{s}e^{-st}|^{\infty}_{0}$<br>$=0-(-\frac{1}{s})=\frac{1}{s}$<ol>
+<li>단위계단함수는 t&gt;0에서 1인 점을 활용하라.</li>
+<li>$L[3u(t)]=\frac{3}{s}$이다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>단위 임펄스 함수<ol>
+<li>$L[f(t)]=1$</li>
+<li>$t=0$일 때 $\infty$인 함수이다.</li>
+<li>달리 말하면 x축이 0에 아주 가까운 값 a일 때 y값은 $\frac{1}{a}$. 즉 $\infty$라는 소리다.</li>
+<li>그래서 $L[f(t)]=a\times\frac{1}{a}=1$이다.</li>
+</ol>
+</li>
+<li>단위 램프 함수<ol>
+<li>$L[t]=\frac{1}{s^2}$</li>
+<li>ramp : 기울기, 경사 라는 의미.<ol>
+<li>단위 램프 = 단위 기울기 = 기울기 1</li>
+</ol>
+</li>
+<li>x&gt;0에서 $f(t)=t=tu(t)$<ol>
+<li>$tu(t-1)$이라면, t=1부터 단위 기울이가 시작된다고 보면 된다.</li>
+</ol>
+</li>
+<li>$L[t]=\int_{ 0 }^{ \infty  }{ t\times{ e }^{ -st }dt }=t-\frac{1}{s}e^{-st}|^{\infty}<em>{0}-\int{-\frac{1}{s}e^{-st}}$<br>$=0+\frac{1}{s}\int^{\infty}</em>{0}{e^{-st}}dt$<br>$=\frac{1}{s^2}$      <ol>
+<li>부분적분법<br>$\int { udv } =uv-\int { vdu } $<ol>
+<li>$u=t$</li>
+</ol>
+ -&gt; $du=dt$<br> $dv=e^{-st}dt$<br> -&gt; $v=-\frac{1}{s}e^{-st}$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>거듭제곱 함수 $t^n$<ol>
+<li>$L[t^n]=\frac{n!}{s^{n+1}}$<ol>
+<li>$L[t]=\frac{1}{s^{2}}$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>지수함수 $e^{-at},e^{at}$<ol>
+<li>$L[e^{at}]=\frac{1}{s-a}$</li>
+<li>$L[e^{-at}]=\frac{1}{s+a}$</li>
+</ol>
+</li>
+<li>삼각함수<ol>
+<li>오일러 방정식<ol>
+<li>삼각함수의 기묘한 계산결과를 설명하기 위해 Euler equation을 알아봐야 한다.</li>
+<li>$e^{j\theta}=cos\theta + jsin\theta$<br>$e^{-j\theta}=cos\theta - jsin\theta$<ol>
+<li>$cos\theta=\frac{1}{2}(e^{j\theta}+e^{-j\theta})$<br>$sin\theta=\frac{1}{2}(e^{j\theta}-e^{-j\theta})$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>$L[sin\omega t]=\frac{\omega}{s^2+{\omega} ^{2}}$<ol>
+<li>$L[sin\omega  t]=\int^{\infty}<em>{0}\frac{1}{2j}(e^{j\omega t}-e^{-j\omega t})e^{-st}dt$<br>$=\int^{\infty}</em>{0}\frac{1}{2j}(e^{j\omega t-st}-e^{-j\omega t-st})dt$<br>$=\int^{\infty}_{0}\frac{1}{2j}(e^{-(s-j\omega)t}-e^{-(s+j\omega)t})dt$<br>$=\frac{1}{2j}(\frac{1}{s-j\omega}-\frac{1}{s+j\omega})$<br>$=\frac{\omega}{s^2+{\omega} ^{2}}$</li>
+<li>$L[sin5 t]=\frac{5}{s^2+{5} ^{2}}$</li>
+</ol>
+</li>
+<li>$L[cos\omega t]=\frac{s}{s^2+{\omega} ^{2}}$</li>
+</ol>
+</li>
+<li>쌍곡선 함수<ol>
+<li>$L[sinh\omega t]=\frac{w}{s^2-{\omega} ^{2}}$<ol>
+<li>참고 : 사인-하이퍼볼릭-오메가-티 라고 읽는다.</li>
+</ol>
+</li>
+<li>$L[cosh\omega t]=\frac{s}{s^2-{\omega} ^{2}}$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>라플라스 변환표</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>f(t)</th>
+<th>F(s)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>단위 계단 함수</td>
+<td>$\delta (t)$</td>
+<td>1</td>
+</tr>
+<tr>
+<td>단위 임펄스 함수</td>
+<td>$u(t)$</td>
+<td>$\frac{1}{s}$</td>
+</tr>
+<tr>
+<td>단위 램프 함수</td>
+<td>$t$</td>
+<td>$\frac{1}{s^2}$</td>
+</tr>
+<tr>
+<td>단위 램프 함수</td>
+<td>$t^n$</td>
+<td>$\frac{n!}{s^{n+1}}$</td>
+</tr>
+<tr>
+<td>사인</td>
+<td>$sin\omega t$</td>
+<td>$\frac{\omega}{s^2+\omega^2}$</td>
+</tr>
+<tr>
+<td>코사인</td>
+<td>$cos\omega t$</td>
+<td>$\frac{s}{s^2+\omega^2}$</td>
+</tr>
+<tr>
+<td>지수 감쇠 함수</td>
+<td>$e^{-at}$</td>
+<td>$\frac{1}{s+a}$</td>
+</tr>
+<tr>
+<td>사인 하이퍼볼릭</td>
+<td>$sinh\omega t$</td>
+<td>$\frac{\omega}{s^2-\omega^2}$</td>
+</tr>
+<tr>
+<td>코사인 하이퍼볼릭</td>
+<td>$cosh\omega t$</td>
+<td>$\frac{s}{s^2-\omega^2}$</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02%20-%20%EC%9D%BC%EB%A0%89%ED%82%B4%EC%97%90%EB%93%80%20-%20%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A0%2015%EC%9E%A5_%EB%9D%BC%ED%94%8C%EB%9D%BC%EC%8A%A4%EB%B3%80%ED%99%98_01/" data-id="ck8tqyw5p001axkvjb80750yw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992%20-%20%EC%B1%95%ED%84%B0%2013.1-13.2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          공학수학2 - 챕터 13.1-13.2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992-%20%EC%9D%BC%EB%A0%89%ED%82%B4%EC%97%90%EB%93%80%20-%20%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%99%2011%EC%9E%A5_%EC%A0%84%EC%9E%90%EA%B3%84_02/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">일렉킴에듀 - 전기자기학 11장_전자계_02</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992/">공학수학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%84%B1%EA%B2%A9%EA%B3%BC%EC%A0%81%EC%9D%91/">성격과적응</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992/">전기자기학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02/">회로이론2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/">Private</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/">게임</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/XCOM-2/">XCOM 2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC/">프로스트펑크</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EC%9D%BC%EA%B8%B0/">일기</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/">블로그 관리</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/">업무</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4/">스마트스토어</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Github/">Github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%94%EB%B2%84%EA%B9%85/">디버깅</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%97%90%EB%94%94%ED%84%B0/">에디터</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/">Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/">파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Vultur에서 윈도우 설치하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">윈도우에서 리눅스처럼 Tor 서비스 사용하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/">유튜브 다운로더 youtube-dl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

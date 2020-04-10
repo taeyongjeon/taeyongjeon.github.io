@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>물리전자 - 강의저장 12_2 wave_function | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Hydrogen Atom 계속 Radial Distribution Function 여러 함수들 밀도함수 Electron density 공간의 어떤 point에서 electron density를 나타내는 함수. $\rho(r)&#x3D;|\psi(r)|^{2}$   확률함수 Probability 공간의 어떤 공간에서 electron 발견 확률을 나타내는 함수. $P">
+<meta property="og:type" content="article">
+<meta property="og:title" content="물리전자 - 강의저장 12_2 wave_function">
+<meta property="og:url" content="http://yoursite.com/2019/11/27/4%ED%95%99%EA%B8%B0%20-%20%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90%20-%20%EA%B0%95%EC%9D%98%EC%A0%80%EC%9E%A5%2012_2%20wave_function/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hydrogen Atom 계속 Radial Distribution Function 여러 함수들 밀도함수 Electron density 공간의 어떤 point에서 electron density를 나타내는 함수. $\rho(r)&#x3D;|\psi(r)|^{2}$   확률함수 Probability 공간의 어떤 공간에서 electron 발견 확률을 나타내는 함수. $P">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EC%98%A4%EB%B9%84%ED%83%88.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/radial_wavefunction.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/radial_wavefunction_2.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EC%98%A4%EB%B9%84%ED%83%88_%ED%95%A8%EC%88%98.png">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%ED%99%95%EB%A5%A0%ED%95%A8%EC%88%98.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/s_%EC%98%A4%EB%B9%84%ED%83%88.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/p_%EC%98%A4%EB%B9%84%ED%83%88.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%ED%83%80%EC%9B%90%ED%98%95_%EC%98%A4%EB%B9%84%ED%83%88.jpg">
+<meta property="article:published_time" content="2019-11-27T14:09:58.000Z">
+<meta property="article:modified_time" content="2020-03-18T14:12:59.042Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EC%98%A4%EB%B9%84%ED%83%88.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-4학기 - 물리전자 - 강의저장 12_2 wave_function" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/27/4%ED%95%99%EA%B8%B0%20-%20%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90%20-%20%EA%B0%95%EC%9D%98%EC%A0%80%EC%9E%A5%2012_2%20wave_function/" class="article-date">
+  <time datetime="2019-11-27T14:09:58.000Z" itemprop="datePublished">2019-11-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a>►<a class="article-category-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      물리전자 - 강의저장 12_2 wave_function
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>Hydrogen Atom 계속<ol>
+<li>Radial Distribution Function<ol>
+<li>여러 함수들<ol>
+<li>밀도함수 Electron density<ol>
+<li>공간의 어떤 point에서 electron density를 나타내는 함수.</li>
+<li>$\rho(r)=|\psi(r)|^{2}$</li>
+</ol>
+</li>
+<li>확률함수 Probability<ol>
+<li>공간의 어떤 공간에서 electron 발견 확률을 나타내는 함수.</li>
+<li>$P(r)=|\psi(r)|^{2}dr$</li>
+</ol>
+</li>
+<li>방사분포함수 Radial distribution<ol>
+<li>원이나 구에서 거리 r에 따른 전자 분포를 나타내는 함수.</li>
+<li>$P(r)=4\pi r^2|\psi(r)|^{2}$</li>
+</ol>
+</li>
+<li>전자 발견 확률<ol>
+<li>거리 r, 두께 dr인 곳에서의 발견 확률을 나타내는 함수.</li>
+<li>$P(r)=|\psi(r)|^{2}dr$</li>
+</ol>
+</li>
+<li>구체가 아닌 오비탈(p,d,f)<ol>
+<li>위 식을 응용한다.</li>
+<li>$P(r)=r^2|\psi(r)|^{2}$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Radial distribution function, RDF<ol>
+<li>RDF라고도 쓴다.</li>
+<li>$g(r)$로 표현한다.<ol>
+<li>위에서 말했듯 거리 r에 따른 분포를 나타내는 함수다.</li>
+<li>쉽게 구분하자면 다음과 같다.<br>$\Psi$ = wave function<br>$\Psi ^2$ = prabability (electron) density<br>$4\pi r^2 \Psi ^2$ = radial distribution function</li>
+</ol>
+</li>
+<li>밀도<ol>
+<li>밀도는 사실 숫자/부피다.</li>
+<li>근데 이 밀도값이 상수 = 골고루 분포 라면 괜찮은데,<br>거리에 따라 밀도도 달라져서 RDF같은 게 필요해진 거다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Radial Distribution functions in Sphere<ol>
+<li>거리 r에서 전자 발견 확률을 알아보자<ol>
+<li>부피를 구한다.<ol>
+<li>$\frac 43 \pi(r+\delta r)^3 - \frac 43 \pi(r)^3$<br>$\quad$ $\delta$가 아주 작다고 했으니 저 식을 쉽게 전개할 수 있다.<br>$\quad$ 정리하면 1개 항만 남는다.<br>$4\pi r^2 \delta r$</li>
+</ol>
+</li>
+<li><strong><em>교수님 질문 : 위 식에서 뭐라고 가정했는가?</em></strong><ol>
+<li>답변 : 델타가 아주 작다.</li>
+</ol>
+</li>
+<li>RDF를 구한다.<ol>
+<li>$g(r)$<br>$=4\pi r^2 \rho dr$<br>$=4\pi r^2 \Psi ^2$<br>$\quad$ 저 위에 올려보면 방사분포함수 설명에 나왔던 $P(r)$과 결과가 같다.<br>$\quad$ 밀도 = $\rho$ = 갯수 / 부피이다.<br>$\quad$ RDF는 어디까지나 전자 분포 함수다. 밀도함수가 아니라 발견 확률 함수!</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Radial Distribution Function 계속<ol>
+<li>$P_{n, \ell, m_{\ell}}(r)=4 \pi r^{2}\left|R_{n, \ell}(r)\right|^{2}\left|Y_{\ell, m_{\ell}}(\theta, \phi)\right|^{2}$<ol>
+<li>거리 의존 함수 $R$과 각도 의존 함수 $Y$.</li>
+</ol>
+</li>
+<li><strong><em>교수님 질문 : Quantum number는 하나 더 있다. 무엇인가?</em></strong><ol>
+<li>답변 : 스핀.</li>
+</ol>
+</li>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EC%98%A4%EB%B9%84%ED%83%88.jpg" alt=""><ol>
+<li>양자수에 따라 식이 표와 같이 바뀐다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Radial Wavefunctions(R)<ol>
+<li>위 표에서 언급했듯이, $2\left(\frac{Z}{a_{0}}\right)^{\frac{3}{2}} \mathrm{e}^{-Z r / a_{0}}$이다.</li>
+<li>$n=1, l=0$일 때 $\left(\frac{1}{a_{o}}\right)^{3 / 2} 2 \exp \left(\frac{-r}{a_{o}}\right)$이다.<br>$\quad$ $Z$ 값은 수소 원자가 원자핵이 1개라 1임.<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/radial_wavefunction.jpg" alt=""></li>
+</ol>
+ <strong>교수님 코멘트 : 이것만 보고 $r=0$에서 값이 제일 크구만. 그럼 발견확률도 제일 높겠지? 이렇게 생각하면 완전 틀렸다. 파동함수는 여기에 $4\pi r^2$이 곱해진다는 걸 명심하라.</strong></li>
+<li>$n=2$일 때, $\ell$ 값에 따라 오비탈 모양이 달라진다.<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/radial_wavefunction_2.jpg" alt=""></li>
+</ol>
+ <strong>교수님 코멘트 : $\ell=1$일 때부터 $m_l$ 값이 0이 아닌 다른 값을 가지며, 이에 따라 오비탈 형태가 바뀐다.</strong></li>
+</ol>
+</li>
+<li>Probability density of Radial Wavefunctions<ol>
+<li>지금까지의 내용 복습<ol>
+<li>$\quad$ 어떤 구간 $dr$에서의 확률함수가 있다.<br>$P(r)=|\psi(r)|^{2} d r$<br>$\quad$ 수소 원자에서 이 $dr$은 구의 넓이가 된다.<br>$p(r)=4 \pi r^{2}|\psi(r, \theta, \phi)|^{2}$<br>$=4 \pi r^{2}\left|R_{n, \ell}(r) Y_{\ell, m_{\ell}}(\theta, \phi)\right|^{2}$<br>$\quad$ 변수분리법에 따라 아래와 같이 쓴다.<br>$=4 \pi r^{2}\left|R_{n, \ell}(r)\right|^{2}\left|Y_{\ell, m_{\ell}}(\theta, \phi)\right|^{2}$<ol>
+<li>$\ell=0$일 때, $Y$ 함수는 언제나 1이며 $R$ 함수에만 의존한다. 그래서 구형이다.</li>
+<li>$\ell \ge 1$일 때, $R$ 함수와 $Y$ 함수가 동시에 존재하게 된다. 그래서 구형이 아니게 된다.</li>
+<li>확률은 $r \rightarrow ,r \rightarrow \infty$ 둘 모두 0에 수렴한다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>오비탈 함수<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EC%98%A4%EB%B9%84%ED%83%88_%ED%95%A8%EC%88%98.png" alt="https://onsaem9134.tistory.com/53"></li>
+<li>확률의 방향 의존성<ol>
+<li>$Y$함수에 의해 결정됨.<ol>
+<li>s 오비탈 = $(\frac {1}{\sqrt 2 \sqrt{2\pi}})^2=\frac{1}{4\pi}$<ol>
+<li>제곱한 이유 : 우리가 쓰는 함수는 $\Psi ^2$이기 때문이다.</li>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%ED%99%95%EB%A5%A0%ED%95%A8%EC%88%98.jpg" alt=""></li>
+<li>$\delta P(r)$<br>$=\left|R_{n, l}(r) \cdot \overline{y_{\ell, m_{l}}(\theta, \phi)}\right|^{2} \times 4 \pi r^{2} \delta r$<br>$=\left|R_{n, \ell}(r)\right|^{2} r^{2} \delta r$<br>$\quad$ 위에서 언급한 $\frac 1{4\pi}$가 곱해진 것이다.</li>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/s_%EC%98%A4%EB%B9%84%ED%83%88.jpg" alt=""><br>양자수가 큰 s 오비탈은 확률도 작아진다. 애초에 멀어서 전자가 거기까지 가기 힘들다고 생각할 것.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Solution of Schrodinger Equation<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/p_%EC%98%A4%EB%B9%84%ED%83%88.jpg" alt=""><ol>
+<li>$m_l$의 값에 따라 삼각함수가 추가된다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Polar probability distribution of $Y$<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%ED%83%80%EC%9B%90%ED%98%95_%EC%98%A4%EB%B9%84%ED%83%88.jpg" alt=""><ol>
+<li>왜 타원형이 나타나는가?<ol>
+<li>답변 : $\ell$ 값이 0이 아닌 값을 가짐에 따라 $Y$ 함수가 $\theta, \phi$에 의존하기 때문이다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong><em>교수님 질문 : $m_l$이 7개면 전자는 몇개인가?</em></strong><ol>
+<li>답변 : 14개. 파울리 배타 원리에 의해서 2개가 들어감.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Quantized Electron Energy<ol>
+<li><strong><em>교수님 질문 : 양자역학에서는 에너지가 Quantized되어 있으며, 그 예를 이미 공부한 바 있다. 무엇인가?</em></strong><ol>
+<li>답변 : Quantum Well.</li>
+</ol>
+</li>
+<li>어떻게 전자의 에너지를 구하는가?<ol>
+<li>파동함수를 슈뢰딩거 파동방정식의 형태로 만들면 된다.<ol>
+<li>그 형태란, $H\Psi + V\Psi = E\Psi$이다.<ol>
+<li>$H$는 해밀터니안 연산자.</li>
+<li>이때 $E_K = \frac{1}{2} mv^2 = \frac {p^2}{2m} = \frac {\hbar ^2 k^2}{2m}$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>그래서 이를 풀면, 다음 식을 얻는다.<ol>
+<li>$E_{n}$<br>$=-\frac{m e^{4} Z^{2}}{8 \varepsilon h^{2} n^{2}}$<br>$\quad$ 여기서 $Z, n$을 제외한 값은 상수로 묶인다.<br>$=-\frac{Z^{2} E_{I}}{n^{2}}$<br>$=-\frac{Z^{2}(13.6 e V)}{n^{2}}$<ol>
+<li>$Z$ 값은 원자번호atomic number다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong><em>교수님 질문 : $eV$의 정의는?</em></strong><ol>
+<li>답변 : 에너지의 단위. 전하량과 전압의 $[QV]=[J]$</li>
+</ol>
+</li>
+<li><strong><em>교수님 질문 : 수소의 에너지 분포를 알면 헬륨의 에너지 분포를 구할 수 있는가?</em></strong><ol>
+<li>그렇다. 에너지 분포 $E_n$이 $Z^2$에 비례하므로, 수소 에너지 분포의 4배가 헬륨 에너지 분포다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Ionization Energy<ol>
+<li>Lowest energy of electron<ol>
+<li>$E_1$ 즉 $n=1$일 때의 에너지</li>
+<li>Ground state라고 부른다.</li>
+</ol>
+</li>
+<li>높은 상태의 에너지<ol>
+<li>Excited state라고 부른다.</li>
+</ol>
+</li>
+<li>맨 위 상태의 에너지<ol>
+<li>진공 상태의 에너지</li>
+<li>$n$이 한없이 커졌을 때의 에너지, 전자가 궤도 운동에서 벗어나게 만드는 에너지, 자유 전자를 만드는 에너지.<br>즉, Ionization Energy라고 부른다.</li>
+<li>그러나 한 번 나온 전자가 언제까지나 자유전자로 있을 수는 없다.<ol>
+<li>자유전자는 누군가와 충돌하며 에너지를 주고받으며, 에너지를 대체로 잃어 다시 궤도로 돌아온다.</li>
+<li>이온화된 전자가 궤도로 돌아올때까지의 시간을 전자의 lifetime이라고 한다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>정리<ol>
+<li>에너지를 얻으면 에너지 state가 올라간다.<br>올라간 state에서는 그에 맞는 짧은 파장의 운동을 한다.<br>에너지 state가 떨어질때는 빛이나 열을 낸다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Excitation of Electron<ol>
+<li>전자를 다음 state로 올리기 가장 간단한 방법은 빛을 쬐어주는 것이다.</li>
+<li>광자가 전자를 때린다.<ol>
+<li>이때 Photon energy : $h\nu = E_2 -E_1$<br>Absorption of $h\nu$ : 전자는 다음 state로 올라간다.</li>
+<li>이에 따라, $\psi_{100}(r, \theta, \phi) \rightarrow \psi_{210}(r, \theta, \phi)$의 형태로 파동함수가 변한다.</li>
+</ol>
+</li>
+<li>전자는 언젠가 ground state로 돌아간다.<ol>
+<li>Emitting “light” : characteristic wavelength</li>
+<li>Quantization of energy : 에너지는 특정한 값만을 갖는다. 양자화되어 있다.</li>
+</ol>
+</li>
+<li>Absorption<ol>
+<li>광자는 파장 $\lambda$를 가지고 전자를 때린다.<br>충돌은 에너지를 전달하며, 전자를 더 높은 state로 올려보낸다.<br>$h\nu = E_2 -E_1$</li>
+</ol>
+</li>
+<li>Emission<ol>
+<li>전자는 낮은 state로 내려오며 빛이나 열을 방출한다.</li>
+<li>실리콘은 열을 주로 방출한다. 빛 말고.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Qunatized Electron Energy<ol>
+<li>원자 충돌은 비슷한 현상을 만든다.<ol>
+<li>Excited electron은 원래 상태로 돌아오며 광자를 방출한다.</li>
+<li>이게, 플라즈마의 원리다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/27/4%ED%95%99%EA%B8%B0%20-%20%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90%20-%20%EA%B0%95%EC%9D%98%EC%A0%80%EC%9E%A5%2012_2%20wave_function/" data-id="ck8tqyw57000axkvjeyv23df7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/07/Hexo%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EC%B2%98%EC%9D%8C%EB%B6%80%ED%84%B0%20%EB%A7%8C%EB%93%A4%EA%B8%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hexo 블로그 처음부터 만들기
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/24/4%ED%95%99%EA%B8%B0%20-%20%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992%20-%20%EB%B0%98%EC%82%AC%EA%B3%84%EC%88%98%EC%99%80%20Transfer%20Matrix%20Method/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">전기자기학2 - 반사계수와 Transfer Matrix Method</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992/">공학수학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%84%B1%EA%B2%A9%EA%B3%BC%EC%A0%81%EC%9D%91/">성격과적응</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992/">전기자기학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02/">회로이론2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/">Private</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/">게임</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/XCOM-2/">XCOM 2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC/">프로스트펑크</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EC%9D%BC%EA%B8%B0/">일기</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/">블로그 관리</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/">업무</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4/">스마트스토어</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Github/">Github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%94%EB%B2%84%EA%B9%85/">디버깅</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%97%90%EB%94%94%ED%84%B0/">에디터</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/">Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/">파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Vultur에서 윈도우 설치하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">윈도우에서 리눅스처럼 Tor 서비스 사용하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/">유튜브 다운로더 youtube-dl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

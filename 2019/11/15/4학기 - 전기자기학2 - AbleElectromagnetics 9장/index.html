@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>AbleElectromagnetics 9장 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="AbleElectromagnetics-9장 페이저 페이저와 미분, 적분 페이저와 미분, 적분 E의 미분 페이저 $\frac{\partial E}{\partial t}&#x3D;j\omega \bar E(\bar r)$ $\frac{\partial E}{\partial t}$$&#x3D;-\omega E_0sin(\omega t+\phi) $$&#x3D;\omega E_0cos(\om">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AbleElectromagnetics 9장">
+<meta property="og:url" content="http://yoursite.com/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992%20-%20AbleElectromagnetics%209%EC%9E%A5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="AbleElectromagnetics-9장 페이저 페이저와 미분, 적분 페이저와 미분, 적분 E의 미분 페이저 $\frac{\partial E}{\partial t}&#x3D;j\omega \bar E(\bar r)$ $\frac{\partial E}{\partial t}$$&#x3D;-\omega E_0sin(\omega t+\phi) $$&#x3D;\omega E_0cos(\om">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-11-15T12:13:13.000Z">
+<meta property="article:modified_time" content="2020-03-18T14:12:59.058Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-4학기 - 전기자기학2 - AbleElectromagnetics 9장" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992%20-%20AbleElectromagnetics%209%EC%9E%A5/" class="article-date">
+  <time datetime="2019-11-15T12:13:13.000Z" itemprop="datePublished">2019-11-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a>►<a class="article-category-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992/">전기자기학2</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AbleElectromagnetics 9장
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="AbleElectromagnetics-9장"><a href="#AbleElectromagnetics-9장" class="headerlink" title="AbleElectromagnetics-9장"></a>AbleElectromagnetics-9장</h2><ol>
+<li>페이저<ol>
+<li>페이저와 미분, 적분<ol>
+<li>페이저와 미분, 적분<ol>
+<li>E의 미분 페이저<ol>
+<li>$\frac{\partial E}{\partial t}=j\omega \bar E(\bar r)$</li>
+<li>$\frac{\partial E}{\partial t}$<br>$=-\omega E_0sin(\omega t+\phi) $<br>$=\omega E_0cos(\omega t+\phi+90)$<br>$=Re[\omega E_0e^{j(\omega t+\phi+90})]$<br>$=Re[\omega E_0e^{j\omega t}e^{j\phi}e^{j90}]$<br>($j=e^{j90}$)<br>$=Re[j\omega E_0 e^{j\phi} e^{j\omega t}]$<br>(Re에 의해 $j \omega t$ 탈락)<br>$=j\omega \bar E(\bar r)$</li>
+</ol>
+</li>
+<li>E의 적분 페이저<ol>
+<li>$\int{Edt} ={1 \over j\omega}\omega \bar E(\bar r)$</li>
+<li>$\int{Edt}$<br>$=\frac1\omega E_0 sin(\omega t +\phi)$<br>$=Re[{1 \over j\omega}E_0e^{j\phi}e^{j\omega t}]$<br>$={1 \over j\omega}\omega \bar E(\bar r)$<br>&nbsp;</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>페이저와 파동방정식<ol>
+<li>$\triangledown^2\bar E-\mu \varepsilon {\partial^2 \bar E \over \partial t^2}=0 $<ol>
+<li>$\triangledown \times \bar E=-\mu{\partial \bar H \over \partial t}$<br>(컬을 양변에 취해준다)<br>($\triangledown \times (\triangledown \times \bar E)$)<br>($=\triangledown(\triangledown \cdot \bar E)-\triangledown^2 \bar E$)<br>($=-\triangledown^2 \bar E$)<br>(정리한다)<br>(그럼 위의 식 완성)</li>
+</ol>
+</li>
+<li>$\triangledown^2\bar H-\mu \varepsilon {\partial^2 \bar H \over \partial t^2}=0 $<ol>
+<li>마찬가지로 컬을 씌워서 만들면 된다.<br>&nbsp;</li>
+</ol>
+</li>
+<li><strong>헬름홀츠 방정식</strong> : 파동방정식에 페이저를 도입한다.<ol>
+<li>둘 다 페이저와 미분의 관계를 쓰면 된다.</li>
+<li>$k=\omega \sqrt{\mu \varepsilon}$</li>
+<li>$\triangledown^2\bar E+k^2 \bar E (\bar r)=0$<ol>
+<li>$\triangledown^2\bar E-\mu \varepsilon {\partial^2 \bar E \over \partial t^2}=0$<br>$\triangledown^2\bar E-\mu \varepsilon (j\omega)^2 \bar E (\bar r)=0$</li>
+</ol>
+</li>
+<li>$\triangledown^2\bar H+k^2 \bar H (\bar r)=0$<ol>
+<li>$\triangledown^2\bar H-\mu \varepsilon {\partial^2 \bar H \over \partial t^2}=0$<br>$\triangledown^2\bar H-\mu \varepsilon (j\omega)^2 \bar H (\bar r)=0$</li>
+</ol>
+</li>
+<li>두 식 다 잘 보면 $k^2$으로 바뀌면서 부호가 +로 바뀌었다. $j^2=-1$이기 때문이다.<br>&nbsp;</li>
+</ol>
+</li>
+<li>헬름홀츠 방정식의 해<ol>
+<li>$\triangledown^2\bar E+k^2 \bar E (\bar r)=0$<ol>
+<li>$\bar E(\bar r)=\bar E_x \bar x+\bar E_y \bar y+\bar E_z \bar z$ : 임의의 전기장</li>
+</ol>
+</li>
+<li>$\bar E(z,t)$<br>$=E_0 cos(\omega t - kz) \bar x$ (V/m)<br>$=E_0 cos(\omega t + kz) \bar x$ (V/m)<br>파동방정식의 해는 평면파 전기장의 식이 된다.<br>(파동방정식의 해 = 파동의 움직임을 설명할 수 있는 수1. )<ol>
+<li>($\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial x^2})(\bar E_x \bar x+\bar E_y \bar y+\bar E_z \bar z)+k^2(\bar E_x \bar x+\bar E_y \bar y+\bar E_z \bar z)=0$<br>($\bar E (\bar r)=\bar E_x \bar x$ : 편의상 $\bar x$ 방향만 가진다고 가정함)<br>$\frac{\partial^2 \bar E_x}{\partial x^2}+\frac{\partial^2 \bar E_x}{\partial x^2}+\frac{\partial^2 \bar E_x}{\partial x^2}+k^2\bar E_x=0$<br>$\frac{\partial^2 \bar E_x}{\partial z^2}+k^2\bar E_x=0$<br>(2차 ODE의 해는 지수함수)<br>$\bar E_x(z)=E_0e^{\pm jkz}$ : 파동방정식의 해(페이저)<br>$E_x(z,t)=Re[\bar E_x e^{j \omega t}]=E_0 cos(\omega t \pm kz)$<br>$\bar E(z,t)$<br>$=E_0 cos(\omega t - kz) \bar x$<br>$=E_0 cos(\omega t + kz) \bar x$<ol>
+<li>Q. 갑자기 왠 z의 함수야(E(z,t))?<br>A. E가 x방향으로 <strong>진동</strong> 한다면, 파의 진행방향은 x축에 수직인 y, z 중 하나일 것인데, 이번에는 y축을 자기장으로 잡아서 z축이 진행방향이 됨.<br>&nbsp;</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>평면파 위상속도<ol>
+<li>$v=\frac \omega k=\frac{1}{\sqrt{\mu\varepsilon}}$<br>진공에서,<br>$v=\frac{1}{\sqrt{\mu_0 \varepsilon_0}}=c=3 \times 10^8$ (m/s)<ol>
+<li>$E_0 cos(\omega t - kz) \bar x$<br>(각도를 시간으로 미분하면 거리 / 시간 = 속도다.)<br>$\frac{d\phi}{dt}=\frac{d}{dt}(\omega t - kz)=\omega - k\frac{dz}{dt}=0$</li>
+</ol>
+</li>
+<li>파수<br> $k=\omega \sqrt{\mu \varepsilon}=\frac{2 \pi f}{v}=\frac{2 \pi f}{f \lambda}=\frac{2 \pi}{\lambda}(\mathrm{rad} / \mathrm{m})$<br> &nbsp;</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>부도체(무손실매질) 내부의 평면파 자기장<ol>
+<li>E로부터 자기장을 구해보자. $\overrightarrow{\mathrm{H}}(z, t)=H_{0} \cos (\omega t-k z) \hat{\mathbf{y}}(\mathrm{A} / \mathrm{m})$<ol>
+<li>$\tilde{\mathrm{E}}(\overrightarrow{\mathbf{r}})=\tilde{E}{x} \hat{\mathbf{x}}+\tilde{E}{y} \hat{\mathbf{y}}+\tilde{E}{z} \hat{\mathbf{z}}\tilde{\mathbf{H}}(\overrightarrow{\mathbf{r}})=\tilde{H}{x} \hat{\mathbf{x}}+\tilde{H}{y} \hat{\mathbf{y}}+\tilde{H}{z} \hat{\mathbf{z}}$<br>$\quad$위 식에서<br>$\nabla \times \overrightarrow{\mathbf{E}}=-\mu \frac{\partial \overrightarrow{\mathbf{H}}}{\partial t}$<br>$\quad$위 맥스웰 방정식을 적용하면<br>$\frac{\partial \tilde{E}{x}}{\partial z}=-j \omega \mu \tilde{H}{y}$<br>$\quad$에 대해 정리하면<br>$\tilde{H}{y}(z)=-\frac{1}{j \omega \mu} \frac{\partial \tilde{E}{x}}{\partial z}=-\frac{1}{j \omega \mu}(-j k) E_{0} e^{-j k z}=E_{0} \sqrt{\frac{\varepsilon}{\mu}} e^{-j k z}$<br>$\quad$따라서<br>$\overrightarrow{\mathrm{H}}(z, t)=H_{y} \hat{\mathbf{y}}=E_{0} \sqrt{\frac{\varepsilon}{\mu}} \cos (\omega t-k z) \hat{\mathbf{y}}=H_{0} \cos (\omega t-k z) \hat{\mathbf{y}}(\mathrm{A} / \mathrm{m})$<br>&nbsp;</li>
+</ol>
+</li>
+<li>평면파 전기장과 자기장의 관계<ol>
+<li>위의 E와 H는 다음과 같은 성질을 포함한다.<ol>
+<li>E와 H의 진동방향은 수직</li>
+<li>E와 H의 위상은 동일</li>
+<li>E와 H의 크기 비율은 투자율과 유전율에 의해서 결정된다.<ol>
+<li>이를 고유임피던스라고 한다.<br>$\eta=\frac{E_{0}}{H_{0}}=\sqrt{\frac{\mu}{\varepsilon}}$</li>
+<li>진공에서는 특정한 값을 갖는다.<br>$\eta_{0}=\sqrt{\frac{\mu_{0}}{\varepsilon_{0}}} \simeq 120 \pi \simeq 377(\Omega)$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>문제<ol>
+<li>진공에서의 주어진 E를 H로 변환하라.<br>$\overrightarrow{\mathrm{E}}(z, t)=10 \cos \left(3 \pi \times 10^{8} t-\pi z\right) \hat{\mathrm{x}}(\mathrm{V} / \mathrm{m})$<ol>
+<li>방향 : 진행 방향은 z, E의 진동방향은 x이므로 $x \times y = z$, 즉 H의 방향은 y이다.</li>
+<li>크기 : $\eta=\frac{E_{0}}{H_{0}}$로부터<br>$H=\frac{E}{377}$</li>
+<li>따라서 H는<br>$\overrightarrow{\mathrm{H}}(z, t)=\frac{10}{377} \cos \left(3 \pi \times 10^{8} t-\pi z\right) \hat{\mathrm{y}}(\mathrm{A} / \mathrm{m})$<br>&nbsp;</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>도체(손실매질) 내부의 평면파<ol>
+<li>부도체는 손실이 없는데, 도체는 손실이 생김. 이걸 감쇠라고 함.<ol>
+<li>도체 내부의 평면파 전기장<br>$\frac{\partial^{2} \tilde{E}{x}}{\partial z^{2}}+k{c}^{2} \tilde{E}{x}=0$<br>$\quad$이때<br>$\quad$$\left(k{c}=\omega \sqrt{\mu \varepsilon_{c}}\right)$<br>$\quad$라고 두면<br>$\tilde{E}{x}=E{0} e^{-j k z z}$<br>$\quad$전파상수에 $j$가붙었으므로<br>$\quad j k_{c}=\gamma=\alpha+j \beta$<br>$\quad$라고 두면<br>$\tilde{E}{x}(z)=E{0} e^{-\gamma z}=E_{0} e^{-\alpha z} e^{-j \beta z}$<br>$\quad$정리하면<br>$\overrightarrow{\mathrm{E}}(z, t)=\operatorname{Re}\left[\tilde{E}{x} e^{j \omega t}\right] \hat{\mathbf{x}}=E{0}$ $e^{-\alpha z} \cos (\omega t-\beta z) \hat{\mathbf{x}}(\mathrm{V} / \mathrm{m})$<br>라는 값을 얻는다.<br>이것이 도체 내부의 평면파 전기장이다.</li>
+</ol>
+</li>
+<li>감쇠일까? 증폭일까?<ol>
+<li>$\alpha$의 값에 따라 증폭 혹은 감쇠된다.<br>$\alpha&gt;0$일 때 감쇠계수 -&gt; 손실매질Lossy Medium<br>$\alpha&lt;0$일 때 증폭계수 -&gt; 레이저의 증폭매질 등</li>
+<li>$\beta$는 위상상수 -&gt; 부도체매질의 파수 k와 같음</li>
+</ol>
+</li>
+<li>감쇠계수와 위상상수의 식<ol>
+<li>$\gamma=j k_{c}$<br>$=j \omega \sqrt{\mu\left(\varepsilon^{\prime}-j \varepsilon^{\prime \prime}\right)}=\alpha+j \beta$<br>로부터<br>$\alpha^{2}-\beta^{2}=-\omega^{2} \mu \varepsilon^{\prime}$<br>$2 \alpha \beta=\omega^{2} \mu \varepsilon^{\prime \prime}$<ol>
+<li>$\alpha$<br>$=\operatorname{Re}{\gamma}$<br>$=\omega \sqrt{\frac{\mu \varepsilon^{\prime}}{2}}(\sqrt{1+\left(\frac{\varepsilon^{\prime \prime}}{\varepsilon^{\prime}}\right)^{2}}-1)^{1 / 2}(\mathrm{Np} / \mathrm{m})$</li>
+<li>$\beta$<br>$=\operatorname{Im}{\gamma}$<br>$=\omega \sqrt{\frac{\mu \varepsilon^{\prime}}{2}}(\sqrt{1+\left(\frac{\varepsilon^{\prime \prime}}{\varepsilon^{\prime}}\right)^{2}}+1)^{1 / 2}(\mathrm{rad} / \mathrm{m})$</li>
+</ol>
+</li>
+<li>손실매질의 고유 고유임피던스<ol>
+<li>$\eta_{c}=\frac{E_{0}}{H_{0}}=\sqrt{\frac{\mu}{\varepsilon_{c}}}=\sqrt{\frac{\mu}{\varepsilon^{\prime}-j \varepsilon^{\prime \prime}}}$</li>
+<li>임피던스가 허수인 경우 전기장과 자기장의 위상이 다름.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>표피심도<ol>
+<li>표피심도: 도체 내부에서 전자기파 진폭이 63% 줄어드는 이동거리</li>
+<li>$\delta_{S}$로 표현한다.<br>$\left|\frac{E\left(z=3 \delta_{S}\right)}{E(z=0)}\right|=\frac{E_{0} e^{-3}}{E_{0}}$</li>
+</ol>
+</li>
+<li>저손실부도체<ol>
+<li>생략</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>전기장과 자기장의 상호관계<ol>
+<li>임의 방향 전기장의 식<ol>
+<li>$=\tilde{\mathbf{E}}<em>{0} e^{-j \mathbf{k} \cdot \mathbf{r}}=\tilde{\mathbf{E}}</em>{0} e^{-j\left(k_{x} x+k_{y} y+k z\right)}$</li>
+</ol>
+</li>
+<li>진동방향과 진행방향의 관계<ol>
+<li>둘은 항상 수직임.</li>
+</ol>
+</li>
+<li>전기장과 자기장의 관계<ol>
+<li>전기장 방향 X 자기장 방향 = 진행방향이다.</li>
+<li>$\tilde{H}(\vec{r})=\frac{1}{\eta} \hat{k} \times \tilde{E}(\vec{r})(A / m)$</li>
+<li>예제<ol>
+<li>$\overrightarrow{\mathrm{H}}(z, t)=H_{0} \cos (\omega t-k z) \hat{\mathrm{y}}$<br>진행방향은 z, 자기장 진동방향은 y이므로 전기장 진동방향은 x이다.<br>$\frac EH=\eta$이므로<br>$\overrightarrow{\mathrm{E}}(z, t)=\sqrt{\frac{\mu_{0}}{\varepsilon_{0}}} H_{0} \cos (\omega t-k z) \hat{\mathbf{x}}(\mathrm{V} / \mathrm{m})$</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992%20-%20AbleElectromagnetics%209%EC%9E%A5/" data-id="ck8tqyw5f000oxkvj09cvb9ah" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90%20-%20%EA%B0%95%EC%9D%98%EC%A0%80%EC%9E%A5%2011_1%20Wave_equation/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          물리전자 - 강의저장 11_1 Wave_equation
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992%20-%20%EC%B9%B8%EC%95%84%EC%B9%B4%EB%8D%B0%EB%AF%B8%20-%20Complex%20Exponential%20Magnitude/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">칸아카데미 - Complex Exponential Magnitude</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992/">공학수학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%84%B1%EA%B2%A9%EA%B3%BC%EC%A0%81%EC%9D%91/">성격과적응</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992/">전기자기학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02/">회로이론2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/">Private</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/">게임</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/XCOM-2/">XCOM 2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC/">프로스트펑크</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EC%9D%BC%EA%B8%B0/">일기</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/">블로그 관리</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/">업무</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4/">스마트스토어</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Github/">Github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%94%EB%B2%84%EA%B9%85/">디버깅</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%97%90%EB%94%94%ED%84%B0/">에디터</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/">Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/">파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Vultur에서 윈도우 설치하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">윈도우에서 리눅스처럼 Tor 서비스 사용하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/">유튜브 다운로더 youtube-dl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

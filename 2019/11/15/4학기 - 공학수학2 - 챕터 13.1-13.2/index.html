@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>공학수학2 - 챕터 13.1-13.2 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Chapter 13. Complex Numbers and Functions, complex differentiation 복소수  개요 방정식에서 실수가 아닌 근 전기공학자들은 전류기호 $i$와 혼동을 피하고자 $j$를 쓰기도 한다. MISC 복소수를 처음 사용한 사람은 이탈리아 수학자 Girolamo Cardano이고, 복소수라는 용어는 Carl Fried">
+<meta property="og:type" content="article">
+<meta property="og:title" content="공학수학2 - 챕터 13.1-13.2">
+<meta property="og:url" content="http://yoursite.com/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992%20-%20%EC%B1%95%ED%84%B0%2013.1-13.2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Chapter 13. Complex Numbers and Functions, complex differentiation 복소수  개요 방정식에서 실수가 아닌 근 전기공학자들은 전류기호 $i$와 혼동을 피하고자 $j$를 쓰기도 한다. MISC 복소수를 처음 사용한 사람은 이탈리아 수학자 Girolamo Cardano이고, 복소수라는 용어는 Carl Fried">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-11-15T12:56:45.000Z">
+<meta property="article:modified_time" content="2020-03-18T14:12:59.042Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-4학기 - 공학수학2 - 챕터 13.1-13.2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992%20-%20%EC%B1%95%ED%84%B0%2013.1-13.2/" class="article-date">
+  <time datetime="2019-11-15T12:56:45.000Z" itemprop="datePublished">2019-11-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a>►<a class="article-category-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992/">공학수학2</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      공학수학2 - 챕터 13.1-13.2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Chapter-13-Complex-Numbers-and-Functions-complex-differentiation"><a href="#Chapter-13-Complex-Numbers-and-Functions-complex-differentiation" class="headerlink" title="Chapter 13. Complex Numbers and Functions, complex differentiation"></a>Chapter 13. Complex Numbers and Functions, complex differentiation</h2><ol>
+<li><p>복소수</p>
+<ol>
+<li>개요<ol>
+<li>방정식에서 실수가 아닌 근</li>
+<li>전기공학자들은 전류기호 $i$와 혼동을 피하고자 $j$를 쓰기도 한다.</li>
+<li>MISC<ol>
+<li>복소수를 처음 사용한 사람은 이탈리아 수학자 Girolamo Cardano이고, 복소수라는 용어는 Carl Friedrich Gauss가 처음으로 도입했다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>표기<ol>
+<li>$z(x,y)-x+iy$로 표기<ol>
+<li>$x=Rez$ : 실수부</li>
+<li>$y=Imz$ : 허수부</li>
+</ol>
+</li>
+<li>$i=(0,1)$<ol>
+<li>단위허수imaginary unit라고 부른다.</li>
+</ol>
+</li>
+<li>$x=0$일 때, $z=iy$<ol>
+<li>순허수pure imaginary라고 부른다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>계산<ol>
+<li>나눗셈<ol>
+<li>분모에 켤레복소수를 곱한다.</li>
+<li>$\frac{8+3i}{9-2i}=\frac{(8+3i)(9+2i)}{(9-2i)(9+2i)}=\frac{66+43i}{85}$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>복소평면<ol>
+<li>복소수를 기하학적으로 표현해본다.</li>
+<li>표면<ol>
+<li>x축은 실축real axis, y축은 허축Imaginary axis라 한다.</li>
+<li>이때 실축과 허축으로 이루어진 좌표계를 직교좌표계라 한다.</li>
+<li>복소수가 실축과 허축에 따라 표시되는 xy 평면을 <strong>복소평면</strong> 이라 부른다.</li>
+</ol>
+</li>
+<li>MISC<ol>
+<li>프랑스 수학자 Jean Robert Argano의 이름을 따라 Argand 다이어그램이라고도 부른다.</li>
+</ol>
+</li>
+<li>공액복소수Complex conjuage number<ol>
+<li>정의<ol>
+<li>복소평면에서 실수축에 대칭인 복소수</li>
+<li>$\bar{z}=x-yi$</li>
+</ol>
+</li>
+<li>활용<ol>
+<li>$Rez=x=\frac{1}{2}(z+\bar{z})$</li>
+<li>$Imz=y=\frac{1}{2}(z-\bar{z})$<ol>
+<li><strong><em>주의</em></strong> : $Imz$에는 $i$가 붙지 않는다.<br>$z=1+2i$일 때 $Imz$는 2다. $2i$가 아니다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Polar form of complex numbers</p>
+<ol>
+<li><p>표기</p>
+<ol>
+<li>xy 좌표 대신 $r, \theta$로 표기한다.</li>
+<li>$x=rcos\theta, y=rsin\theta$</li>
+<li>r<ol>
+<li>z의 절댓값(absolute value 또는 modulus)</li>
+<li>$\left|z\right| $로 표기</li>
+<li>$r=\left|z\right|=\sqrt{x^2+y^2}=\sqrt{z\bar{z}}$</li>
+</ol>
+</li>
+<li>$\theta$<ol>
+<li>z의 편각argument</li>
+<li>$argz$로 표기</li>
+<li>$\theta=argz=tan^{-1}\frac{y}{x}$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>$-\pi&lt;Argz&lt;\pi$</p>
+<ol>
+<li>$Argz$는 $argz$의 주값principal value</li>
+<li>왜 이런 값을 두냐면, 이런 정의가 없다면 복소수의 polar form 값이 너무 다양해지기 때문이다.<ol>
+<li>$2cos\pi+i2sin\pi=2cos3\pi+i2sin3\pi$ … 등등.</li>
+</ol>
+</li>
+<li>$argz=Argz\pm2n\pi$ (n은 정수)</li>
+</ol>
+</li>
+<li><p><strong>교수님 : Argz의 표현</strong></p>
+<ol>
+<li><p>$arctan$의 값은 아래와 같이 정의된다.</p>
+<table>
+<thead>
+<tr>
+<th align="center">if</th>
+<th align="center">Argz</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">x&gt;0, y&gt;0</td>
+<td align="center">$tan^{-1}\frac{y}{x}$</td>
+</tr>
+<tr>
+<td align="center">x&gt;0, y&lt;0</td>
+<td align="center">$tan^{-1}\frac{y}{x}$</td>
+</tr>
+<tr>
+<td align="center">x&lt;0, y&gt;0</td>
+<td align="center">$\pi + tan^{-1}\frac{y}{x}$</td>
+</tr>
+<tr>
+<td align="center">x&lt;0, y&lt;0</td>
+<td align="center">$-\pi + tan^{-1}\frac{y}{x}$</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>진짜 유용하게 쓰인다.</p>
+<ol>
+<li>$z=1+i$ : $arctan{\frac{1}{1}}=\frac{\pi}{4}=Argz$</li>
+<li>$z=-1-i$ : $arctan{\frac{-1}{-1}}=\frac{\pi}{4}$$,<br>Argz=-\pi+\frac{\pi}{4}=-\frac{3\pi}{4}$</li>
+<li>$z=-2+2i$ : $arctan{\frac{2}{-2}}=-\frac{\pi}{4}$$,<br>Argz=\pi-\frac{\pi}{4}=\frac{3\pi}{4}$</li>
+</ol>
+</li>
+<li><p>$Argz$가 $-\pi,\pi$를 넘어설 수 없음을 기억할 것.</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>극형식의 곱셈과 나눗셈</p>
+<ol>
+<li>곱셈<ol>
+<li>$\left| { z }<em>{ 1 }{ z }</em>{ 2 } \right| =\left| { z }<em>{ 1 } \right| \left| { z }</em>{ 2 } \right| $</li>
+<li>$arg({ { z }<em>{ 1 }z }</em>{ 2 })=arg{ z }<em>{ 1 }+arg{ z }</em>{ 2 }$</li>
+</ol>
+</li>
+<li>나눗셈<ol>
+<li>$\left| \frac { { z }<em>{ 1 } }{ { z }</em>{ 2 } }  \right| =\frac { \left| { z }<em>{ 1 } \right|  }{ \left| { z }</em>{ 2 } \right|  } $</li>
+<li>$arg\frac { { z }<em>{ 1 } }{ { z }</em>{ 2 } } =arg{ z }<em>{ 1 }-arg{ z }</em>{ 2 }$</li>
+</ol>
+</li>
+<li>예제 3<ol>
+<li>$Argz_1)$ $tan^{-1}\frac{2}{-2}=-\frac{\pi}{4}, Argz_1=\pi-\frac{\pi}{4}=\frac{3\pi}{4}$<br>$Argz_2)$ $tan^{-1}\infty=\frac{\pi}{2}$</li>
+<li>$Argz_1+Argz_2=\frac{5\pi}{4}=-\frac{3\pi}{4}$<ol>
+<li>$Argz$는 $\pi$를 넘으면 안 되므로 $2\pi$를 뺀다.</li>
+<li>Q. 왜 $Argz_1$에서 갑자기 $\pi$가 나오죠?<br>A. 바로 위에 교수님이 강조하신 $tan^{-1} 관련 필기 참조.$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>예제 4<ol>
+<li>식 : $cos^2\theta=\frac{1+cos2\theta}{2}, sin^2\theta=\frac{1-cos2\theta}{2}, sin2\theta=2sin\theta cos\theta, cos2\theta=cos^2\theta-sin^2\theta$<ol>
+<li>이 식만 알면 증명 가능.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>근Roots</p>
+<ol>
+<li>$z=\omega^n$<ol>
+<li>$z=r(cos\theta+isin\theta),<br>\omega=R(cos\phi+isin\phi)$</li>
+</ol>
+</li>
+<li>$\omega^n=R^n(cosn\phi+isinn\phi)$<ol>
+<li>$R^n=r$이므로 $R=\sqrt[n]{r}$</li>
+<li>편각 $n\phi=\theta$가 같은데,<br>$\theta$가 $2\pi$의 정수배이므로<br>$n\phi=\theta+2k\pi$<br>$\phi=\frac{\theta+2k\pi}{n}$</li>
+</ol>
+</li>
+<li>$\sqrt[n]{z}=\sqrt[n]{r}(cos\frac{\theta+2k\pi}{n}+isin\frac{\theta+2k\pi}{n})$</li>
+<li>주값principal value<ol>
+<li>$Argz, \sqrt [ n ]{ z }$를 주값이라 한다.<ol>
+<li><strong>argz</strong> 가 아니라 <strong>Argz</strong> 이다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>예제(Root 구하기)<ol>
+<li>$z=1$<ol>
+<li>$r=\left|z\right|=1, Argz=tan^{-1}0=0$</li>
+<li>$\sqrt[n]{1}=cos\frac{2k\pi}{n}+isin\frac{2k\pi}{n}$</li>
+</ol>
+</li>
+<li>$z=1, n=3$<ol>
+<li>$r=1, Argz=tan^{-1}=0$</li>
+<li>$\sqrt[3]{1}=cos\frac{2k\pi}{3}+isin\frac{2k\pi}{3}$<ol>
+<li>$k=0)$ $1(cos0+isin0)=1$</li>
+<li>$k=1)$ $1(cos\frac{2\pi}{3}+isin\frac{2\pi}{3})=-\frac{1}{2}+i\frac{\sqrt{3}}{2}$</li>
+<li>$k=2)$ $1(cos\frac{4\pi}{3}+isin\frac{4\pi}{3})=-\frac{1}{2}-i\frac{\sqrt{3}}{2}$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>챕터 문제<ol>
+<li>4번 : -4<ol>
+<li>$r=4$</li>
+<li><strong><em>$tan^{-1}\frac{0}{-4}=0$<br>$Argz=\pi-0=\pi$</em></strong><ol>
+<li><strong><em>중요 : 좌표축에 찍어보면 $\pi$임을 확인 가능</em></strong></li>
+<li>$-\pi$도 답이 될 수 있음.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>13번 : $(1-i)^{20}$<ol>
+<li>$1-i=\sqrt{2}(cos-\frac{\pi}{4}+isin-\frac{\pi}{4})$</li>
+<li>이 식으로도 풀 수 있음. 답은 -1024</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p><strong>Homework</strong></p>
+<ol>
+<li>13.1 16번 : $z=x+iy$일 때 $Im\frac{1}{z}, Im{\frac{1}{z^2}}$</li>
+<li>13.2 27번 $\sqrt[5]{-1}$</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992%20-%20%EC%B1%95%ED%84%B0%2013.1-13.2/" data-id="ck8tqyw4z0001xkvjdr902re9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%EC%84%B1%EA%B2%A9%EA%B3%BC%EC%A0%81%EC%9D%91%20-%206.%20%EC%9D%B8%EC%A7%80%EC%A0%81%20%EA%B4%80%EC%A0%90/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          성격과적응 - 6. 인지적 관점
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/15/4%ED%95%99%EA%B8%B0%20-%20%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02%20-%20%EC%9D%BC%EB%A0%89%ED%82%B4%EC%97%90%EB%93%80%20-%20%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A0%2015%EC%9E%A5_%EB%9D%BC%ED%94%8C%EB%9D%BC%EC%8A%A4%EB%B3%80%ED%99%98_01/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">회로이론2 - 일렉킴에듀 - 회로이론 15장_라플라스변환_01</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992/">공학수학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%84%B1%EA%B2%A9%EA%B3%BC%EC%A0%81%EC%9D%91/">성격과적응</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992/">전기자기학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02/">회로이론2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/">Private</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/">게임</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/XCOM-2/">XCOM 2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC/">프로스트펑크</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EC%9D%BC%EA%B8%B0/">일기</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/">블로그 관리</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/">업무</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4/">스마트스토어</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Github/">Github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%94%EB%B2%84%EA%B9%85/">디버깅</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%97%90%EB%94%94%ED%84%B0/">에디터</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/">Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/">파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Vultur에서 윈도우 설치하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">윈도우에서 리눅스처럼 Tor 서비스 사용하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/">유튜브 다운로더 youtube-dl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-리눅스 웹 서버로 파이선 실행하기 - 아파치" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/24/%EB%A6%AC%EB%88%85%EC%8A%A4%20%EC%9B%B9%20%EC%84%9C%EB%B2%84%EB%A1%9C%20%ED%8C%8C%EC%9D%B4%EC%84%A0%20%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%EC%B9%98/" class="article-date">
+  <time datetime="2020-01-24T01:20:00.000Z" itemprop="datePublished">2020-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/24/%EB%A6%AC%EB%88%85%EC%8A%A4%20%EC%9B%B9%20%EC%84%9C%EB%B2%84%EB%A1%9C%20%ED%8C%8C%EC%9D%B4%EC%84%A0%20%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%EC%B9%98/">리눅스 웹 서버로 파이선 실행하기 - 아파치</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="상황"><a href="#상황" class="headerlink" title="상황"></a>상황</h2><ul>
+<li><a href="https://ezgif.com/video-to-gif" target="_blank" rel="noopener">mp4를 gif 형태로 바꿔주는 사이트</a>가 있다.</li>
+<li>이런 사이트처럼 파일, 혹은 쿼리문을 받고 그걸 가지고 리눅스 서버에서 프로그래밍을 통해 결과물을 다운로드 링크로 제공하고자 한다.</li>
+<li>웹 서버로 파이선을 실행하려면 아파치와 파이선을 연결하는 cgi를 활용하면 된다.</li>
+</ul>
+<h2 id="구현"><a href="#구현" class="headerlink" title="구현"></a>구현</h2><ul>
+<li>이 포스트에서는 다음을 구현한다.</li>
+</ul>
+<ol>
+<li>웹 페이지를 하나 만든다. 웹 페이지에는 숫자를 입력할 수 있는 두 textbox와 send 버튼이 있다.</li>
+<li>숫자 2개를 넣고 send를 누르면, 숫자의 합이 적힌 txt 파일을 만든다.</li>
+<li>해당 파일을 다운로드할 수 있는 하이퍼링크를 페이지에 띄워준다.</li>
+</ol>
+<h2 id="설치-및-세팅"><a href="#설치-및-세팅" class="headerlink" title="설치 및 세팅"></a>설치 및 세팅</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install apache2 <span class="comment"># 웹 서버가 필요하다.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apache2/sites-enabled/000-default <span class="comment"># 설정 파일을 연다.</span></span><br></pre></td></tr></table></figure>
+
+<p>설정 파일에서 아래 내용을 추가한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /var/www&gt;</span><br><span class="line">    Order allow,deny</span><br><span class="line">    allow from all</span><br><span class="line">    Options +ExecCGI <span class="comment"># 이 부분 새로 추가</span></span><br><span class="line">    AddHandler cgi-script .cgi .py <span class="comment"># 이 부분 새로 추가</span></span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="사용법"><a href="#사용법" class="headerlink" title="사용법"></a>사용법</h2><ul>
+<li>아래 두 파일을 만든다.<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- index.html --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /var/www/index.html --&gt;</span></span><br><span class="line"><span class="meta">&lt;!doctype&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"form"</span> <span class="attr">method</span>=<span class="string">"get"</span> <span class="attr">action</span>=<span class="string">"http://localhost/plus.py"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">num_1	: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"num_1"</span>&gt;</span></span><br><span class="line">num_2	: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"num_2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"send"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> cgi</span><br><span class="line"><span class="comment"># cgitb는 CGI 프로그래밍시 디버깅을 위한 모듈로, cgitb.enable() 할 경우 런타임 에러를 웹브라우저로 전송한다</span></span><br><span class="line"><span class="comment"># cgitb.enable() 하지 않은 상태로 실행 중 오류가 발생한 경우 웹서버는 클라이언트에게 HTTP 응답코드 500을 전송한다</span></span><br><span class="line"><span class="keyword">import</span> cgitb</span><br><span class="line">cgitb.enable()</span><br><span class="line"></span><br><span class="line"><span class="comment"># HTTP 규격에서, 헤더 전송 이후에는 반드시 줄바꿈을 하게 되어있으므로 마지막에 \r\n을 전송한다</span></span><br><span class="line"><span class="comment"># 마지막에 \r\n을 전송하지 않으면 브라우저 측에서 오류가 발생한다</span></span><br><span class="line">print(<span class="string">"Content-type: text/html\r\n"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(<span class="string">'&lt;html&gt;'</span>)</span><br><span class="line">print(<span class="string">'&lt;body&gt;'</span>)</span><br><span class="line"></span><br><span class="line">args = cgi.FieldStorage()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="string">"num_1"</span> <span class="keyword">not</span> <span class="keyword">in</span> args <span class="keyword">or</span> <span class="string">"num_2"</span> <span class="keyword">not</span> <span class="keyword">in</span> args:</span><br><span class="line">    print(<span class="string">"Error"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    sum = int(args[<span class="string">"num_2"</span>].value) + int(args[<span class="string">"num_2"</span>].value)</span><br><span class="line">    sum = str(sum)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"result.txt"</span>,<span class="string">"w"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(sum)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"&lt;a href=\"http://108.160.135.200/result.txt\" download&gt;result&lt;/a&gt;"</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'&lt;/body&gt;'</span>)</span><br><span class="line">print(<span class="string">'&lt;/html&gt;'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="문제-해결"><a href="#문제-해결" class="headerlink" title="문제 해결"></a>문제 해결</h2><ol>
+<li>파이썬이 실행되지 않고 raw text로 접근되는 경우<ol>
+<li>print(“hello”)라 적었으면 hello라는 내용이 있는 페이지를 보여줘야 하는데, print(“hello”)가 그대로 노출된다.</li>
+<li>이는 아파치에서 cgi를 사용하도록 설정하지 않아서 그렇다. 아래 아파치에서 cgi 사용하기 링크를 참고한다.</li>
+</ol>
+</li>
+<li>permission denied 에러 (End of script output before headers 에러)<ol>
+<li>nano /var/log/apache2/error.log 로 우분투의 아파치2 에러 로그로 간다.</li>
+<li>End of script output before headers 라는 에러 로그가 남아있다.</li>
+<li>이를 해결하려면 파이선 파일 첫 줄에 #!/usr/bin/python3를 입력하면 된다. #!/usr/bin/python까지만 입력해놓고 찾아보다가 python3을 입력해야 한다는 걸 깨달았다.</li>
+</ol>
+</li>
+<li>Internal server error<ol>
+<li>내 경우는 권한 문제였다.</li>
+<li>chmod 777 plus.py</li>
+</ol>
+</li>
+<li>파이선 with open의 권한 문제<ol>
+<li>상위 폴더(/var/www/html)에 권한을 주면 된다.</li>
+<li>chmod 777 /var/www/html<h2 id="참고자료"><a href="#참고자료" class="headerlink" title="참고자료"></a>참고자료</h2></li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><a href="https://jpak.tistory.com/21" target="_blank" rel="noopener">아파치에서 cgi 사용하기</a></li>
+<li><a href="https://stackoverflow.com/questions/10956587/how-to-create-a-downloadable-public-link-for-files-on-server" target="_blank" rel="noopener">서버의 파일을 어떻게 다운로드 가능한 링크로 만드나요?</a></li>
+<li><a href="https://parksk.tistory.com/120" target="_blank" rel="noopener">파이썬3로 CGI 이용하기</a></li>
+<li><a href="https://unikys.tistory.com/248" target="_blank" rel="noopener">아파치2 에러 로그 위치</a></li>
+<li><a href="https://redapply.tistory.com/entry/PermissionErrorErrno13-Permission-denied-%EC%9A%B0%EB%B6%84%ED%88%AC-%EC%97%90%EB%9F%AC%EC%8B%9C" target="_blank" rel="noopener">파이선 쓰기 에러</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/24/%EB%A6%AC%EB%88%85%EC%8A%A4%20%EC%9B%B9%20%EC%84%9C%EB%B2%84%EB%A1%9C%20%ED%8C%8C%EC%9D%B4%EC%84%A0%20%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%EC%B9%98/" data-id="ck8tqyw600026xkvjfwxf48d4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-학습컨설팅 핵심" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/24/%ED%95%99%EC%8A%B5%EC%BB%A8%EC%84%A4%ED%8C%85%20%ED%95%B5%EC%8B%AC/" class="article-date">
+  <time datetime="2020-01-24T01:19:00.000Z" itemprop="datePublished">2020-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/24/%ED%95%99%EC%8A%B5%EC%BB%A8%EC%84%A4%ED%8C%85%20%ED%95%B5%EC%8B%AC/">학습컨설팅 핵심</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="학습진단-핵심"><a href="#학습진단-핵심" class="headerlink" title="학습진단 핵심"></a>학습진단 핵심</h1><h2 id="학습-단위시간을-1시간으로-잡는다"><a href="#학습-단위시간을-1시간으로-잡는다" class="headerlink" title="학습 단위시간을 1시간으로 잡는다."></a>학습 단위시간을 1시간으로 잡는다.</h2><ol>
+<li>4시간 해야 할 일이면 1시간 씩 끊는다.</li>
+<li>6시간 공부할 수 있으면 A, B, C, A, B, C 이렇게 3과목을 1시간씩 순환시킨다.</li>
+<li>1시간만에 못 끝냈어도 다음으로 넘어간다.</li>
+<li>시간 전에 끝냈으면 폰 만지면서 남은 시간을 보낸다.<ol>
+<li><strong>스스로에게 보상으로 작용해서 공부에 속도를 붙이게 해 준다.</strong></li>
+</ol>
+</li>
+</ol>
+<h2 id="시간표에-버퍼를-추가하라"><a href="#시간표에-버퍼를-추가하라" class="headerlink" title="시간표에 버퍼를 추가하라."></a>시간표에 버퍼를 추가하라.</h2><ol>
+<li>오후 7-12시까지 여유가 있으면 계획으로 시간을 다 채우지 말고 <strong>버퍼 시간</strong> 으로 둬라.</li>
+<li>주말, 적어도 6시간 정도는 버퍼 시간으로 둬라.</li>
+<li>못한 일들을 버퍼 시간에 끝낸다. 빨래, 설거지부터 1시간 안에 못 끝낸 공부들까지.</li>
+<li>월요일 버퍼 때 못 끝낸 건 <strong>화요일 말고</strong> 주말 버퍼로 보낸다. 이래야 루틴이 무너지는 걸 막을 수 있다.</li>
+</ol>
+<h2 id="시험공부-문제-중심으로-공부하라"><a href="#시험공부-문제-중심으로-공부하라" class="headerlink" title="시험공부 : 문제 중심으로 공부하라."></a>시험공부 : 문제 중심으로 공부하라.</h2><ol>
+<li>시험 때 보통 5문제가 출제된다면 예상문제를 15개로 잡고 가장 많이 나오는 챕터부터 쳐들어간다.</li>
+<li>챕터 3-7이 시험범위일 때 3, 4, 5 순서대로 하다간 가장 중요할 수도 있는 챕터 7에 쓸 에너지가 남지 않기 때문이다.</li>
+<li>챕터문제(Problems) 1번, 2번 이런 건 풀 가치조차 없을 수도 있음을 염두에 둬라.</li>
+</ol>
+<h2 id="평소-공부-문제를-보고-개념을-읽으러-가라"><a href="#평소-공부-문제를-보고-개념을-읽으러-가라" class="headerlink" title="평소 공부 : 문제를 보고 개념을 읽으러 가라."></a>평소 공부 : 문제를 보고 개념을 읽으러 가라.</h2><ol>
+<li>책의 설명을 읽고 문제를 풀기보다, 문제에서 요구하는 개념들을 보고 앞으로 가 그 부분을 찾아내면 더 읽지 말고 풀어나가라. 이게 핵심만 공부하는 방법이다.</li>
+<li>답지를 보기 전까지 많이 틀려라. 그래도 모르겠다면 물어라. 눈을 마주치며 답을 듣는 게 훨씬 더 기억에 남는다.</li>
+</ol>
+<h2 id="모든-걸-포스팅할-필요는-없다"><a href="#모든-걸-포스팅할-필요는-없다" class="headerlink" title="모든 걸 포스팅할 필요는 없다."></a>모든 걸 포스팅할 필요는 없다.</h2><ol>
+<li>책에 풀 힌트를 적어둔 걸로 충분하다.</li>
+</ol>
+<h2 id="추가적으로-알아둘-것"><a href="#추가적으로-알아둘-것" class="headerlink" title="추가적으로 알아둘 것"></a>추가적으로 알아둘 것</h2><ol>
+<li>문제를 보고 개념을 공부하는 건 잘못된 공부법이 아니다. 하나의 공부법이다.</li>
+<li>챕터 문제가 60개라면, 딱 봐도 시험에 안 나올 문제가 있다. 단순 개념문제(보통 1, 2번 등), 프로그램을 사용하는 문제, 교수님 스타일이 아닌 문제(증명 등). 모두 쳐내라. 공부량을 확 줄일 수 있다.</li>
+<li>나올 문제라도 패턴이 익숙하고, 남은 문제들이 <strong>따분한 반복</strong> 이라면, 그 패턴의 마지막 문제를 풀고 맞았으면 넘어간다.</li>
+</ol>
+<h2 id="개인적인-궁금증-리뷰논문-찾기"><a href="#개인적인-궁금증-리뷰논문-찾기" class="headerlink" title="개인적인 궁금증 : 리뷰논문 찾기"></a>개인적인 궁금증 : 리뷰논문 찾기</h2><ol>
+<li>학문명 뒤에 Review나 Bulletin을 붙여서 저널 검색. Electronic Review 이런 식.</li>
+<li>이걸로 안 나오면 교수님께 메일을 드리는 게 확실하다.</li>
+</ol>
+<h2 id="독서에-대한-조언"><a href="#독서에-대한-조언" class="headerlink" title="독서에 대한 조언"></a>독서에 대한 조언</h2><ol>
+<li><strong>책은 전부 읽을 필요가 없다</strong><ol>
+<li>목차 읽기</li>
+<li>필요한 부분만 읽기</li>
+<li>책 덮기</li>
+<li>나중에 필요한 부분이 생기면 거기만 읽기.</li>
+<li>마치 시험에 나올 부분만 쳐들어가는 것처럼 읽어라!</li>
+</ol>
+</li>
+<li><strong>책별로 1~2페이지씩 읽어도 된다.</strong><ol>
+<li>어떤 한 주제(19세기 영국 노동자의 칼로리 소모량)에 대해서 알고 싶으면, 그 역사에 대한 책을 전부 빌린 다음 몇 페이지씩 읽고 반납해도 된다.</li>
+<li>이렇게 자료를 모으는 건 전혀 잘못된 게 아니다. 기억해둘 것.</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/24/%ED%95%99%EC%8A%B5%EC%BB%A8%EC%84%A4%ED%8C%85%20%ED%95%B5%EC%8B%AC/" data-id="ck8tqyw7i0060xkvjgr9b6te6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-일기 - 인간관계의 지속" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/24/%EC%9D%BC%EA%B8%B0%20-%20%EC%9D%B8%EA%B0%84%EA%B4%80%EA%B3%84%EC%9D%98%20%EC%A7%80%EC%86%8D/" class="article-date">
+  <time datetime="2020-01-24T01:09:38.000Z" itemprop="datePublished">2020-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Private/">Private</a>►<a class="article-category-link" href="/categories/Private/%EC%9D%BC%EA%B8%B0/">일기</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/24/%EC%9D%BC%EA%B8%B0%20-%20%EC%9D%B8%EA%B0%84%EA%B4%80%EA%B3%84%EC%9D%98%20%EC%A7%80%EC%86%8D/">인간관계의 지속</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&nbsp;사람을 만나는 이유는 크게 네 가지다. 첫째는 관성이다. 항상 보던 얼굴이니 또 본다. 둘째는 외로움이다. 적적해서, 어디 하소연 하고 싶어서 사람을 만난다. 셋째는 생존이다. 회사 일, 학교생활 등의 목적으로 만난다. 넷째는 재미다. 동호회 같은 것들이다.</p>
+<p>&nbsp;이 네 가지 이유 모두 두 가지 큰 목적을 기준으로 두면 인간관계를 형성하는 데 도움이 된다. 두 가지 목적이란 지식과 행복이다. 관성의 경우를 생각해보자. 전역 후 군에서 만났던 사람들이 연락해온다면 그건 군대에서 이루었던 관계의 지속인 경우가 많다. 만약 연락해온 당사자가 당신을 행복하게 또는 지혜롭게 해주지 못한다? 무시하라.</p>
+<p>&nbsp;행복의 기준은 넷플릭스로 잡아라. 구독하고 있는 유튜브, TV 프로그램, 뭐든 좋다. 누군가를 만나는 게 넷플릭스 시청보다 더 행복할 것 같지 않다면 관계를 끊는 게 좋다. 인터넷 스트리밍보다 재미없는 사람이라니, 심각하지 않은가?</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/24/%EC%9D%BC%EA%B8%B0%20-%20%EC%9D%B8%EA%B0%84%EA%B4%80%EA%B3%84%EC%9D%98%20%EC%A7%80%EC%86%8D/" data-id="ck8tqyw63002exkvjccnw9yop" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-사업 - 김도균 - 스마트스토어 현직셀러의 상위노출과 매출 증대 전략" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/24/%EC%82%AC%EC%97%85%20-%20%EA%B9%80%EB%8F%84%EA%B7%A0%20-%20%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4%20%ED%98%84%EC%A7%81%EC%85%80%EB%9F%AC%EC%9D%98%20%EC%83%81%EC%9C%84%EB%85%B8%EC%B6%9C%EA%B3%BC%20%EB%A7%A4%EC%B6%9C%20%EC%A6%9D%EB%8C%80%20%EC%A0%84%EB%9E%B5/" class="article-date">
+  <time datetime="2020-01-24T01:09:38.000Z" itemprop="datePublished">2020-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%EC%97%85%EB%AC%B4/">업무</a>►<a class="article-category-link" href="/categories/%EC%97%85%EB%AC%B4/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4/">스마트스토어</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/24/%EC%82%AC%EC%97%85%20-%20%EA%B9%80%EB%8F%84%EA%B7%A0%20-%20%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4%20%ED%98%84%EC%A7%81%EC%85%80%EB%9F%AC%EC%9D%98%20%EC%83%81%EC%9C%84%EB%85%B8%EC%B6%9C%EA%B3%BC%20%EB%A7%A4%EC%B6%9C%20%EC%A6%9D%EB%8C%80%20%EC%A0%84%EB%9E%B5/">김도균 - 스마트스토어 현직셀러의 상위노출과 매출 증대 전략</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="김도균-스마트스토어-현직셀러의-상위노출과-매출-증대-전략"><a href="#김도균-스마트스토어-현직셀러의-상위노출과-매출-증대-전략" class="headerlink" title="김도균 - 스마트스토어 현직셀러의 상위노출과 매출 증대 전략"></a>김도균 - 스마트스토어 현직셀러의 상위노출과 매출 증대 전략</h1><h3 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h3><ol>
+<li>이번 4월에 네이버 로직이 바뀌어서 그걸 강연에서 설명하고자 함.</li>
+</ol>
+<h3 id="패러다임의-변화"><a href="#패러다임의-변화" class="headerlink" title="패러다임의 변화"></a>패러다임의 변화</h3><ol>
+<li>모바일이 구매의 80%를 넘었음.</li>
+<li>모바일은 4, 5개 정도만 상위노출이 되어 경쟁이 아주 심해짐.</li>
+<li>쿠팡과 스마트스토어가 이 경쟁문제를 해결하였음.<ol>
+<li>G마켓, 11번가는 CPC 광고만 최상으로 올려주며, 돈이 많아야 상위노출이 가능.</li>
+<li>네이버 상위노출은 AItems라는 프로그램을 통해 결정됨.<ol>
+<li>인공지능이 상위노출을 결정.</li>
+<li>SEO만 잘 입력하면 상위노출이 가능하다.</li>
+<li>PC와 모바일이 상위노출 순서가 다르다.</li>
+<li>쿠팡도 네이버와 유사한 상위노출 로직을 갖는다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>모바일 유통시대에서 살아남기<ol>
+<li>변하지 않는 것에 투자하라.<ol>
+<li>변하는 것 : 제품, 소싱과 마케팅에 투자하지 말아라.</li>
+<li>변하지 않는 것 : 키워드에 끝없이 투자하라.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="판매채널"><a href="#판매채널" class="headerlink" title="판매채널"></a>판매채널</h3><ol>
+<li>초기진입자가 안정적으로 팔 수 있는건 쿠팡/스마트스토어 2개 뿐이다.<ol>
+<li>왜? 스마트스토어와 쿠팡은 로직이 비슷하기 때문.</li>
+</ol>
+</li>
+<li>스마트스토어<ol>
+<li>스마트스토어 점수 올리기</li>
+<li>막 등록한 제품은 NEW 가 상품에 붙는다. 신규 제품은 상위노출 점수를 받는다.</li>
+<li>이 상태에서 <strong>팔리면</strong> <strong>NEW 없을 때마보다 구매점수 10배를 준다</strong><ol>
+<li>그러니까, 새로 올린 지 얼마 안 됐을 때 팔아야 한다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="성공사례"><a href="#성공사례" class="headerlink" title="성공사례"></a>성공사례</h3><ol>
+<li>칫솔<ol>
+<li>마케팅 비용 0</li>
+<li>8개월 걸려서 1페이지로 올라갈 수 있었다.</li>
+</ol>
+</li>
+<li>코골이방지기구(쿠팡)<ol>
+<li>마케팅 비용 0</li>
+<li>1개월 동안 꾸준히 올라가 1페이지 최상위에 위치했음.</li>
+</ol>
+</li>
+<li>코골이</li>
+<li>가전/식품 카테고리는 마진이 무너져있고(4~7%) 초보자에게 권할만한 카테고리가 아님.</li>
+</ol>
+<h3 id="아이템"><a href="#아이템" class="headerlink" title="아이템"></a>아이템</h3><h4 id="1-아이템의-종류"><a href="#1-아이템의-종류" class="headerlink" title="1) 아이템의 종류"></a>1) 아이템의 종류</h4><ol>
+<li>시즌아이템<ol>
+<li>날짜가 정해져있는 것. 어린이날, 설날, 신학기, 스키철 등.</li>
+</ol>
+</li>
+<li>계절<ol>
+<li>더워야 팔리는 것, 추워야 팔리는 것.</li>
+<li>핫팩.</li>
+</ol>
+</li>
+<li>타겟 : 특정 소비층만 사는 물건. 전환율이 상당히 센 상품이 많다..<ol>
+<li>코골이방지기구</li>
+<li>강아지눈곱없애는영양제</li>
+</ol>
+</li>
+<li>사계절<ol>
+<li>꾸준히 팔림</li>
+<li>칫솔, 김치</li>
+<li>공략이 어려움. 이미 팔리던 것들은 이미 점수가 높고, 재구매가 계속 들어오기 때문에 신규아이템 구매량 추가점수로 올라가기도 쉽지 않다.</li>
+</ol>
+</li>
+<li>강사님은 시즌/타겟만 공략하라고 한다. 이건 신규진입자에게도 먹히기 때문.</li>
+</ol>
+<h4 id="2-아이템의-소싱"><a href="#2-아이템의-소싱" class="headerlink" title="2) 아이템의 소싱"></a>2) 아이템의 소싱</h4><ol>
+<li>제품을 정해놓고 키워드를 입히기<ol>
+<li>지금 시장이 불경기라 그렇고, 소비자가 내 제품을 보고 더 싸게 사는 방법을 구해서 싸게 사는 경우도 많아 판매가 쉽지 않다.</li>
+</ol>
+</li>
+<li>키워드를 정해놓고 제품을 소싱하기<ol>
+<li>이 편이 신규 진입자에겐 더 유효한 전략이다.</li>
+</ol>
+</li>
+</ol>
+<h4 id="3-진입하면-안-되는-상품들"><a href="#3-진입하면-안-되는-상품들" class="headerlink" title="3) 진입하면 안 되는 상품들"></a>3) 진입하면 안 되는 상품들</h4><ol>
+<li>최저가 비교 그룹이 엄청 많은 경우<ol>
+<li>차량용 거치대같은 경우. 들어갈거면 가격비교로 올려야 한다.</li>
+</ol>
+</li>
+<li>리뷰가 구매건수보다 많은 제품<ol>
+<li>경우 1) 리뷰는 계속 누적되는데, 구매건수는 6개월만에 지워져서 이런 일이 생긴다. 즉 겉으로 보이는 것보다 훨씬 더 큰 시장규모를 갖고 있는 제품이다.</li>
+<li>경우 2) 최저가 가격비교로 묶일 때 묶인 날짜로 등록일이 최신화되고(최신성 점수 먹음), 리뷰 숫자도 묶인다. 가격비교 상품의 경우 최저가 비교 그룹이 되는 경우가 보통이며, 신규 제품이 들어가기 힘들어진다.</li>
+</ol>
+</li>
+</ol>
+<h3 id="마케팅-개요"><a href="#마케팅-개요" class="headerlink" title="마케팅 개요"></a>마케팅 개요</h3><ol>
+<li>네이버 SEO 판매 전략<ol>
+<li>키워드 SEO와 트래픽으로만 승부를 본다.</li>
+</ol>
+</li>
+<li>네이버 내부 채널 판매 전략<ol>
+<li>CPC, 블로그 상위노출, 카페침투</li>
+</ol>
+</li>
+<li>네이버 외부채널 판매 전략<ol>
+<li>인스타 페이스북 유튜브</li>
+</ol>
+</li>
+<li>2번과 3번은 성공확률이 높지 않다. 이게 안 통한다.<ol>
+<li>CPC도 잘 안먹힌다.</li>
+<li>만약 쓴다면, <strong>시즌 아이템</strong> 만 이 광고를 활용하는 게 좋다. 투자 대비 효율이 잘 나온다.<ol>
+<li>구정 한우, 수능 찹쌀떡 같은 경우 일주일 전에 상위에 꼽혀있으면 된다. 치고 빠지는게 먹힌다.</li>
+<li>그러기 위해 페이스북, 인스타그램, CPC 광고에 전부 들어가야 한다.</li>
+<li>수능찹쌀떡 제품 판매를 위해 3일 동안 360만원 마케팅비를 들여 1억 매출을 올렸다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="1-블로그-마케팅"><a href="#1-블로그-마케팅" class="headerlink" title="1) 블로그 마케팅"></a>1) 블로그 마케팅</h4><ol>
+<li>블로그 체험단<ol>
+<li>한달에 50명씩 3년정도 해야 효과가 있다.</li>
+</ol>
+</li>
+<li>자체 블로그 : 두달 정도 열심히 하면 된다. 어렵다.</li>
+<li>블로그 업데이트<ol>
+<li>이미 큰 블로그에 등록 맡기기. 가장 쉽고 블로그 마케팅 중에 효과가 제일 괜찮다.</li>
+<li>좋은 블로그 크몽 없이 찾는법<ol>
+<li>레드키워드를 검색한다. 블로그 판으로 ㅇ동한다.</li>
+<li>블로그 최상위 글을 본다.</li>
+<li>반드시 개인블로그인지 확인한다.</li>
+<li>일일 방문자가 5000명 이상인지 확인하고, 꾸준히 들어오는지 확인한다.</li>
+<li>위 조건에 맞으면 정중하게 메일을 보낸다. 상품 글을 올려주었으면 하는데, 얼마 정도로 가능한지 묻는다.(써달라고 하지 말고..)</li>
+<li>수능 찹쌀떡을 이렇게 해서 블로그 전체 1등을 걸어버려 매출을 뽑았다. 위에 말했지만 총 360만원밖에 안들었다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="키랩-기능-활용"><a href="#키랩-기능-활용" class="headerlink" title="키랩 기능 활용"></a>키랩 기능 활용</h3><ol>
+<li>블루키워드 기능<ol>
+<li>사용방법<ol>
+<li>블루키워드 탭으로 이동</li>
+<li>월간검색수 500~2000000<ol>
+<li>상품을 이미 소싱했다면 1000~2000000</li>
+</ol>
+</li>
+<li>검색상품수 900000000</li>
+<li>검색조건 저장 버튼 클릭</li>
+</ol>
+</li>
+<li>활용<ol>
+<li>여기서 유의미한 키워드(<strong>블루키워드</strong>)를 뽑아낼 수 있다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>순위관리 기능<ol>
+<li>사용방법<ol>
+<li><a href="http://gold.vivachae.com/SmartStoreProducts/Create" target="_blank" rel="noopener">네이버스토어 순위관리 탭</a>으로 이동</li>
+<li>형식에 맞게 URL 입력</li>
+<li>다른 페이지로 넘어감. 키워드 입력해서 내 상품이 몇페이지에 있는지 체크가능.<ol>
+<li>가격비교로 묶인 상품은 그럼 mid=숫자에 해당하는 숫자를 입력해서 가격비교 ID에 넣고 저장하면 됨.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>따라하기<ol>
+<li>유레카 디엣비타민 <a href="https://smartstore.naver.com/euraka/products/4782947864" target="_blank" rel="noopener">https://smartstore.naver.com/euraka/products/4782947864</a><ol>
+<li><a href="http://gold.vivachae.com/SmartStoreProducts/Create" target="_blank" rel="noopener">네이버스토어 순위관리 탭</a>으로 들어가서 위 링크를 붙여넣기한 뒤 일반상품 등록을 클릭한다.</li>
+</ol>
+</li>
+<li><a href="http://gold.vivachae.com/SmartStoreProducts/Details/2" target="_blank" rel="noopener">http://gold.vivachae.com/SmartStoreProducts/Details/2</a> 여기로 이동한다.</li>
+<li>디엣비타민을 클릭해서 설정하고, 좀 내려서 ‘키워드’란에 비타민, 다이어트보조제, 고도비만, 내장비만 등 키워드를 입력하고 ‘순위 검색’을 누른다.</li>
+<li>몇 페이지 몇번째, 총 순위를 알려준다.</li>
+</ol>
+</li>
+<li>따라하기 : 가격비교<ol>
+<li>내 제품이 <a href="https://smartstore.naver.com/flowerlain/products/4705267340" target="_blank" rel="noopener">칫솔</a>이다.</li>
+<li>근데 이게 쳐보면 판매처 잔뜩 있는 카탈로그 판매(가격비교) 상품이네?</li>
+<li>이걸 가격비교 페이지로 가보면 <a href="https://search.shopping.naver.com/detail/detail.nhn?nv_mid=13420310318" target="_blank" rel="noopener">https://search.shopping.naver.com/detail/detail.nhn?nv_mid=13420310318</a><br>이런 링크가 나오고, 여기서 <strong>mid=13….</strong>이라고 적힌 숫자부분만 복사한다.**</li>
+<li><a href="http://gold.vivachae.com/SmartStoreProducts/Details/2" target="_blank" rel="noopener">http://gold.vivachae.com/SmartStoreProducts/Details/2</a> 여기로 가서, 가격비교 ID에 이 숫자부분을 붙여넣는다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>상위업체의 태그분석 기능<ol>
+<li><a href="http://gold.vivachae.com/SmartStoreKeywords/Create" target="_blank" rel="noopener">http://gold.vivachae.com/SmartStoreKeywords/Create</a> 여기로 이동한다.</li>
+<li>‘에어프라이어’라고 입력한 뒤 키워드 등록을 누른다.</li>
+<li>빨간색 글씨가 태그들이다. 긁어서 엑셀로 만들어서 쓰면 된다.</li>
+</ol>
+</li>
+</ol>
+<h3 id="키워드"><a href="#키워드" class="headerlink" title="키워드"></a>키워드</h3><h4 id="1-키워드와-카테고리의-관계"><a href="#1-키워드와-카테고리의-관계" class="headerlink" title="1) 키워드와 카테고리의 관계"></a>1) 키워드와 카테고리의 관계</h4><ol>
+<li>한 키워드는 한 카테고리 안에 들어있다. <strong>다른 카테고리에 쓰면 안 된다.</strong><ol>
+<li>‘발 각질제거’를 네이버쇼핑에 검색하면 화장품/미용 &gt; … &gt; 풋케어 에 속해있다.</li>
+<li>‘발각질제거기’는 생활/건강 &gt; … &gt; 발각질제거기 에 속해있다.<ol>
+<li>발각질제거기 를 풋케어 카테고리에 쓰는 순간 어뷰징이고, 노출에서 밀리고, 안 팔리게 된다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>키워드의 카테고리는 고객 구매패턴에 따라 자동으로 설정된다.<ol>
+<li>발 각질제거 라고 검색하는 고객은 ‘화장품’ 쪽을 주로 구매하는 경우가 많다. 그래서 화장품/미용이다.</li>
+<li>발각질제거기 라고 검색하는 고객은 ‘기기’ 쪽 물건을 구매하는 경우가 많다. 그래서 생활/건강이다.<h4 id="2-키워드의-종류"><a href="#2-키워드의-종류" class="headerlink" title="2) 키워드의 종류"></a>2) 키워드의 종류</h4></li>
+</ol>
+</li>
+<li>세부키워드 / 상품성, 다의성 / 블루키워드 만 보면 된다.</li>
+<li>레드키워드<ol>
+<li>상품명에 대표키워드(커튼, 원피스)를 쓰면 안 된다. 이런 경쟁이 딱 봐도 심할 것 같은 키워드를 <strong>레드키워드</strong> 라 한다.</li>
+</ol>
+</li>
+<li>정보성 키워드<ol>
+<li>정보성 키워드(히비스커스효과,히비스커스추천,히비스커스먹는방법)는 쓰면 안 된다.<ol>
+<li>이런 분들은 포스트(블로그 등)로 유입되는 거지 상품을 사려고 검색한 게 아니다.</li>
+<li>쇼핑인사트에 ㅁㅁ 추천, 효능 효과 이런 검색어는 상품이 안 뜨는 걸 알 수 있다.</li>
+<li><strong>근데 정보성인지 애매한 키워드를 어떻게 거르지?</strong><ol>
+<li>네이버 검색에서 ‘모링가효능’이라고 검색한다. ‘쇼핑판’이 위에(적어도 위에서 3번째) 안 뜨면 정보성 키워드이다.</li>
+<li>‘크릴오일 부작용’은 그냥 봐도 정보성 키워드인데, 막상 검색해보면 ‘쇼핑판’이 맨 위는 아니더라도 뜬다. 그럼 키워드로 써도 된다(물론 블루키워드여야 함)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>다의성 : 여러 의미를 갖는 키워드<ol>
+<li>‘시서스가루’는 이게 뭐지 하면서 검색해보는 사람도 있고, ‘시서스가루’ 사야지 하면서 쇼핑으로 가는 사람도 있다. 이 경우 시서스가루는 다의성 키워드이다.</li>
+<li>주로 신제품이 그런 경우가 많다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>블루키워드 : 많은 검색량, 경쟁상품 적은 키워드<ol>
+<li>프리미엄 키워드 : 유명하면서 유일한 키워드. 나이키, 아디다스 등.<ol>
+<li>제일 좋은 키워드다.<h4 id="3-키워드-선정"><a href="#3-키워드-선정" class="headerlink" title="3) 키워드 선정"></a>3) 키워드 선정</h4></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>네이버 자동완성어에서 5개를 고른다.</li>
+<li>네이버 연관검색어에서 5개를 고른다.</li>
+<li>블로그, 카페 등에서 각각 5개를 고른다.</li>
+<li>인스타그램에서 5개를 고른다.</li>
+<li>네이버 쇼핑 자동완성어, 추천키워드에서 각각 5개를 고른다.</li>
+<li>이렇게 고른 키워드로 키워드 분석을 한다.</li>
+</ol>
+<h4 id="4-키워드-분석"><a href="#4-키워드-분석" class="headerlink" title="4) 키워드 분석"></a>4) 키워드 분석</h4><ol>
+<li>‘변기발판’을 블루키워드 조회 후 엑셀을 다운로드 받는다.</li>
+<li>카테고리 정렬 후, 생활/건강 &gt; … &gt; 욕실발판/욕실매트 부분의 키워드 중에서 키워드를 고르면 된다.<ol>
+<li>왜냐하면 네이버쇼핑에서 변기발판 상품의 키워드가 … &gt; 욕실발판/욕실매트이기 때문.</li>
+</ol>
+</li>
+<li>‘변기발판’ 엑셀 기준 22개 정도 남는다.<ol>
+<li>상품경쟁률을 내림차순 정렬한다.</li>
+</ol>
+</li>
+<li>‘변기발판’이라는 키워드는 경쟁률 7.46, 상품수 20000이다.<ol>
+<li><strong>상품 수는 의미없다. 100만개짜리 상품 수도 뚫린다.</strong> : 중요!</li>
+<li><strong>그러나 경쟁률은 유의미하다. 높을수록 뚫기가 힘들다.</strong></li>
+</ol>
+</li>
+<li>보통 강사님은 위에서 10개(경쟁률 낮은 순)를 그룹 1, 그 아래 10개를 그룹 2로 둔다.</li>
+<li>그룹 1에서 키워드 2개, 그룹 2에서 키워드 1개를 뽑는다.<ol>
+<li>순서<ol>
+<li>경쟁률을 본다.<ol>
+<li><strong>근데 팔려고 마음먹었으면 경쟁률은 그룹1, 그룹2로 나누고 더이상 보지 않아도 된다</strong></li>
+</ol>
+</li>
+<li>월간검색수를 본다.</li>
+<li>그룹 1<ol>
+<li>욕실미끄럼방지매트<br>화장실발판<br>화장실매트<ol>
+<li>셋 다 그룹 1에서 조회수가 많아서 선정했다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>그룹 2<ol>
+<li>욕실매트 : 조회수가 높아서 선정했다.</li>
+</ol>
+</li>
+<li>즉 욕실미끄럼방지매트, 화장실발판, 화장실매트 욕실매트 4개를 건졌다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>모바일 네이버 검색에서 저 키워드 4개를 각각 검색했을 때 쇼핑판 1, 2, 3번째 안에 없으면 정보성 키워드로 취급하고 버려야 한다.<ol>
+<li>만약 화장실발판이 욕실미끄럼방지매트 키워드보다 조회수가 낮은데 쇼핑판은 1순위다? 그럼 화장실발판 키워드를 메인으로 쓴다.</li>
+</ol>
+</li>
+<li>경쟁상품의 판매량을 확인한다.<ol>
+<li>모바일로 검색해서 판매량을 확인한다(개발자 도구) 활용.</li>
+<li>신제품이 아닌데도 안 팔리는 제품이라면 제품 소싱을 다시 고려해야 한다.</li>
+</ol>
+</li>
+<li>전환율<ol>
+<li>전환율이 0인 키워드는 버린다.</li>
+</ol>
+</li>
+<li>위 과정을 거치면 유의미한 블루키워드를 구할 수 있다.</li>
+</ol>
+<h4 id="5-블루키워드로-상품명-만들기"><a href="#5-블루키워드로-상품명-만들기" class="headerlink" title="5) 블루키워드로 상품명 만들기"></a>5) 블루키워드로 상품명 만들기</h4><ol>
+<li>CASE 1 : 도매인 경우<ol>
+<li>블루키워드 + 블루키워드 + 블루키워드 의 형태로 구성한다.<ol>
+<li>욕실미끄럼방지매트 화장실매트 : 이게 상품명이 된다.<ol>
+<li>욕실미끄럼방지매트 화장실발판 욕실매트 =&gt; ‘욕실매트’ 가 ‘욕실미끄럼방지매트’ 안에 들어간 문자이므로 이 키워드는 생략한다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>CASE 2 : 자사제품이라 반드시 올려야 하는 경우<ol>
+<li>블루 블루 블루 레드 레드 레드 같은 식으로 이름을 3단어 이상으로 해도 된다.</li>
+<li>싸이하이부츠 스웨이드롱부츠 니하이 니삭스 스판 : 이렇게 상품명을 구성한다.</li>
+</ol>
+</li>
+</ol>
+<h3 id="상품-등록-시-상위노출-방법"><a href="#상품-등록-시-상위노출-방법" class="headerlink" title="상품 등록 시 상위노출 방법"></a>상품 등록 시 상위노출 방법</h3><ol>
+<li>할인율보다는 할인가로 할인을 책정한다.</li>
+<li>옵션은 세팅하고 많을 수록 좋다<ol>
+<li>같은 상품을 10개 사면 ‘1건’으로 판매수가 찍히는데, 옵션 2개를 사면 ‘2건’으로 쳐준다. 각 옵션의 구매수량은 다루지 않음.</li>
+<li>단일상품조차도 옵션을 넣으면 좋다.</li>
+<li>1+1, 5개, 10개 이런 식으로 넣으면 된다.</li>
+<li>복수구매인 경우 더 싸게 설정해두면 더 잘 팔릴 것.</li>
+</ol>
+</li>
+<li>썸네일(리스팅 이미지)은 9개 다 넣는다.</li>
+<li>이미지는 반드시 컷팅한다.</li>
+<li>제목,썸네일,이미지 함부로 바꾸면 안 된다.<ol>
+<li>상세페이지는 자주 고쳐도 괜찮음.</li>
+</ol>
+</li>
+<li>상세페이지<ol>
+<li>이미지만 넣지 말고 글자도 넣으면 좋다.</li>
+</ol>
+</li>
+<li>상품주요정보<ol>
+<li>비우지 않는다.</li>
+</ol>
+</li>
+<li>태그<ol>
+<li>별로 중요하진 않음. 태그사전에 있는것만 넣는다.</li>
+</ol>
+</li>
+</ol>
+<h3 id="스마트스토어-진단"><a href="#스마트스토어-진단" class="headerlink" title="스마트스토어 진단"></a>스마트스토어 진단</h3><p>010-9485-3660 으로 “아이보스에서 강의들었다.”라고 말하고 상담/몰진단을 부탁하면 답신해주심.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/24/%EC%82%AC%EC%97%85%20-%20%EA%B9%80%EB%8F%84%EA%B7%A0%20-%20%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4%20%ED%98%84%EC%A7%81%EC%85%80%EB%9F%AC%EC%9D%98%20%EC%83%81%EC%9C%84%EB%85%B8%EC%B6%9C%EA%B3%BC%20%EB%A7%A4%EC%B6%9C%20%EC%A6%9D%EB%8C%80%20%EC%A0%84%EB%9E%B5/" data-id="ck8tqyw66002jxkvj3s633dim" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-게임 - 프로스트펑크 시나리오 2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/24/%EA%B2%8C%EC%9E%84%20-%20%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC%20%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4%202/" class="article-date">
+  <time datetime="2020-01-24T01:09:35.000Z" itemprop="datePublished">2020-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Private/">Private</a>►<a class="article-category-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/">게임</a>►<a class="article-category-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC/">프로스트펑크</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/24/%EA%B2%8C%EC%9E%84%20-%20%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC%20%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4%202/">김대용 - [매출필수코스] 쉽게 시작하는 키워드 광고 실습</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="시나리오-2-방주"><a href="#시나리오-2-방주" class="headerlink" title="시나리오 2 방주"></a>시나리오 2 방주</h1><ul>
+<li>이 공략은 시나리오 2 생존자 난이도를 쉽게 깰 방법을 적은 글이다. 쉽게 깬다는 것은 1. 마이크로 컨트롤(종자 난방기 껐다 키기 등) 없이 2. 스스로 제약을 두는 일 없이 누구나 따라할 수 있음을 의미한다.</li>
+</ul>
+<h2 id="1-시나리오-요약"><a href="#1-시나리오-요약" class="headerlink" title="1. 시나리오 요약"></a>1. 시나리오 요약</h2><ul>
+<li>방주 시나리오는 “씨앗을 보관할 장소를 마련해야겠다→파견된 기술자들이 오토마톤만으로 유지될 수 있는 도시를 만들기로 한다→뉴 멘체스터가 어려움에 처했다는 소식을 듣는다→씨앗을 지키는 임무와 함께 뉴 멘체스터를 구하는 일 역시 함께하기로 한다”정도로 요약된다. 플레이어가 시나리오에서 할 일은 다음과 같다.</li>
+</ul>
+<h3 id="1-1-자원시설을-자동화하고-자원을-모은다"><a href="#1-1-자원시설을-자동화하고-자원을-모은다" class="headerlink" title="1.1. 자원시설을 자동화하고 자원을 모은다."></a>1.1. 자원시설을 자동화하고 자원을 모은다.</h3><p>석탄 광산 2, 제철소 1, 천공기 1, 온실 1, 석탄 8000, 식량 500, 주택 5, 오토마톤 5만큼을 확보해야 한다.</p>
+<h3 id="1-2-뉴-멘체스터를-돕는다"><a href="#1-2-뉴-멘체스터를-돕는다" class="headerlink" title="1.2. 뉴 멘체스터를 돕는다."></a>1.2. 뉴 멘체스터를 돕는다.</h3><p>석탄 6000, 철 600, 목재 600, 식량 2000, 오토마톤 7만큼을 지원해야 한다.</p>
+<h2 id="2-빌드-및-시간-활용"><a href="#2-빌드-및-시간-활용" class="headerlink" title="2. 빌드 및 시간 활용"></a>2. 빌드 및 시간 활용</h2><h3 id="2-1-빌드"><a href="#2-1-빌드" class="headerlink" title="2.1. 빌드"></a>2.1. 빌드</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>00:00~06:00</th>
+<th>06:00~18:00</th>
+<th>18:00~00:00</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1일</td>
+<td></td>
+<td><strong>(08:00)</strong><br>&emsp;[건설]<br>&emsp;&emsp;도로 철거 후 연구소 바로 건설<br><br>&emsp;[인력 투입]<br>&emsp;&emsp;석탄(5) 연구소(5) 철(15) 목재(20)<br>&emsp;&emsp;목재(오토마톤)<br>&emsp;&emsp;&emsp;참고 : 연구소 바로 비상근무 활성화.</td>
+<td><strong>(18:00)</strong><br>&emsp;[건설] 총 2개<br>&emsp;&emsp;연구소, 열기구<br><br><br><strong>(23:00)</strong><br>&emsp;[발전기] 가동</td>
+</tr>
+<tr>
+<td>2일</td>
+<td><strong>(02:00)</strong><br>&emsp;[발전기] 정지<br><br><strong>(기타 작업)</strong><br>&emsp;환자 5명을 탐험대로 편성<br><br>&emsp;[인력 투입]<br>&emsp;&emsp;석탄(5) 연구소(10) 탐험대(5) 철(10) 목재(15)<br>&emsp;&emsp;목재(오토마톤)</td>
+<td><strong>(기타 작업)</strong><br>&emsp;오토마톤이 꺼질 때만 발전기를 켠다.</td>
+<td><strong>(20:00)</strong><br>&emsp;[건설] 총 4개<br>&emsp;&emsp;진료소, 취사장, 2채집소(왼쪽 4개 자원더미 닿는 곳, 오른쪽 3목재)<br>&emsp;&emsp;&emsp;목재가 아슬아슬하게 된다. 부족하다면 도로를 제거한다. 필요하면 발전기 테두리 쪽도 제거한다.<br><br><strong>(23:00)</strong><br>&emsp;[발전기] 가동</td>
+</tr>
+<tr>
+<td>3일</td>
+<td><strong>(02:00)</strong><br>&emsp;[발전기] 정지<br><br><strong>(기타 작업)</strong><br>&emsp;[인력 투입]<br>&emsp;&emsp;3목재 채집소(오토마톤)</td>
+<td><strong>(기타 작업)</strong><br>&emsp;오토마톤이 꺼질 때만 발전기를 켠다.</td>
+<td><strong>(20:00)</strong><br>&emsp;[건설] 총 4개<br>&emsp;&emsp;3천막 1수집소(아래쪽 2석탄)<br><br><strong>(23:00)</strong><br>&emsp;[발전기] 가동<br>&emsp;&emsp;참고 : 이제 게임 끝날 때까지 발전기는 계속 가동.</td>
+</tr>
+<tr>
+<td>4일</td>
+<td></td>
+<td><strong>(기타 작업)</strong><br>&emsp;[인력 투입]<br>&emsp;&emsp;채집소(3목재)(새로 도착한 오토마톤)<br>&emsp;&emsp;5철 -&gt; 5정찰대<br>&emsp;&emsp;5석탄 -&gt; 5목재</td>
+<td><strong>(20:00)</strong><br>&emsp;[건설] 총 1개<br>&emsp;&emsp;공장</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>(20:00)</strong><br>&emsp;[건설] 총 3개<br>&emsp;&emsp;3연구소</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-법률서"><a href="#2-2-법률서" class="headerlink" title="2.2. 법률서"></a>2.2. 법률서</h3><p>적응 : 비상 교대근무-연장 교대근무-수프-극약처방-과잉수용-시신 처리-장기 이식-결투장-선술집-밀주-요양원-의수족</p>
+<h3 id="2-3-연구"><a href="#2-3-연구" class="headerlink" title="2.3. 연구"></a>2.3. 연구</h3><p>열기구 난방기 티어업<br>정찰대확대 천공기 제철소 온실 석탄 광산 티어업<br>개량형난방기 정찰대썰매경량화 증기식제철소 스팀허브 합숙소 티어업<br>공학용 오토마톤까지 쭉 연구 이후 필요한 순서대로 연구</p>
+<h3 id="2-4-이후-플레이"><a href="#2-4-이후-플레이" class="headerlink" title="2.4. 이후 플레이"></a>2.4. 이후 플레이</h3><p>오토마톤 6개 생산 (석탄 광산 2, 천공기 1, 제철소 2, 온실 1) - 공학용 오토마톤 연구 - 오토마톤 8개 생산(연구소 5, 온실 2, 취사장 1) - 석탄 14000, 목재 600, 철 600, 식량 2500을 수집 - 한번에 뉴 멘체스터로 지원</p>
+<h2 id="3-플레이-팁"><a href="#3-플레이-팁" class="headerlink" title="3. 플레이 팁"></a>3. 플레이 팁</h2><h3 id="3-1-초반-발전기는-02시에-꺼도-동사하지-않는다"><a href="#3-1-초반-발전기는-02시에-꺼도-동사하지-않는다" class="headerlink" title="3.1. 초반 : 발전기는 02시에 꺼도 동사하지 않는다."></a>3.1. 초반 : 발전기는 02시에 꺼도 동사하지 않는다.</h3><p>발전기를 18시에 가동시켜서 05시에 끄라는 조언을 하는 사람들이 보통이다. -20도(게임 시작)에서 발전기를 18시에 켜는 것과 23시에 키는 건 차이가 없다.이 때는 밤 환자가 생기지 않는다. 그렇지만 02시에 발전기를 끄는 것과 05시에 끄는 건 환자 1~3명 정도의 차이가 있다. 이 차이는 뉴 홈에서 그렇게 크지 않기 때문에 02시에 꺼도 된다. 피난민들(시나리오 3)은 이러면 환자 감당이 안 된다.</p>
+<h3 id="3-3-뉴-멘체스터로의-지원은-한-번에-보내면-된다"><a href="#3-3-뉴-멘체스터로의-지원은-한-번에-보내면-된다" class="headerlink" title="3.3. 뉴 멘체스터로의 지원은 한 번에 보내면 된다."></a>3.3. 뉴 멘체스터로의 지원은 한 번에 보내면 된다.</h3><p>뉴 멘체스터의 지원은 총 3번을 필요로 하고 이는 그때그때 보내든 게임이 끝나기 1일 전에 보내든 결과는 같다. 즉 자원을 다 모을 때까지 오토마톤을 굴리다가 한 번에 보내버리면 된다.</p>
+<h3 id="3-3-연구-이번-시나리오의-핵심-연구는-개량형-난방기이다"><a href="#3-3-연구-이번-시나리오의-핵심-연구는-개량형-난방기이다" class="headerlink" title="3.3. 연구 : 이번 시나리오의 핵심 연구는 개량형 난방기이다."></a>3.3. 연구 : 이번 시나리오의 핵심 연구는 개량형 난방기이다.</h3><p>-50도가 되면 1단계 난로로 종자보관소를 지킬 수 없는데, 이 경우 취할 수 있는 선택지로 1. 스팀허브+난방기 조합 2. 개량형 난방기이다. 4군데를 모두 지킨다면 1번 선택지는 2번보다 시간당 석탄 8개, 하루 200개 남짓한 석탄을 더 소모한다. 단순히 연구 순서만 바꿔도 이 만큼의 이득을 볼 수 있고 게임이 훨씬 쉬워진다.</p>
+<h3 id="3-4-전령-진료소는-전령-오는-방향과-가까이-둔다"><a href="#3-4-전령-진료소는-전령-오는-방향과-가까이-둔다" class="headerlink" title="3.4. 전령 : 진료소는 전령 오는 방향과 가까이 둔다."></a>3.4. 전령 : 진료소는 전령 오는 방향과 가까이 둔다.</h3><p><strong>전량은 먼저 지어진 진료소로 가다 죽는다.</strong> 발전기 주변의 진료소는 가동을 중단하고, 전령과 가까운 위치의 진료소만 가동한다. 전령이 들어가면 발전기 주변의 진료소를 가동한다. 안 그러면 진료소가 옆에 있는데 저만치 멀리 가다가 죽는다.</p>
+<h3 id="3-5-식량과-석탄-1단계-온실-3개-3-오토마톤-3단계-석탄-광산-2개-2-오토마톤-를-게임-종료-10일-전에-완성하면-된다"><a href="#3-5-식량과-석탄-1단계-온실-3개-3-오토마톤-3단계-석탄-광산-2개-2-오토마톤-를-게임-종료-10일-전에-완성하면-된다" class="headerlink" title="3.5. 식량과 석탄 : 1단계 온실 3개(3 오토마톤) + 3단계 석탄 광산 2개(2 오토마톤)를 게임 종료 10일 전에 완성하면 된다."></a>3.5. 식량과 석탄 : 1단계 온실 3개(3 오토마톤) + 3단계 석탄 광산 2개(2 오토마톤)를 게임 종료 10일 전에 완성하면 된다.</h3><p>온실 3개의 하루 수프 생산량 : (1.6 X 24) X 3 X 2.5 = 288. 하루에 기술자 50명분의 식량 소모를 고려해도 10일이면 2500개 남짓은 쌓을 수 있다. 오토마톤 효율성이 오르면 시간당 1.6개 이상을 생산한다.<br>3단계 석탄 광산 2개의 하루 석탄 생산량 : (72 X 24) X 2 = 3456. 석탄 소모를 감안하더라도 하루에 2000개 이상의 석탄이 소모될 일은 거의 없으며 그렇더라도 종자의 난방기를 끄고 키는 정도로 충당할 수 있다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/24/%EA%B2%8C%EC%9E%84%20-%20%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC%20%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4%202/" data-id="ck8tqyw5y0021xkvjeaup6a47" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-게임 - 프로스트펑크 시나리오 3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/24/%EA%B2%8C%EC%9E%84%20-%20%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC%20%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4%203/" class="article-date">
+  <time datetime="2020-01-24T01:09:35.000Z" itemprop="datePublished">2020-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Private/">Private</a>►<a class="article-category-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/">게임</a>►<a class="article-category-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC/">프로스트펑크</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/24/%EA%B2%8C%EC%9E%84%20-%20%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC%20%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4%203/">김대용 - [매출필수코스] 쉽게 시작하는 키워드 광고 실습</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="시나리오-2-방주"><a href="#시나리오-2-방주" class="headerlink" title="시나리오 2 방주"></a>시나리오 2 방주</h1><p>이 공략은 시나리오 3 생존자 난이도를 쉽게 깰 방법을 적은 글이다. 쉽게 깬다는 것은 1. 마이크로 컨트롤(사냥꾼 복귀 후 일시키기 등)없이 2. 스스로 제약을 두는 일 없이 누구나 따라할 수 있음을 의미한다. 마우스를 덜 움직여도 깰 수 있다는 의미로 받아들이면 좋겠다.</p>
+<h2 id="1-시나리오-요약"><a href="#1-시나리오-요약" class="headerlink" title="1. 시나리오 요약"></a>1. 시나리오 요약</h2><ul>
+<li>피난민들 시나리오는 피난민들이 자신들만의 도시를 세우기 위해 한 곳으로 모인다 - 귀족들이 뒤늦게 도착하고 받아들이거나 받아들이지 않는다 정도로 요약된다.</li>
+</ul>
+<h3 id="1-1-피난민들을-받아들인다"><a href="#1-1-피난민들을-받아들인다" class="headerlink" title="1.1. 피난민들을 받아들인다."></a>1.1. 피난민들을 받아들인다.</h3><ul>
+<li>일부 피난민들은 낙오되어 탐험대를 보내야 한다.</li>
+<li>환자, 식량 관리가 메인이 된다.</li>
+</ul>
+<h3 id="1-2-귀족들을-받아들인다"><a href="#1-2-귀족들을-받아들인다" class="headerlink" title="1.2. 귀족들을 받아들인다."></a>1.2. 귀족들을 받아들인다.</h3><ul>
+<li>환자, 행복과 불만 관리가 메인이 된다.</li>
+</ul>
+<h2 id="2-빌드-및-시간-활용"><a href="#2-빌드-및-시간-활용" class="headerlink" title="2. 빌드 및 시간 활용"></a>2. 빌드 및 시간 활용</h2><h3 id="2-1-빌드"><a href="#2-1-빌드" class="headerlink" title="2.1. 빌드"></a>2.1. 빌드</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>00:00~06:00</th>
+<th>06:00~18:00</th>
+<th>18:00~00:00</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1일</td>
+<td></td>
+<td><strong>(08:00)</strong><br>&emsp;[인력 투입]<br>&emsp;&emsp;철 5개 수집<br>&emsp;&emsp;나머지 나무</td>
+<td><strong>(18:00)</strong><br>&emsp;[건설] 총 4개<br>&emsp;&emsp;천막, 진료소, 연구소, 취사장<br><br><br><strong>(23:00)</strong><br>&emsp;[발전기] 가동</td>
+</tr>
+<tr>
+<td>2일</td>
+<td><strong>(05:00)</strong><br>&emsp;[발전기] 정지<br><br>&emsp;[인력 투입]<br>&emsp;&emsp;철 10개 수집<br>&emsp;&emsp;증기심 2개 수집<br>&emsp;&emsp;나머지 나무</td>
+<td></td>
+<td><strong>(18:00)</strong><br>&emsp;[건설] 총 2개<br>&emsp;&emsp;진료소, 천막<br><br><strong>(23:00)</strong><br>&emsp;[발전기] 가동</td>
+</tr>
+<tr>
+<td>3일</td>
+<td><strong>(05:00)</strong><br>&emsp;[발전기] 정지<br><br><strong>(기타 작업)</strong><br>&emsp;[인력 투입]<br>&emsp;&emsp;나무 20개, 철 10개 수집<br>&emsp;&emsp;나머지 나무</td>
+<td></td>
+<td><strong>(20:00)</strong><br>&emsp;[건설] 총 4개<br>&emsp;&emsp;2온실 진료소 천막<br><br><strong>(23:00)</strong><br>&emsp;[발전기] 가동</td>
+</tr>
+<tr>
+<td>4일</td>
+<td></td>
+<td><strong>(기타 작업)</strong><br>&emsp;[인력 투입]<br>&emsp;&emsp;온실 2개 - 취사장 2명 - 철 5개 수집 - 나머지 나무</td>
+<td><strong>(20:00)</strong><br>&emsp;[건설] 총 2개<br>&emsp;&emsp;천공기, 연구소<br><br><strong>(23:00)</strong><br>&emsp;[발전기] 가동</td>
+</tr>
+<tr>
+<td>5일</td>
+<td></td>
+<td><strong>(기타 작업)</strong><br>&emsp;[인력 투입]<br>&emsp;&emsp;온실 2개 - 취사장 2명 - 나무 40개 + 철 30개 수집 - 나머지 나무</td>
+<td><strong>(20:00)</strong><br>&emsp;[건설] 총 4개<br>&emsp;&emsp;스팀 허브, 2수집소, 천막, 석탄 시추기, 취사장(스팀허브 쪽으로 옮기기)<br><br><strong>(23:00)</strong><br>&emsp;[발전기] 가동</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-법률서"><a href="#2-2-법률서" class="headerlink" title="2.2. 법률서"></a>2.2. 법률서</h3><p>적응 : 아동 노동-비상 교대근무-연장 교대근무-수프-극약처방-과잉수용-시신 처리-장기 이식-결투장|요양원|선술집|밀주<br>목적 : 기도원 - 저녁 기도 - 신앙수호대 - 공개 참회 - 성전 - 성소</p>
+<h3 id="2-3-연구"><a href="#2-3-연구" class="headerlink" title="2.3. 연구"></a>2.3. 연구</h3><ul>
+<li>티어업<br>온실 천공기 석탄 시추기 스팀허브 난로</li>
+</ul>
+<h3 id="2-4-이후-플레이"><a href="#2-4-이후-플레이" class="headerlink" title="2.4. 이후 플레이"></a>2.4. 이후 플레이</h3><ul>
+<li>-50도 구간을 한 번 살아남았다면 하나씩 자원을 수급해나가면 된다.</li>
+<li>주어진 스팀코어는 온실, 천공기를 제외하고 모두 병원 짓는데만 쓰면 된다.</li>
+</ul>
+<h2 id="3-플레이-팁"><a href="#3-플레이-팁" class="headerlink" title="3. 플레이 팁"></a>3. 플레이 팁</h2><h3 id="3-1-초반-식량-목재-석탄-순으로-확보한다"><a href="#3-1-초반-식량-목재-석탄-순으로-확보한다" class="headerlink" title="3.1. 초반 : 식량 - 목재 - 석탄 순으로 확보한다."></a>3.1. 초반 : 식량 - 목재 - 석탄 순으로 확보한다.</h3><ul>
+<li>온실을 밤에 지은 바로 다음 날 건강한 인원만으로 온실, 취사장을 돌려 배고픈 사람을 먹여야 아사를 피할 수 있다.</li>
+<li>온실을 지은 다음 날에 꼭 천공기를 지어야 이후 필요한 목재를 마련할 수 있다.</li>
+<li>주어진 석탄 300을 밤에 쓰는데만 사용해야 한다. -50도로 떨어지기 전날 석탄 더미 주변이나 시추기 주변에 수집소 2개를 건설해야 발전기 + 스팀허브 2개 + 여분의 난로를 가동시킬 수 있다.</li>
+</ul>
+<h3 id="3-2-초반-천공기-온실-2개-취사장-석탄-시추기-수집소-2개를-한-스팀허브에-넣을-수-있다-과부하를-통해-50도에서-건물을-가동시킬-수-있다"><a href="#3-2-초반-천공기-온실-2개-취사장-석탄-시추기-수집소-2개를-한-스팀허브에-넣을-수-있다-과부하를-통해-50도에서-건물을-가동시킬-수-있다" class="headerlink" title="3.2. 초반 : 천공기, 온실 2개, 취사장, 석탄 시추기, 수집소 2개를 한 스팀허브에 넣을 수 있다. 과부하를 통해 -50도에서 건물을 가동시킬 수 있다."></a>3.2. 초반 : 천공기, 온실 2개, 취사장, 석탄 시추기, 수집소 2개를 한 스팀허브에 넣을 수 있다. 과부하를 통해 -50도에서 건물을 가동시킬 수 있다.</h3><ul>
+<li>-50도에 취사장과 온실을 가동하려면 난로 + 발전기 또는 과부하 발전기가 필요하다. 보통의 경우 난로 연구가 끝나기 전에 -50도를 맞이하므로 온도가 가동 조건인 건물들을 스팀 허브 안에 우겨넣어야 한다.</li>
+<li>발전기 과부하는 06시-20시까지 켜고 남은 시간은 끄면 -50도 구간인 3일 중 2일을 버틸 수 있다.</li>
+</ul>
+<h3 id="3-3-중반-전초기지-2군데를-먼저-확보한다"><a href="#3-3-중반-전초기지-2군데를-먼저-확보한다" class="headerlink" title="3.3. 중반 : 전초기지 2군데를 먼저 확보한다."></a>3.3. 중반 : 전초기지 2군데를 먼저 확보한다.</h3><ul>
+<li>석탄 전초기지를 확보했다면 발전기 업그레이드를 먼저 가서 환자 수를 줄인다. 2단계 천공기로 업그레이드하여 목재 수급을 늘린다.</li>
+<li>목재 전초기지를 확보했다면 증기식 석탄 시추기로 석탄을 확보한다.</li>
+</ul>
+<h3 id="3-4-후반-모든-피난민들을-유지하는-데-필요한-시설은-다음과-같다"><a href="#3-4-후반-모든-피난민들을-유지하는-데-필요한-시설은-다음과-같다" class="headerlink" title="3.4. 후반 : 모든 피난민들을 유지하는 데 필요한 시설은 다음과 같다."></a>3.4. 후반 : 모든 피난민들을 유지하는 데 필요한 시설은 다음과 같다.</h3><ul>
+<li>석탄 : 증기식 석탄 시추기 3개 + 수집소 12개로 석탄을 전부 마련할 수 있다. 석탄 전초기지가 있으면 훨씬 적게 필요하다.</li>
+<li>목재 : 증기식 천공기로 충분하다. 목재 전초기지가 있으면 목재가 남는다.</li>
+<li>철 : 증기식 제철소 2개로 충분하다.</li>
+<li>식량 : 2온실 연장근무 + 식량 전초기지 + 3 사냥단 격납고 = 모든 귀족을 받아들였을 때의 식량 소비량이다.</li>
+<li>오토마톤 : 있으면 좋지만 필요하지는 않다. 5티어 연구 업그레이드를 하지 않아도 어려움 없이 필요한 목표는 모두 달성할 수 있다.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/24/%EA%B2%8C%EC%9E%84%20-%20%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC%20%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4%203/" data-id="ck8tqyw5z0024xkvj1a041vkq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-사업 - 김대용 - [매출필수코스] 쉽게 시작하는 키워드 광고 실습" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/24/%EC%82%AC%EC%97%85%20-%20%EA%B9%80%EB%8C%80%EC%9A%A9%20-%20%5B%EB%A7%A4%EC%B6%9C%ED%95%84%EC%88%98%EC%BD%94%EC%8A%A4%5D%20%EC%89%BD%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%ED%82%A4%EC%9B%8C%EB%93%9C%20%EA%B4%91%EA%B3%A0%20%EC%8B%A4%EC%8A%B5/" class="article-date">
+  <time datetime="2020-01-24T01:09:35.000Z" itemprop="datePublished">2020-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%EC%97%85%EB%AC%B4/">업무</a>►<a class="article-category-link" href="/categories/%EC%97%85%EB%AC%B4/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4/">스마트스토어</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/24/%EC%82%AC%EC%97%85%20-%20%EA%B9%80%EB%8C%80%EC%9A%A9%20-%20%5B%EB%A7%A4%EC%B6%9C%ED%95%84%EC%88%98%EC%BD%94%EC%8A%A4%5D%20%EC%89%BD%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%ED%82%A4%EC%9B%8C%EB%93%9C%20%EA%B4%91%EA%B3%A0%20%EC%8B%A4%EC%8A%B5/">김대용 - [매출필수코스] 쉽게 시작하는 키워드 광고 실습</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="김대용-매출필수코스-쉽게-시작하는-키워드-광고-실습"><a href="#김대용-매출필수코스-쉽게-시작하는-키워드-광고-실습" class="headerlink" title="김대용 - [매출필수코스] 쉽게 시작하는 키워드 광고 실습"></a>김대용 - [매출필수코스] 쉽게 시작하는 키워드 광고 실습</h1><h3 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h3><p>김대용 과장<br>교육센터 6년째 근무</p>
+<h3 id="ESM에서-매출을-증가시키는-3가지-방법"><a href="#ESM에서-매출을-증가시키는-3가지-방법" class="headerlink" title="ESM에서 매출을 증가시키는 3가지 방법"></a>ESM에서 매출을 증가시키는 3가지 방법</h3><ol>
+<li>내부 유입<ol>
+<li>자체마케팅(키워드 광고)</li>
+<li>프로모션 : 제안받기(슈퍼딜/설기획전 등등)</li>
+</ol>
+</li>
+<li>외부 유입<ol>
+<li>가격비교(스마트스토어 가격비교 / 다나와 등)</li>
+</ol>
+</li>
+<li><strong>이번 강의는 키워드 광고에 대한 기초 교육임.</strong></li>
+</ol>
+<h3 id="키워드-마케팅"><a href="#키워드-마케팅" class="headerlink" title="키워드 마케팅"></a>키워드 마케팅</h3><h4 id="키워드-조회"><a href="#키워드-조회" class="headerlink" title="키워드 조회"></a>키워드 조회</h4><ol>
+<li>차량용햇빛가리개 와 차량용 햇빛가리개는 상품 페이지가 비슷하게 나온다. 그럼 둘 중에 더 많이 보는 키워드만 골라서 광고하면 됨.</li>
+<li><strong>키워드 조회수 확인</strong> :  고객들은 어떤 키워드로 주로 검색할까?<ol>
+<li>G마켓 제일 아래에는 ‘판매자서비스’가 있다. 거기서 ‘판매자 광고샵’로 들어간다.</li>
+<li>여기에 ‘파워클릭광고입찰’ 이라는 탭으로 들어간다.</li>
+<li>여기에 ‘키워드’라는 탭으로 들어간다.</li>
+<li>시즌별 키워드로 가서 차량용햇빛가리개, 차량용 햇빛가리개 를 2019년 6월 기준으로 검색하면 ‘차량용 햇빛가리개’가 훨씬더 많이 나온다.</li>
+<li>다른 키워드 : 펭수달력, 펭수 달력<ol>
+<li>20년 1월 현재 제일 핫한 키워드이다.</li>
+<li>이건 g마켓에 검색해도 광고가 없다. 즉 기본 입찰가 300원으로 최상위에 끌어올릴 수 있다!</li>
+</ol>
+</li>
+<li>다른 키워드 : 닌텐도스위치, 닌텐도 스위치<ol>
+<li>닌텐도 스위치 : 1100 정도 입찰가. 조회수 더 많음.</li>
+<li>닌텐도스위치 : 500 정도 입찰가. 조회수 좀 적음.</li>
+<li>당연히 조회수가 더 많은걸 셀러가 확인했으니 입찰경쟁이 더 일어나는 것이다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>시즌별 상품<ol>
+<li>19년 3월 쇼핑백 시즌별 키워드 1위는 에코백이다.</li>
+<li>자신이 가방 전문 업체라면 이 때의 키워드를 노려야 한다.<h4 id="CPC-방식의-광고"><a href="#CPC-방식의-광고" class="headerlink" title="CPC 방식의 광고"></a>CPC 방식의 광고</h4></li>
+</ol>
+</li>
+<li><strong>광고 비용은 소비자로부터 받아내는 것이다.</strong></li>
+<li>클릭당 단가(CPC)와 전환율<ol>
+<li><strong>클릭단가, 전환율, 마진</strong> 을 알면 <strong>전환당광고비, 영업이익금</strong> 을 알 수 있다.</li>
+<li>금액 책정<ol>
+<li>내 ‘백팩’ 상품 클릭단가가 1000원이라고 하자.</li>
+<li>전환율이 10%다.</li>
+<li><strong>전환 당 광고비</strong> 는 10000원(1000/10%)이다.<ol>
+<li>당연하다. 전환율 10%라면 10명이 광고로 들어왔을 때(=클릭 10번) 1개 팔렸다고 생각하면 된다.</li>
+</ol>
+</li>
+<li>이 상황에서, 마진이 10000원이라고 하자.</li>
+<li><strong>영업이익금</strong> 은 0원(10000-10000)이다.<ol>
+<li>구조상 내게 이익이 돌아오지 않는다.</li>
+</ol>
+</li>
+<li>이런 경우 클릭단가를 낮춰야 한다. <strong>광고에 무리하게 투자하면 안 된다.</strong></li>
+<li>물론 지속적으로 마이너스 광고비를 유지하면 후기 등이 누적되어 전환율을 끌어올릴 수 있다.<ol>
+<li>그럼에도, 그렇게 올라간 전환율로부터 마케팅 광고비 이상의 수익을 올릴 수 있는지 고려해야 한다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>PC 상품 노출 순서<ol>
+<li><strong>언급한 순서대로 먼저 노출된다. 일반상품은 광고 다음이다.</strong></li>
+<li>가로형 광고 영역<ol>
+<li>CPP(Cost Per Period) 방식 : 플러스상품처럼 특정 기간동안의 상위노출을 구매함.</li>
+</ol>
+</li>
+<li>파워클릭<ol>
+<li>CPC 방식</li>
+</ol>
+</li>
+<li>플러스상품(PC플러스)<ol>
+<li>CPP 방식</li>
+</ol>
+</li>
+<li>스마일배송상품<ol>
+<li>쿠팡 로켓배송처럼 제품 자체를 G마켓에 입고시킨 상품.</li>
+</ol>
+</li>
+<li>리스팅광고상품(포커스상품)<ol>
+<li>CPP 방식</li>
+<li>일반상품보다 무조건 앞에 나옴. 그러나, 같은 포커스상품이라도 판매량순으로 정렬되기 때문에, 신규 제품은 돈 내고 노출이 안 됨.<ol>
+<li>포커스상품을 등록한 사람이 별로 없으면 반대로 저렴한 가격으로 노출시킬 수 있다고 생각하면 된다.</li>
+</ol>
+</li>
+<li>일주엘 3000원 정도.</li>
+</ol>
+</li>
+<li>일반 상품 : 맨 아래 노출된다.</li>
+</ol>
+</li>
+<li>모바일 상품 노출 순서<ol>
+<li>파워클릭<ol>
+<li>PC에 파워클릭 3번으로 노출되면 모바일도 파워클릭 3번째에 노출된다.</li>
+</ol>
+</li>
+<li>플러스상품(모바일플러스)<ol>
+<li>CPP 방식</li>
+<li>PC랑 별도로 신청해야 한다. 노출이 PC와 별도로 이뤄짐.</li>
+</ol>
+</li>
+<li><strong>강사님 코멘트 : 강사님께서 자기가 광고를 한다면 모바일파워클릭 또는 모바일플러스상품에 올릴거라 하심. 핫팩 모바일 플러스상품 1일노출 단가는 72000원인데, 이래도 이 단가로 구매하는 사람들이 있다.</strong><ol>
+<li>왜? 사람들이 견적을 내서 들어가기 때문이다.<h4 id="CPP-수익-계산하기"><a href="#CPP-수익-계산하기" class="headerlink" title="CPP 수익 계산하기"></a>CPP 수익 계산하기</h4></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>CPP 광고 계산하기 : 핫팩<ol>
+<li>키워드/광고구좌/광고비/매일판매량/개당마진/마진/영업이익금으로 표를 만든다.</li>
+<li>핫팩/모바일플러스/72000/15/5000/75000/3000<ol>
+<li>경쟁업체의 판매량은 어제 판매량과 오늘 판매량을 비교하면 된다.</li>
+<li>개당마진은 자기가 정보를 구해야 한다.</li>
+<li>위 계산을 때리면, 마진 5000원이 남는 상품을 15개 판다고 가정할 때 광고 71000원을 낼 수 있다는 뜻이다.</li>
+<li>즉, 돈을 더 벌 수 있기 때문에 저 광고비를 내는 것이다.<h4 id="실습"><a href="#실습" class="headerlink" title="실습"></a>실습</h4></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>광고 입찰 가능 시간<ol>
+<li>어제 20시부터 오늘 17시 50분까지 광고 입찰이 가능하다. 옥션은 4시 50분이다.</li>
+<li><strong>마감시간만 생각하면 된다. 오후 5시 49분 59초에 배팅하면 1순위 노출 가능(반드시 1순위가 필요한 경우)</strong></li>
+</ol>
+</li>
+<li>방법<ol>
+<li>G마켓광고입찰 탭으로 들어간다.</li>
+<li>검색광고 하위 탭으로 들어간다.</li>
+<li>‘주방용품’을 입력하고 조회를 누른다.(이번 실습에선 주방용품 키워드에 노출시켜보겠다.)</li>
+<li>모바일 플러스 검색 말고는 안 봐도 된다. 모바일 플러스 검색으로 간다.<ol>
+<li>키워드플러스상품 / 키워드 파워상품 / 검색창 파워 상품 뭐 이런 것들은 볼 필요 없다.</li>
+</ol>
+</li>
+<li>상품선택을 눌러 내가 원하는 상품을 고른다. 상품번호를 입력해서 조회해도 된다.</li>
+<li>입찰기간 : 1일로 선택한다.<ol>
+<li>30일로 선택하면, 30일동안 매일 밑의 입찰금액으로 꾸준히 입찰을 신청하겠다. 이런 뜻이다.</li>
+</ol>
+</li>
+<li>현재 입찰 최고가는 2400이니 2500으로 입찰금액을 세팅하고 입찰 신청을 누른다.</li>
+<li>끝! 이제 17시 50분까지 기다리면 결과가 나온다.<ol>
+<li>입찰이 빡센 경우 17시 45분 이쯤에 다시 경쟁에서 떨어지지 않았는지 확인해야 한다.</li>
+<li>명절선물세트 이런 키워드가 경쟁이 심하다.</li>
+</ol>
+</li>
+<li>최고가 자동입찰<ol>
+<li>내가 정해둔 예산까지 계속 1등을 고수하는 것이다.</li>
+<li>근데, 두명이 최고가 경쟁입찰을 세팅해놓은 경우가 최고가까지 달리게 된다. 이러면 두 사람이 10만원, 세 번째 입찰자는 2만원 이런 경우가 생긴다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="리포트-광고가-돈이-되었는가-손해는-아닌가"><a href="#리포트-광고가-돈이-되었는가-손해는-아닌가" class="headerlink" title="리포트 : 광고가 돈이 되었는가? 손해는 아닌가?"></a>리포트 : 광고가 돈이 되었는가? 손해는 아닌가?</h4><ol>
+<li>광고 리포트에는 광고 지출 / 매출이 나온다. 총 매출에 마진율을 곱하고(내가 공급가에 1.2배로 팔면 마진율 = 0.2) 거기서 광고지출 빼면 영업이익금이 나온다.</li>
+<li><strong>강사님 코멘트 : 스마트스토어는 광고비가 너무 비싸서 1등을 거의 노리지 않으심.</strong></li>
+</ol>
+<h4 id="구매-전환율-알아내기"><a href="#구매-전환율-알아내기" class="headerlink" title="구매 전환율 알아내기"></a>구매 전환율 알아내기</h4><ol>
+<li>Q : 처음 진입하는 상품 카테고리의 전환율을 알아내는 법?<ol>
+<li>A : 스마트스토어센터 - 시장벤치마크 - 카테고리를 세팅하면 구매전환율이 나온다. 구입당 결제율 항목을 보면 된다.</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/24/%EC%82%AC%EC%97%85%20-%20%EA%B9%80%EB%8C%80%EC%9A%A9%20-%20[%EB%A7%A4%EC%B6%9C%ED%95%84%EC%88%98%EC%BD%94%EC%8A%A4]%20%EC%89%BD%EA%B2%8C%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%ED%82%A4%EC%9B%8C%EB%93%9C%20%EA%B4%91%EA%B3%A0%20%EC%8B%A4%EC%8A%B5/" data-id="ck8tqyw64002gxkvjac5g8vd2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-일기 - 20191231 긴 인생을 감각하다" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/24/%EC%9D%BC%EA%B8%B0%20-%2020191231%20%EA%B8%B4%20%EC%9D%B8%EC%83%9D%EC%9D%84%20%EA%B0%90%EA%B0%81%ED%95%98%EB%8B%A4/" class="article-date">
+  <time datetime="2020-01-24T01:09:34.000Z" itemprop="datePublished">2020-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Private/">Private</a>►<a class="article-category-link" href="/categories/Private/%EC%9D%BC%EA%B8%B0/">일기</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/24/%EC%9D%BC%EA%B8%B0%20-%2020191231%20%EA%B8%B4%20%EC%9D%B8%EC%83%9D%EC%9D%84%20%EA%B0%90%EA%B0%81%ED%95%98%EB%8B%A4/">긴 인생을 감각하다</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="긴-인생을-감각하다"><a href="#긴-인생을-감각하다" class="headerlink" title="긴 인생을 감각하다"></a>긴 인생을 감각하다</h1><p>&nbsp;하루는 내 긍정적인 태도에 대해서 생각해보았다. 왜 우울하지 않은가? 교수로부터의 낮은 시험점수가 조금도 걱정되지 않음은 무슨 까닭에서인가? 나는 시간을 들여 다음과 같은 결론을 내렸다.</p>
+<p>1 밝은 전망, 2 긍정적 사건이 더 많음, 3 통제할 수 있는 어려움, 4 긴 인생에 대한 감각. 각각을 살펴보겠다.</p>
+<h2 id="1-밝은-전망"><a href="#1-밝은-전망" class="headerlink" title="1. 밝은 전망"></a>1. 밝은 전망</h2><p>&nbsp;이번 학기로 4학기가 끝났다. 공대생으로서 나는 대강 다음을 계획하고 있다. 2학년 겨울방학 때 컴활 1급 자격증, 3학년 여름방학 때 토익, 3학년 겨울방학 때 인턴 혹은 학부연구생, 그리고 석사과정 혹은 취업. 이번 2학년 겨울방학 때는 자격증과 함께 아르바이트를 하기로 했다. 바쁘겠지만, 보람차다. 아르바이트 수익은 나와 가족의 행복에 기여할 것이다. 다음 학기의 기숙사 등록비를 충당하는 데도 쓸 수 있으리라고 생각한다. 생각할 수 있는 미래는 좋은 일들 뿐이다.</p>
+<h2 id="2-긍정적-사건이-더-많음"><a href="#2-긍정적-사건이-더-많음" class="headerlink" title="2. 긍정적 사건이 더 많음"></a>2. 긍정적 사건이 더 많음</h2><p>&nbsp;지금 생각나는 부정적 사건은 낮은 점수 뿐인데 긍정적 사건은 아르바이트(수익), 자기 이해(학습 컨설팅, 카운슬링 센터), 봉사의 보람, 계획적인 생활 등 여럿이다. 최근에 좋은 일들만 있었기에 긍정적일 수밖에 없다.</p>
+<h2 id="3-통제할-수-있는-어려움"><a href="#3-통제할-수-있는-어려움" class="headerlink" title="3. 통제할 수 있는 어려움"></a>3. 통제할 수 있는 어려움</h2><p>&nbsp;이번 학기(4학기)에는 심리학 교양수업을 들었다. 이 수업과 볼프 슈나이더의 &lt;군인&gt;을 참고한다면, 나는 불안은 없고 위협은 통제할 수 있는 상황이라 할 수 있다. 불안anxiety는 실체가 없는 상상적인 두려움이다. 위협threat은 실질적 두려움이다. 예를 들어, 기말고사에 대한 막연한 두려움은 불안이다. 내가 기말고사 때 몇 점을 맞으면 원하는 학저믕ㄹ 받을 수 없으리라는 두려움은 위협이다. 어떤 불안은 분석하면 사라지거나(그런 건 있지도 않은 걸 두려워하는 거야) 위협으로 넘어간다(사실 이걸 두려워하고 있었던 거야).<br>&nbsp;그리고, 위협은 통제할 수 있거나 통제할 수 없다. 어떤 위협은 내가 가진 능력 및 자원을 계획을 갖고 동원할 때 충분히 잘 대응할 수 있다. 한편, 내가 쥔 카드로 이길 수 없는 경우도 있다. 그러면 테이블을 일어나거나 패를 들고 관망하면 될 뿐이다. 어렵지 않다. 이런 식으로 나는 두려움을 분류하고 있으며 꽤 잘 먹히는 것 같다.</p>
+<h2 id="4-긴-인생에-대한-감각"><a href="#4-긴-인생에-대한-감각" class="headerlink" title="4. 긴 인생에 대한 감각"></a>4. 긴 인생에 대한 감각</h2><p>&nbsp;최근 부끄러움이나 수치심을 느끼는 일이 줄었다. 이것은 긴 인생에 대한 감각이 원인이라고 보고 있다. 이런저런 일이 있더라도 내 인생이 이걸로 끝나지가 않는다는 생각이 든다. 발표 때 말을 더듬어도 인생이 끝나지 않는다. 외국인 교수님 상대로 영어가 막혀 말을 못해도 인생이 끝나지 않는다. 나쁜 학점을 받아도 인생이 끝나지 않는다. 그로 인해 장학금이 끊기더라도 인생이 끝나지가 않는다. 언제부터 이런 인식을 갖게 되었는지 모르겠다. 지금 일어나는 일들이 마치 초등학교 방학숙제와 중학교 수행평가 같은 느낌이다. 뭐, 어때, 무슨 상관이냐, 하는 생각이 들고 마는 것이다.<br>&nbsp;내가 겪는 일들을 그냥 넘길 수 있게 되었다는 장점이 있긴 했지만 이상한 감각이다. 마치 1차 방어기제를 달고 사는 듯한, 이것도 시간 지나면 괜찮아질거야~가 아닌, 음, 곤란한 상황이지만 뭐 어때, 인생은 너무 길다고, 라며 생각을 흘려보내는 느낌이다.</p>
+<h2 id="5-뭐-어때"><a href="#5-뭐-어때" class="headerlink" title="5. 뭐, 어때"></a>5. 뭐, 어때</h2><p>&nbsp;어쨌든 꽤 괜찮아보인다. 달리 변화시킬 생각은 들지 않는다. 필요가 생기면 바뀌겠지.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/24/%EC%9D%BC%EA%B8%B0%20-%2020191231%20%EA%B8%B4%20%EC%9D%B8%EC%83%9D%EC%9D%84%20%EA%B0%90%EA%B0%81%ED%95%98%EB%8B%A4/" data-id="ck8tqyw61002bxkvj6zie6084" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-프로그래밍 - 네이버 광고 API" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/19/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EB%84%A4%EC%9D%B4%EB%B2%84%20%EA%B4%91%EA%B3%A0%20API/" class="article-date">
+  <time datetime="2020-01-19T06:27:56.000Z" itemprop="datePublished">2020-01-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/19/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EB%84%A4%EC%9D%B4%EB%B2%84%20%EA%B4%91%EA%B3%A0%20API/">네이버 광고 API</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <iframe width="640" height="360" src="https://www.youtube.com/embed/LjG7-5kbevo" frameborder="0" gesture="media" allowfullscreen=""></iframe>
+
+<ul>
+<li>이번 주말을 즐겁게 보내게 해 준 노래.</li>
+</ul>
+<h2 id="API-개요"><a href="#API-개요" class="headerlink" title="API 개요"></a>API 개요</h2><ul>
+<li>구글 API, 페이스북 API, 트위터 API 그리고 네이버 API는 REST API이다.</li>
+<li>API는 프로그램을 다루는 환경을 말한다. 키보드와 마우스로 컴퓨터를 다루면 키보드, 마우스는 API이다.</li>
+<li>REST는 API가 사용되는 형태를 말한다. 즉, “컴퓨터의 API”라고 하면 “키보드, 마우스, 모니터, 프린터…등의 컴퓨터를 다루는 수단들”이라 할 수 있다. REST API는 “REST의 규칙을 따르는 수단들”을 말한다.</li>
+<li>REST의 규칙이란 다음을 말한다. 첫재, 자원 식별자(URI, URL아님)로 접속할 수 있을 것. 둘째, HTTP Method(GET, POST 등)를 접속 수단으로 쓸 것. 셋째, 서버는 요청에 대해 JSON, XML, TEXT등의 방법으로 대한 응답(Representation)할 것.</li>
+<li>예로, <a href="https://www.facebook.com/youtube/" target="_blank" rel="noopener">https://www.facebook.com/youtube/</a> 라는 링크는 REST API가 아니다. 그러나 <a href="https://graph.facebook.com/youtube/" target="_blank" rel="noopener">https://graph.facebook.com/youtube/</a> 라는 링크는 REST API이다(자세한 정보를 보려면 토큰이 필요하다.). 왜냐하면 별도의 URI인 graph로 접속하며, HTTP 메소드로 주고받고(쉽게 말하자면 웹 브라우저로 들어갈 수 있다는 뜻이다), JSON 파일로 답신하기 때문이다.<h2 id="네이버-광고-API-개요"><a href="#네이버-광고-API-개요" class="headerlink" title="네이버 광고 API 개요"></a>네이버 광고 API 개요</h2></li>
+<li>네이버 공개 API와 별개의 API이다.</li>
+<li>네이버 API와 달리 헤더가 좀 더 복잡하다.</li>
+</ul>
+<h2 id="실제-코드-구현"><a href="#실제-코드-구현" class="headerlink" title="실제 코드 구현"></a>실제 코드 구현</h2><h3 id="1-헤더-만들기-연관키워드-API-RelKwdStat"><a href="#1-헤더-만들기-연관키워드-API-RelKwdStat" class="headerlink" title="1) 헤더 만들기 : 연관키워드 API(RelKwdStat)"></a>1) 헤더 만들기 : 연관키워드 API(RelKwdStat)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> hmac</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># X-API-KEY : 네이버 광고 - 도구 - API 사용 관리 메뉴에서 "엑세스라이선스"의 값.</span></span><br><span class="line">x_api_key = <span class="string">"0100040080618b186cb85dadee1530d97b60f2ab23b4f276400f282f60de1908671b58d46c"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># X-CUSTOMER : 네이버 광고 - 도구 - API 사용 관리 메뉴에서 "CUSTOMER_ID"의 값.</span></span><br><span class="line">x_customer = <span class="string">"1234567"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># X-Timestamp : 현재 시간 * 1000을 반올림한 자연수 값.</span></span><br><span class="line">x_timestamp = str(round(time.time() * <span class="number">1000</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># secret_key : 네이버 광고 - 도구 - API 사용 관리 메뉴에서 "비밀키"의 값.</span></span><br><span class="line"><span class="comment"># 각 API 문서 상단에는 HTTP request가 있고, 이 때의 요청방식이 method이다.</span></span><br><span class="line"><span class="comment"># GET /keywordstool에서 GET은 method, /keywrodstool은 uri이다.</span></span><br><span class="line">secret_key = <span class="string">"AQAAAACL9gAB059HwcGtmSLe1fLx39CeoPPUGW8kqkTehLogeg=="</span></span><br><span class="line">method = <span class="string">"GET"</span></span><br><span class="line">uri = <span class="string">"/keywordstool"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># X-Signature</span></span><br><span class="line"><span class="comment"># : X-Timestamp, method, uri 값을 점(.)으로 연결한 뒤 HmacSHA256 알고리즘으로 암호화한 후 Base64로 인코딩한 값.</span></span><br><span class="line">sign = <span class="string">"%s.%s.%s"</span> % (x_timestamp, method, uri)</span><br><span class="line">signature_encrypted = hmac.new(</span><br><span class="line">    secret_key.encode(), sign.encode(), hashlib.sha256</span><br><span class="line">).digest()</span><br><span class="line">x_signature = base64.b64encode(signature_encrypted).decode()</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"X-API-KEY"</span>: x_api_key,</span><br><span class="line">    <span class="string">"X-CUSTOMER"</span>: x_customer,</span><br><span class="line">    <span class="string">"X-Timestamp"</span>: x_timestamp,</span><br><span class="line">    <span class="string">"X-Signature"</span>: x_signature,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="string">"X-API-KEY:%s"</span> % x_api_key)</span><br><span class="line">print(<span class="string">"X-CUSTOMER:%s"</span> % x_customer)</span><br><span class="line">print(<span class="string">"X-Timestamp:%s"</span> % x_timestamp)</span><br><span class="line">print(<span class="string">"X-Signature:%s"</span> % x_signature)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-파라미터-만들기-연관키워드-API-RelKwdStat"><a href="#2-파라미터-만들기-연관키워드-API-RelKwdStat" class="headerlink" title="2) 파라미터 만들기 : 연관키워드 API(RelKwdStat)"></a>2) 파라미터 만들기 : 연관키워드 API(RelKwdStat)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">params = &#123;<span class="string">"hintKeywords"</span>:<span class="string">"마스크,마스크시트"</span>&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>네이버 광고 API는 무엇이 필수이고 무엇이 필수가 아닌지 가르쳐주지 않는다. 그래서 POSTMAN 등으로 API를 테스트해볼 필요가 있다.</li>
+<li>연관키워드 API(RelKwdStat)의 경우 필수 파라미터는 키워드뿐이다.</li>
+</ul>
+<h3 id="3-GET-요청하기"><a href="#3-GET-요청하기" class="headerlink" title="3) GET 요청하기"></a>3) GET 요청하기</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">BASE_URL = <span class="string">"https://api.naver.com"</span> <span class="comment"># 네이버 광고 API의 기본 URL이다.</span></span><br><span class="line">uri = <span class="string">"/keywordstool"</span></span><br><span class="line">request_url = BASE_URL + uri</span><br><span class="line"></span><br><span class="line">response = request.get(request_url,headers=headers,params=params)</span><br><span class="line"></span><br><span class="line">keyword_info = json.loads(response.text)</span><br><span class="line"></span><br><span class="line">print(keyword_info)</span><br></pre></td></tr></table></figure>
+
+<h2 id="맺으며"><a href="#맺으며" class="headerlink" title="맺으며"></a>맺으며</h2><ul>
+<li>위와 같은 방식대로 다른 코드도 구현할 수 있겠다.</li>
+<li>이미 완성된 리포지토리가 있으니 필요한 경우 참고자료의 링크를 참고하면 된다.</li>
+</ul>
+<h2 id="참고자료"><a href="#참고자료" class="headerlink" title="참고자료"></a>참고자료</h2><ul>
+<li><a href="https://gmlwjd9405.github.io/2018/09/21/rest-and-restful.html" target="_blank" rel="noopener">REST란? REST API란? RESTful이란? heejeong Kwon</a></li>
+<li><a href="https://github.com/devkingsejong/python-PowerNad" target="_blank" rel="noopener">헤더에 관한 대부분의 코드는 이곳을 참고했다</a></li>
+<li><a href="https://docs.ncloud.com/ko/apigw/apigw-2-5.html" target="_blank" rel="noopener">Access Key Id와 맵핑되는 SecretKey로 암호화한 서명 / HMAC 암호화 알고리즘은 HmacSHA256 사용</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/19/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EB%84%A4%EC%9D%B4%EB%B2%84%20%EA%B4%91%EA%B3%A0%20API/" data-id="ck8tqyw7f005sxkvj4i0x9vn1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-프로그래밍 - Tor 설치 및 사용" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/18/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20Tor%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9/" class="article-date">
+  <time datetime="2020-01-18T05:07:55.000Z" itemprop="datePublished">2020-01-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/18/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20Tor%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9/">Tor 설치 및 사용</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><h3 id="1-기본-설치"><a href="#1-기본-설치" class="headerlink" title="1) 기본 설치"></a>1) 기본 설치</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install tor</span><br></pre></td></tr></table></figure>
+<h3 id="2-파이선-라이브러리-설치"><a href="#2-파이선-라이브러리-설치" class="headerlink" title="2) 파이선 라이브러리 설치"></a>2) 파이선 라이브러리 설치</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br><span class="line">pip install -U requests[socks] # -U 옵션 : 이미 설치된 경우 업데이트한다.</span><br><span class="line">pip install -U requests[security]</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-IP를-필요할-때-바꾸게-해-주는-stem-설치"><a href="#3-IP를-필요할-때-바꾸게-해-주는-stem-설치" class="headerlink" title="3) IP를 필요할 때 바꾸게 해 주는 stem 설치"></a>3) IP를 필요할 때 바꾸게 해 주는 stem 설치</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install stem</span><br></pre></td></tr></table></figure>
+<h2 id="설정"><a href="#설정" class="headerlink" title="설정"></a>설정</h2><h3 id="1-서비스-실행"><a href="#1-서비스-실행" class="headerlink" title="1) 서비스 실행"></a>1) 서비스 실행</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service tor start # 서비스 시작</span><br></pre></td></tr></table></figure>
+
+<p>제대로 실행되는 지 확인하고자 다음 명령어를 입력한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --socks5 localhost:9050 --socks5-hostname localhost:9050 -s https:&#x2F;&#x2F;check.torproject.org&#x2F; | cat | grep -m 1 Congratulations | xargs</span><br></pre></td></tr></table></figure>
+<p>위 명령어를 입력하면 아래처럼 나온다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Congratulations. This browser is configured to use Tor.</span><br></pre></td></tr></table></figure>
+<h3 id="2-Stem-설정"><a href="#2-Stem-설정" class="headerlink" title="2) Stem 설정"></a>2) Stem 설정</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano &#x2F;etc&#x2F;tor&#x2F;torrc</span><br></pre></td></tr></table></figure>
+<p>아래 내용이 있다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#ControlPort 9051</span><br><span class="line"></span><br><span class="line">#CookieAuthentication 1</span><br></pre></td></tr></table></figure>
+<p>아래와 같이 변경한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ControlPort 9051</span><br><span class="line"></span><br><span class="line">CookieAuthentication 1</span><br></pre></td></tr></table></figure>
+<p>서비스를 재시작한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service tor restart</span><br></pre></td></tr></table></figure>
+
+<h2 id="사용"><a href="#사용" class="headerlink" title="사용"></a>사용</h2><h3 id="1-Tor로-IP-얻기"><a href="#1-Tor로-IP-얻기" class="headerlink" title="1) Tor로 IP 얻기"></a>1) Tor로 IP 얻기</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># tor.py</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">proxies &#x3D; &#123;</span><br><span class="line">    &#39;http&#39;: &#39;socks5:&#x2F;&#x2F;127.0.0.1:9050&#39;,</span><br><span class="line">    &#39;https&#39;: &#39;socks5:&#x2F;&#x2F;127.0.0.1:9050&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(requests.get(&#39;https:&#x2F;&#x2F;ident.me&#39;).text)# 원래 아이피</span><br><span class="line">print(requests.get(&#39;https:&#x2F;&#x2F;ident.me&#39;, proxies&#x3D;proxies).text) # 새로운 아이피</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-다른-IP-받기"><a href="#2-다른-IP-받기" class="headerlink" title="2) 다른 IP 받기"></a>2) 다른 IP 받기</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># tor.py</span><br><span class="line">import requests</span><br><span class="line">from stem import Signal</span><br><span class="line">from stem.control import Controller</span><br><span class="line"></span><br><span class="line">proxies &#x3D; &#123;</span><br><span class="line">    &#39;http&#39;: &#39;socks5:&#x2F;&#x2F;127.0.0.1:9050&#39;,</span><br><span class="line">    &#39;https&#39;: &#39;socks5:&#x2F;&#x2F;127.0.0.1:9050&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(requests.get(&#39;https:&#x2F;&#x2F;ident.me&#39;, proxies&#x3D;proxies).text) # Tor를 사용중일 때의 기존 아이피</span><br><span class="line"></span><br><span class="line">with Controller.from_port(port &#x3D; 9051) as c:</span><br><span class="line">    c.authenticate()</span><br><span class="line">    c.signal(Signal.NEWNYM)</span><br><span class="line"></span><br><span class="line">print(requests.get(&#39;https:&#x2F;&#x2F;ident.me&#39;, proxies&#x3D;proxies).text) # 새로 받은 아이피</span><br></pre></td></tr></table></figure>
+
+<h2 id="참고자료"><a href="#참고자료" class="headerlink" title="참고자료"></a>참고자료</h2><ul>
+<li><a href="https://www.sylvaindurand.org/use-tor-with-python/" target="_blank" rel="noopener">대부분은 여기를 참고했다.</a></li>
+<li><a href="https://stackoverflow.com/questions/12601316/how-to-make-python-requests-work-via-socks-proxy" target="_blank" rel="noopener">pip install requests[socks]가 안먹혀서 여기서 해결했다</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/18/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20Tor%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9/" data-id="ck8tqyw79005kxkvjgf9251ti" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992/">공학수학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%84%B1%EA%B2%A9%EA%B3%BC%EC%A0%81%EC%9D%91/">성격과적응</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992/">전기자기학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02/">회로이론2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/">Private</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/">게임</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/XCOM-2/">XCOM 2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC/">프로스트펑크</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EC%9D%BC%EA%B8%B0/">일기</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/">블로그 관리</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/">업무</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4/">스마트스토어</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Github/">Github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%94%EB%B2%84%EA%B9%85/">디버깅</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%97%90%EB%94%94%ED%84%B0/">에디터</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/">Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/">파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Vultur에서 윈도우 설치하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">윈도우에서 리눅스처럼 Tor 서비스 사용하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/">유튜브 다운로더 youtube-dl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

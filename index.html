@@ -64,14 +64,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-학습컨설팅 핵심" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/24/%ED%95%99%EC%8A%B5%EC%BB%A8%EC%84%A4%ED%8C%85%20%ED%95%B5%EC%8B%AC/" class="article-date">
-  <time datetime="2020-01-24T01:19:00.000Z" itemprop="datePublished">2020-01-24</time>
+    <a href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/" class="article-date">
+  <time datetime="2020-03-13T15:00:00.000Z" itemprop="datePublished">2020-03-14</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a>
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Github/">Github</a>
   </div>
 
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/24/%ED%95%99%EC%8A%B5%EC%BB%A8%EC%84%A4%ED%8C%85%20%ED%95%B5%EC%8B%AC/">학습컨설팅 핵심</a>
+      <a class="article-title" href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/">Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기</a>
     </h1>
   
 
@@ -90,62 +90,642 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="학습진단-핵심"><a href="#학습진단-핵심" class="headerlink" title="학습진단 핵심"></a>학습진단 핵심</h1><h2 id="학습-단위시간을-1시간으로-잡는다"><a href="#학습-단위시간을-1시간으로-잡는다" class="headerlink" title="학습 단위시간을 1시간으로 잡는다."></a>학습 단위시간을 1시간으로 잡는다.</h2><ol>
-<li>4시간 해야 할 일이면 1시간 씩 끊는다.</li>
-<li>6시간 공부할 수 있으면 A, B, C, A, B, C 이렇게 3과목을 1시간씩 순환시킨다.</li>
-<li>1시간만에 못 끝냈어도 다음으로 넘어간다.</li>
-<li>시간 전에 끝냈으면 폰 만지면서 남은 시간을 보낸다.<ol>
-<li><strong>스스로에게 보상으로 작용해서 공부에 속도를 붙이게 해 준다.</strong></li>
-</ol>
+        <h1 id="Github-Gist로-코드-블록-Code-Snippet-관리-및-Sublime-Text와-연동하기"><a href="#Github-Gist로-코드-블록-Code-Snippet-관리-및-Sublime-Text와-연동하기" class="headerlink" title="Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기"></a>Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기</h1><h1 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h1><ul>
+<li><a href="https://gist.github.com/" target="_blank" rel="noopener">Github Gist</a>에 Code Snippet을 만들어 둔다.</li>
+<li>Preferences - Pacakge Control - Install Pacakge 로 이동 후 “Gist”라는 이름의 패키지 설치</li>
+<li><a href="https://github.com/condemil/Gist#generating-access-token" target="_blank" rel="noopener">Gist 패키지 설명 사이트</a>에 있는 Installation에 따라 API 설정 및 token에 입력한다.</li>
+<li>키 바인딩 기본설정은 사용하기 애매하니 { “keys”: [“ctrl+0”], “command”: “insert_gist_list” } 같은 간단한 걸로 바꾼다.</li>
+</ul>
+<h1 id="코드-블록"><a href="#코드-블록" class="headerlink" title="코드 블록?"></a>코드 블록?</h1><ul>
+<li>코드 짜다 보면 <strong>이 코드는 나중에 다른 프로젝트에도 쓸 일이 있겠다</strong> 싶은 부분이 있다. 그것들을 Code Snippet이라 부른다.</li>
+<li>코드 블록, 코드 조각, Code Snippet이라고도 한다.</li>
+</ul>
+<h1 id="어떻게-연동할까"><a href="#어떻게-연동할까" class="headerlink" title="어떻게 연동할까?"></a>어떻게 연동할까?</h1><ul>
+<li>Code Snippet 만들기<ul>
+<li><a href="https://gist.github.com/" target="_blank" rel="noopener">Github Gist</a>에 Code Snippet을 보관할 수 있다.</li>
+<li>다른 사람들 Code Snippet도 구경할 수 있다.</li>
+<li>제목은 기능 이름으로 적당히 짓는다. 모르겠으면 다른 사람들 걸 참고한다.</li>
+<li>연동할 때 보이는 건 description 부분이다. 검색하기 편하게 Python:File Writing 이런 식으로 적으면 된다.</li>
+<li>연동할 때 편하기 쓰려면 public으로 등록한다.</li>
+</ul>
 </li>
-</ol>
-<h2 id="시간표에-버퍼를-추가하라"><a href="#시간표에-버퍼를-추가하라" class="headerlink" title="시간표에 버퍼를 추가하라."></a>시간표에 버퍼를 추가하라.</h2><ol>
-<li>오후 7-12시까지 여유가 있으면 계획으로 시간을 다 채우지 말고 <strong>버퍼 시간</strong> 으로 둬라.</li>
-<li>주말, 적어도 6시간 정도는 버퍼 시간으로 둬라.</li>
-<li>못한 일들을 버퍼 시간에 끝낸다. 빨래, 설거지부터 1시간 안에 못 끝낸 공부들까지.</li>
-<li>월요일 버퍼 때 못 끝낸 건 <strong>화요일 말고</strong> 주말 버퍼로 보낸다. 이래야 루틴이 무너지는 걸 막을 수 있다.</li>
-</ol>
-<h2 id="시험공부-문제-중심으로-공부하라"><a href="#시험공부-문제-중심으로-공부하라" class="headerlink" title="시험공부 : 문제 중심으로 공부하라."></a>시험공부 : 문제 중심으로 공부하라.</h2><ol>
-<li>시험 때 보통 5문제가 출제된다면 예상문제를 15개로 잡고 가장 많이 나오는 챕터부터 쳐들어간다.</li>
-<li>챕터 3-7이 시험범위일 때 3, 4, 5 순서대로 하다간 가장 중요할 수도 있는 챕터 7에 쓸 에너지가 남지 않기 때문이다.</li>
-<li>챕터문제(Problems) 1번, 2번 이런 건 풀 가치조차 없을 수도 있음을 염두에 둬라.</li>
-</ol>
-<h2 id="평소-공부-문제를-보고-개념을-읽으러-가라"><a href="#평소-공부-문제를-보고-개념을-읽으러-가라" class="headerlink" title="평소 공부 : 문제를 보고 개념을 읽으러 가라."></a>평소 공부 : 문제를 보고 개념을 읽으러 가라.</h2><ol>
-<li>책의 설명을 읽고 문제를 풀기보다, 문제에서 요구하는 개념들을 보고 앞으로 가 그 부분을 찾아내면 더 읽지 말고 풀어나가라. 이게 핵심만 공부하는 방법이다.</li>
-<li>답지를 보기 전까지 많이 틀려라. 그래도 모르겠다면 물어라. 눈을 마주치며 답을 듣는 게 훨씬 더 기억에 남는다.</li>
-</ol>
-<h2 id="모든-걸-포스팅할-필요는-없다"><a href="#모든-걸-포스팅할-필요는-없다" class="headerlink" title="모든 걸 포스팅할 필요는 없다."></a>모든 걸 포스팅할 필요는 없다.</h2><ol>
-<li>책에 풀 힌트를 적어둔 걸로 충분하다.</li>
-</ol>
-<h2 id="추가적으로-알아둘-것"><a href="#추가적으로-알아둘-것" class="headerlink" title="추가적으로 알아둘 것"></a>추가적으로 알아둘 것</h2><ol>
-<li>문제를 보고 개념을 공부하는 건 잘못된 공부법이 아니다. 하나의 공부법이다.</li>
-<li>챕터 문제가 60개라면, 딱 봐도 시험에 안 나올 문제가 있다. 단순 개념문제(보통 1, 2번 등), 프로그램을 사용하는 문제, 교수님 스타일이 아닌 문제(증명 등). 모두 쳐내라. 공부량을 확 줄일 수 있다.</li>
-<li>나올 문제라도 패턴이 익숙하고, 남은 문제들이 <strong>따분한 반복</strong> 이라면, 그 패턴의 마지막 문제를 풀고 맞았으면 넘어간다.</li>
-</ol>
-<h2 id="개인적인-궁금증-리뷰논문-찾기"><a href="#개인적인-궁금증-리뷰논문-찾기" class="headerlink" title="개인적인 궁금증 : 리뷰논문 찾기"></a>개인적인 궁금증 : 리뷰논문 찾기</h2><ol>
-<li>학문명 뒤에 Review나 Bulletin을 붙여서 저널 검색. Electronic Review 이런 식.</li>
-<li>이걸로 안 나오면 교수님께 메일을 드리는 게 확실하다.</li>
-</ol>
-<h2 id="독서에-대한-조언"><a href="#독서에-대한-조언" class="headerlink" title="독서에 대한 조언"></a>독서에 대한 조언</h2><ol>
-<li><strong>책은 전부 읽을 필요가 없다</strong><ol>
-<li>목차 읽기</li>
-<li>필요한 부분만 읽기</li>
-<li>책 덮기</li>
-<li>나중에 필요한 부분이 생기면 거기만 읽기.</li>
-<li>마치 시험에 나올 부분만 쳐들어가는 것처럼 읽어라!</li>
-</ol>
+<li>Gist 패키지 설치하기<ul>
+<li>Preferences - Pacakge Control - Install Package 로 이동 후 “Gist”라는 이름의 패키지를 설치한다.<ul>
+<li>Package Control이 없는 경우 Tools - Install Package Control로 먼저 이 기능을 활성화해야 한다.</li>
+</ul>
 </li>
-<li><strong>책별로 1~2페이지씩 읽어도 된다.</strong><ol>
-<li>어떤 한 주제(19세기 영국 노동자의 칼로리 소모량)에 대해서 알고 싶으면, 그 역사에 대한 책을 전부 빌린 다음 몇 페이지씩 읽고 반납해도 된다.</li>
-<li>이렇게 자료를 모으는 건 전혀 잘못된 게 아니다. 기억해둘 것.</li>
-</ol>
+</ul>
 </li>
-</ol>
+<li>연동하기<ul>
+<li><a href="https://github.com/condemil/Gist#generating-access-token" target="_blank" rel="noopener">Gist 패키지 설명 사이트</a>의 설명을 따라가면 된다.</li>
+<li>(Github 토큰)[<a href="https://github.com/settings/tokens]" target="_blank" rel="noopener">https://github.com/settings/tokens]</a> 페이지에서 토큰을 만든다. 이름은 Sublime Gist로 하고, Gist 항목만 체크한 다음 생성하면 된다.</li>
+<li>생성된 키를 복사한 뒤 Sublime Text에서 Preferences - Package Settings - Gist - Settings User로 이동한다.</li>
+<li>아래처럼 입력한다.<br>{<br>“token”:”복사해둔 토큰값”<br>}</li>
+</ul>
+</li>
+<li>키 설정하기<ul>
+<li>Preferences - Package Settings - Gist - Key Bindings User로 이동한다.</li>
+<li>아래처럼 입력한다.<br>[<br>{ “keys”: [“ctrl+0”], “command”: “insert_gist_list” },<br>]</li>
+</ul>
+</li>
+<li>사용하기<ul>
+<li>빈 파일을 열고 컨트롤 + 0을 누르면 깃헙에서 만들어 둔 코드 블록을 활용할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="참고문헌"><a href="#참고문헌" class="headerlink" title="참고문헌"></a>참고문헌</h1><ul>
+<li><a href="https://kin.naver.com/qna/detail.nhn?d1id=1&dirId=104&docId=349836240&ref=me1lnk&scrollTo=answer2" target="_blank" rel="noopener">개발자 분들은 코드 블록을 어떻게 보관하시는지 궁금합니다.</a></li>
+<li><a href="https://gist.github.com/not-for-me/9852928" target="_blank" rel="noopener">not-for-me/Gist를 이용한 소스관리.markdown</a></li>
+<li><a href="https://www.youtube.com/watch?time_continue=196&v=3cdkYdzgXLc&feature=emb_title" target="_blank" rel="noopener">Sublime Text에 Gist 연동하기</a></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/24/%ED%95%99%EC%8A%B5%EC%BB%A8%EC%84%A4%ED%8C%85%20%ED%95%B5%EC%8B%AC/" data-id="ck8tqwc3t00001cvjd6c015iu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/" data-id="ck8tqyw5q001dxkvj1ezg86kq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/" class="article-date">
+  <time datetime="2020-03-06T15:00:00.000Z" itemprop="datePublished">2020-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%94%EB%B2%84%EA%B9%85/">디버깅</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/">파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="헥스-파일을-뒤적거리다"><a href="#헥스-파일을-뒤적거리다" class="headerlink" title="헥스 파일을 뒤적거리다"></a>헥스 파일을 뒤적거리다</h1><p>하루는 심심해서 게임의 용량이 큰(40mb 정도) 파일을 서브라임 텍스트로 열어보았다. 나오는 건 의미 모를 16진수의 나열이었다.</p>
+<p><strong>사실 이 파일은 그림이기 때문에 이미지 뷰어로 보면 열리지 않을까?</strong> 라는 생각으로<br>이미지 뷰어로 열어봤으나 열리지 않았다.</p>
+<p>음악 파일도 아니고,<br>영상 파일도 아니었는데<br><strong>압축 프로그램으로 연결해서 실행하니 열렸다!</strong></p>
+<ul>
+<li>잠시 다른 이야기로 빠지자면, 의외로 파일을 암호화하지 않고 zip파일로 압축한 다음 확장자를 바꾸면 생각 이상으로 사람들이 찾아내지 못한다. 예를 들어, 삼성 노트의 파일 확장자인 sdoc는 사실 압축 파일의 확장자를 바꾼 파일이다. 열면 내가 쓴 텍스트와 그림이 담겨 있다. 물론 본문이 그대로 들어가있는 건 아니고 파싱을 좀 해야 하지만…</li>
+</ul>
+<p>이왕 열린 김에 재미가 동해서, 이 파일의 정체가 무엇일지 찾아보고자 했다. 이 파일도 16진수의 나열이었기에 앞의 방법을 똑같이 시도해보았다.</p>
+<p>그렇지만 이미지도, 음악도, 영상도, 압축 파일도 아니었다.</p>
+<p>포기할까 하다가 그냥 맨 앞에 있는 16진수를 구글링해보기로 했다. MD5라던가 Base64가 디코딩이 가능하다면 이런 16진수도 디코딩이 가능하리라고 생각해서다.</p>
+<p>4b61 7964 6172 6120 4642 5820 4269 6e61<br>7279 2020 001a 0020 1c00 0062 0700 0000<br>…</p>
+<p>이 내용을 구글에 검색했고 나는 <a href="https://qiita.com/gshirato/items/87586421de0ec37e46a6" target="_blank" rel="noopener">이 16진수를 그대로 인용한 사이트</a>를 발견했다.</p>
+<p>일본 사이트인데 구글 크롬으로 번역했다. 그냥 영어블로그인 줄 알고 나중에 확인하고는 놀랐다.</p>
+<h1 id="FBX-파일"><a href="#FBX-파일" class="headerlink" title="FBX 파일?"></a>FBX 파일?</h1><p>이 사이트의 내용에 따르면, 내가 뒤적거리던 이 파일은 FBX라는 확장자의 파일이었다.</p>
+<p>이 파일의 Magic Number가<br>4b61 7964 6172 6120 4642 5820 4269 6e61<br>7279 2020 00<br>이고, 이는 FBX를 가리킨다고 이 사이트는 설명하고 있었다.</p>
+<p>찾아보니 FBX는 Filmbox의 약자로, Kaydara에서 만든 3D 모델의 정보를 담은 파일 포맷이라 한다.<br>즉, FBX 파일을 열면 3D로 구성된 자동차라던가, 캐릭터라던가 하는 게 튀어나온다는 소리다.</p>
+<h1 id="매직-넘버가-뭐야"><a href="#매직-넘버가-뭐야" class="headerlink" title="매직 넘버가 뭐야?"></a>매직 넘버가 뭐야?</h1><p>특정 확장자의 파일은 동일한 바이너리 코드로 시작한다.<br>예를 들어, jpeg 파일을 sublime text 등으로 열면 맨 앞에서부터 21바이트까지는 완전히 동일한 코드를 공유한다는 의미이다.<br>이를 파일 시그니처 혹은 파일 매직 넘버라 한다.</p>
+<p>4b61 7964 6172 6120 4642 5820 4269 6e61<br>7279 2020 00</p>
+<p>위 코드를 해석해보자.<br>1 바이트는 16진수 2글자와 같다. 즉, 16진수 4b(0x4b라고도 표기한다)는 알파벳 하나라는 뜻이다.<br>이때,<br>4b = 0x4b = 아스키 코드 K<br>61 = 0x61 = 아스키 코드 a<br>…<br>이런 식으로 나아가서 위 매직 넘버를 해석하면<br><strong>Kaydata FBX binary 0x00</strong> 라는 글자를 얻는다.<br>즉, 헥스 코드 맨 앞에 <strong>“이 코드는 Kaydata의 FBX 파일입니다</strong> 라고 말하고 있는 셈이다.</p>
+<h1 id="그래서-어떻게-여는데"><a href="#그래서-어떻게-여는데" class="headerlink" title="그래서 어떻게 여는데?"></a>그래서 어떻게 여는데?</h1><p>이것도 찾아보았다.<br>다행히 3D 툴인 Blender가 오픈소스로 무료로 다운로드할 수 있었다.</p>
+<p>Blender를 실행한 다음 File - Import - FBX 클릭 후 이 파일을 클릭하니 3D 모델이 떡하니 나왔다.</p>
+<p>끝내 나는 이 파일의 확장자 알아낼 수 있었다.</p>
+<h1 id="시그니처가-뒤에-있을-수도-맨-앞이-아니라-맨-앞-약간-뒤에-있을-수도-있다"><a href="#시그니처가-뒤에-있을-수도-맨-앞이-아니라-맨-앞-약간-뒤에-있을-수도-있다" class="headerlink" title="시그니처가 뒤에 있을 수도, 맨 앞이 아니라 맨 앞 약간 뒤에 있을 수도 있다."></a>시그니처가 뒤에 있을 수도, 맨 앞이 아니라 맨 앞 약간 뒤에 있을 수도 있다.</h1><p>헥스 에디터로 열어봐도 대체 정체를 모르는 파일이 있었는데, <strong>맨 아랫부분</strong>의 헥스값을 보니<br>54 52 55 45 56 49 53 49 4F 4E 2D 58 46 49 4C 45 2E 00<br>이런 값이었고 번역된 아스키값은 <strong>TRUEVISION-XFILE..</strong>이었다.</p>
+<p>구글링해보니 TGA 파일이었고, tga 확장자를 이름 뒤에 붙여주니 제대로 열렸다(그림판으로는 안 열려서 그림인 줄 몰랐다.)</p>
+<p>한편, 맨앞 부분은 의미없는 값이었는데 한 5번째 줄부터<br>2710 4164<br>6f62 6520 5068 6f74 6f73 686f 7020 4343<br>2032 3031 3820 2857 696e 646f 7773 2900<br>3230 3230 3a30 323a 3230</p>
+<p>라는 값이 있었고 이는 <strong>Adobe Photoshop CC 2018 (Windows).2020:02:20</strong> 이라는 값이었다.<br>(사실 맨 앞에 ‚Exif라고 해서, 이게 어떤 값인지 나와 있긴 했다.)</p>
+<p>확장자를 jpg, tga로 바꿨더니 둘 다 제대로 표시되었다. 즉 그림파일.</p>
+<h1 id="참고문헌"><a href="#참고문헌" class="headerlink" title="참고문헌"></a>참고문헌</h1><ul>
+<li><a href="https://qiita.com/gshirato/items/87586421de0ec37e46a6" target="_blank" rel="noopener">FBX 확장자의 파일의 시그니처. 이 사이트 덕분에 답을 얻었다.</a></li>
+<li><a href="http://forensic-proof.com/archives/300" target="_blank" rel="noopener">특정 확장자의 파일은 동일한 바이너리 코드로 시작하는데, 이를 파일 시그니처 혹은 파일 매직 넘버라 한다.</a></li>
+<li><a href="https://fileinfo.com/extension/fbx" target="_blank" rel="noopener">FBX가 뭐야</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/" data-id="ck8tqyw67002lxkvjgeu91ili" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-프로그래밍 - 윈도우 - Vultur에서 윈도우 설치하기" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" class="article-date">
+  <time datetime="2020-02-25T15:00:00.000Z" itemprop="datePublished">2020-02-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Vultur에서 윈도우 설치하기</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Vultur에서-윈도우-설치하기"><a href="#Vultur에서-윈도우-설치하기" class="headerlink" title="Vultur에서 윈도우 설치하기"></a>Vultur에서 윈도우 설치하기</h1><ol>
+<li><p>Windows 10 1909 Virtio ISO (64 bit) ISO 파일을 받아둔다(약 5GB)</p>
+</li>
+<li><p>vultur 로그인</p>
+</li>
+<li><p>ISO에 1번에서 받은 파일 추가(드랍박스 등 연동해야 할 수도 있음)</p>
+</li>
+<li><p>새로운 서버 추가 메뉴에서 도쿄 - Upload ISO 탭에 있는 ISO 파일 선택 - 매달 10달러 - 서버 이름 정하고 Deploy Now 클릭</p>
+</li>
+<li><p>서버 Status가 Running으로 바뀌면 그 오른쪽의 Mange 클릭</p>
+</li>
+<li><p>윈도우 창이 뜨는데 다음과 같이 진행한다.<br>언어 건들지 말고 다음<br>Install Now 클릭<br>I don’t have a product key 클릭<br>Windows 10 Pro 선택 후 Next<br>라이센스 체크 후 Next<br>Custom - Load driver - Browse - CD Drive\virtio\viostor\w10\amd64 선택 - Next<br>New - 25600 입력 - Apply - Ok - Next<br>지역 건들지 말고 Yes 클릭<br>키보드 US, 한글 고르기<br>network는 Skip for now 클릭<br>암호 입력<br>질문 답변 적당히 입력(안씀)<br>Cortana : No<br>privacy : Accept</p>
+</li>
+<li><p>윈도우 설치가 끝났다. 드라이버를 다음과 같이 설치한다.<br>내 컴퓨터 우클릭 - Manage - Device Manager - Other devices로 이동<br>Ethernet Controller 우클릭 - Update driver - Browse… 선택 - Browse… 선택 - CD Drive\virtio 선택 후 Ok - Next<br>중간에 뭐가 뜨면 Install 클릭 - 설치 후 Do you want to allow… 는 Yes 클릭<br>PCI Device도 같은 과정으로 설치</p>
+</li>
+<li><p>컴퓨터를 원격으로 조정해야 한다. 다음과 같이 진행한다.<br>검색창에 Allow remote 입력 - Allow remote access to your computer 클릭 - Allow remote connections to this computer 체크 - Allow connections only… 체크 해제 - Apply - Ok</p>
+</li>
+</ol>
+<p>서버 컴퓨터 말고 로컬 컴퓨터의 원격 데스크톱 연결(Remote Desktop Connection) 실행 - Vultur에 있는 IP 복사 - 유저명, 암호 입력 - Don’t ask… 에 체크하고 Yes 클릭<br>원격 완료.<br>10. 가상 메모리 늘리기<br>내 컴퓨터 우클릭 - 속성(Properties) - 고급 시스템 설정(Advanced system settings) - Performance에서 시각 효과는 best performance, Advanced 탭에서 Change로 이동 - Custom size 체크 후 4000,8000 입력 후 Set, OK</p>
+<h2 id="참고문헌"><a href="#참고문헌" class="headerlink" title="참고문헌"></a>참고문헌</h2><ul>
+<li><a href="https://miloserdov.org/?p=1839" target="_blank" rel="noopener">윈도우에서 토르 서비스 실행하기</a></li>
+<li><a href="https://stackoverflow.com/questions/45972637/getting-tor-controlport-to-work" target="_blank" rel="noopener">9051 포트 에러 고치기 및 토르 서비스 설치하기(ConnectionRefusedError, stem.SocketError: [WinError 10061])</a></li>
+<li><a href="http://www.sunellsecurity.com/support_detail.php?id=1590" target="_blank" rel="noopener">Control Port가 무엇인가?</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" data-id="ck8tqyw7e005oxkvj1n1c21kn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-프로그래밍 - 윈도우 - 윈도우에서 리눅스처럼 Tor 서비스 사용하기" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/" class="article-date">
+  <time datetime="2020-02-21T15:00:00.000Z" itemprop="datePublished">2020-02-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">윈도우에서 리눅스처럼 Tor 서비스 사용하기</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="윈도우에서-리눅스처럼-Tor-서비스-사용하기"><a href="#윈도우에서-리눅스처럼-Tor-서비스-사용하기" class="headerlink" title="윈도우에서 리눅스처럼 Tor 서비스 사용하기"></a>윈도우에서 리눅스처럼 Tor 서비스 사용하기</h1><h2 id="개요"><a href="#개요" class="headerlink" title="개요"></a>개요</h2><ul>
+<li>우분투 환경에서는 Tor 서비스와 파이썬의 stem 모듈을 통해 아이피 변경이 가능했다.</li>
+<li>윈도우스에서 이와 같이 구현하려면 Tor 브라우저가 아닌 Expert Bundle을 다운로드받아야 한다.</li>
+</ul>
+<h2 id="다운로드-및-설치"><a href="#다운로드-및-설치" class="headerlink" title="다운로드 및 설치"></a>다운로드 및 설치</h2><ul>
+<li><a href="https://www.torproject.org/download/" target="_blank" rel="noopener">https://www.torproject.org/download/</a> 로 이동한다.</li>
+<li>Download Tor Source Code 를 클릭한다.</li>
+<li>Windows Expert Bundle을 다운로드받는다. tor-win32-0.4.2.6.zip이라는 이름을 가지고 있다.</li>
+<li>압축을 풀고 Tor라는 폴더를 C드라이브에 옮긴다. 이제 다른 파일과 zip 파일은 삭제해도 된다.</li>
+<li>cmd를 실행한 다음 아래 명령어를 실행한다.</li>
+</ul>
+<h2 id="토르-실행해보기"><a href="#토르-실행해보기" class="headerlink" title="토르 실행해보기"></a>토르 실행해보기</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c:\Tor\tor.exe</span><br></pre></td></tr></table></figure>
+<ul>
+<li>아래 결과가 나오면 성공이다.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[notice] Bootstrapped 100% (<span class="keyword">done</span>): Done</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>이제 토르의 기능을 모두 사용할 수 있다.<br>하지만 윈도우 서비스가 아니라 실행했을 뿐이기 때문에, <strong>윈도우를 종료하면 토르도 함께 종료</strong>된다.</p>
+<p><strong>토르를 서비스로 등록하려면 아래 과정을 따라가면 된다.</strong></p>
+<h2 id="토르-서비스를-설치하기"><a href="#토르-서비스를-설치하기" class="headerlink" title="토르 서비스를 설치하기"></a>토르 서비스를 설치하기</h2><p>아래 명령어는 cmd(관리자 권한으로 실행)에 입력한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c:\Tor\tor.exe --service install -options ControlPort 9051</span><br><span class="line">c:\Tor\tor.exe --service start</span><br></pre></td></tr></table></figure>
+
+<p>위 명령어를 입력할 때 오류가 뜬다면 tor 브라우저를 따로 다운로드받아 실행하고(브라우저를 켜놓고) 설치하면 된다. 그리고 브라우저를 지우면 된다.</p>
+<p>이제 아래 명령어를 입력해서 제대로 실행되었는지 확인하면 된다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -aon | findstr <span class="string">":9050"</span></span><br><span class="line">netstat -aon | findstr <span class="string">":9051"</span></span><br></pre></td></tr></table></figure>
+<p>토르 서비스는 기본 포트(서비스에 접근하는 용도)로 9150, ControlPort(데이터 통신용 포트)로 9151을 사용하기 때문에 두 포트가 사용중인지 확인하면 된다.</p>
+<h2 id="토르를-사용하기"><a href="#토르를-사용하기" class="headerlink" title="토르를 사용하기"></a>토르를 사용하기</h2><ul>
+<li><p>파이썬의 stem 모듈은 파이썬에서 tor를 사용하기 위해 만들어졌다.</p>
+</li>
+<li><p>필요 라이브러리를 아래와 같이 설치한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip3 install stem</span><br><span class="line">pip3 install requests</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>아래의 코드로 토르 서비스가 실행되는 지를 확인할 수 있다.</p>
+</li>
+<li><p><em>이 코드는 tor 서비스가 있는 우분투에서도 그대로 쓸 수 있다.*</em></p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> stem <span class="keyword">import</span> Signal</span><br><span class="line"><span class="keyword">from</span> stem.control <span class="keyword">import</span> Controller</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">proxies = &#123;<span class="string">"http"</span>: <span class="string">"socks5://127.0.0.1:9050"</span>,<span class="string">"https"</span>: <span class="string">"socks5://127.0.0.1:9050"</span>&#125;</span><br><span class="line">url = <span class="string">"https://api.ipify.org/?format=json"</span></span><br><span class="line"></span><br><span class="line">response = requests.get(url)</span><br><span class="line">print(<span class="string">"IP : "</span> + response.text)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> Controller.from_port(port=<span class="number">9051</span>) <span class="keyword">as</span> c:</span><br><span class="line">    c.authenticate()</span><br><span class="line">    c.signal(Signal.NEWNYM)</span><br><span class="line"></span><br><span class="line">response = requests.get(url, proxies=proxies)</span><br><span class="line">print(<span class="string">"New IP : "</span> + response.text)</span><br></pre></td></tr></table></figure>
+
+<p>두 IP가 다르게 나오면 성공이다.</p>
+<p>만약 selenium을 사용한다면 아래와 같이 입력한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">PROXY = <span class="string">"socks5://localhost:9050"</span></span><br><span class="line">options = webdriver.ChromeOptions()</span><br><span class="line">options.add_argument(<span class="string">'--proxy-server=%s'</span> % PROXY)</span><br><span class="line">driver = webdriver.Chrome(options=options, executable_path=<span class="string">r'chromedriver.exe'</span>)</span><br><span class="line">driver.get(<span class="string">"http://check.torproject.org"</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+<h2 id="참고문헌"><a href="#참고문헌" class="headerlink" title="참고문헌"></a>참고문헌</h2><ul>
+<li><a href="https://miloserdov.org/?p=1839" target="_blank" rel="noopener">윈도우에서 토르 서비스 실행하기</a></li>
+<li><a href="https://stackoverflow.com/questions/45972637/getting-tor-controlport-to-work" target="_blank" rel="noopener">9051 포트 에러 고치기 및 토르 서비스 설치하기(ConnectionRefusedError, stem.SocketError: [WinError 10061])</a></li>
+<li><a href="http://www.sunellsecurity.com/support_detail.php?id=1590" target="_blank" rel="noopener">Control Port가 무엇인가?</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/" data-id="ck8tqyw7e005qxkvj90fp266w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-유튜브 다운로더 youtube-dl" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/" class="article-date">
+  <time datetime="2020-02-20T15:00:00.000Z" itemprop="datePublished">2020-02-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/">유튜브 다운로더 youtube-dl</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h1><p>sudp pip3 install youtube-dl<br>sudo apt-get install ffmpeg</p>
+<h1 id="옵션"><a href="#옵션" class="headerlink" title="옵션"></a>옵션</h1><p>-f : 파일 형식을 지정합니다. “best”, “mp4”, “webm”, “flv” 등.<br>-x : 영상을 mp3 등 음악 파일로 받습니다.<br>–audio-format “mp3” : 파일 형식을 지정합니다. “aac” “best” “flac” “mp3” 등. 반드시 -x 옵션과 같이 써야 합니다.</p>
+<p>예시</p>
+<ul>
+<li><p>youtube-dl <a href="https://www.youtube.com/watch?v=KMU0tzLwhbE" target="_blank" rel="noopener">https://www.youtube.com/watch?v=KMU0tzLwhbE</a></p>
+<ul>
+<li>기본 형태.</li>
+</ul>
+</li>
+<li><p>youtube-dl -f best <a href="https://www.youtube.com/watch?v=KMU0tzLwhbE" target="_blank" rel="noopener">https://www.youtube.com/watch?v=KMU0tzLwhbE</a></p>
+<ul>
+<li>받을 수 있는 최고화질로 영상을 받습니다.</li>
+</ul>
+</li>
+<li><p>youtube-dl -f best[height=720] <a href="https://www.youtube.com/watch?v=KMU0tzLwhbE" target="_blank" rel="noopener">https://www.youtube.com/watch?v=KMU0tzLwhbE</a></p>
+<ul>
+<li>720p 화질로 영상을 받습니다. 영상 화질이 720p가 없는 경우 다운로드가 실패합니다.</li>
+</ul>
+</li>
+<li><p>youtube-dl -f mp4 <a href="https://www.youtube.com/watch?v=KMU0tzLwhbE" target="_blank" rel="noopener">https://www.youtube.com/watch?v=KMU0tzLwhbE</a></p>
+<ul>
+<li>mp4 형식으로 파일을 받습니다.</li>
+</ul>
+</li>
+<li><p>youtube-dl -x –audio-format aac <a href="https://www.youtube.com/watch?v=KMU0tzLwhbE" target="_blank" rel="noopener">https://www.youtube.com/watch?v=KMU0tzLwhbE</a></p>
+<ul>
+<li>aac 파일(오디오)로 다운로드합니다.</li>
+<li>aac가 mp3보다 음질, 용량 면에서 더 좋다고 합니다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="참고문헌"><a href="#참고문헌" class="headerlink" title="참고문헌"></a>참고문헌</h1><p><a href="https://askubuntu.com/questions/1037666/youtube-dl-python-not-found-18-04" target="_blank" rel="noopener">Youtube-dl: Python not found (18.04)</a><br><a href="https://stackoverflow.com/questions/30770155/ffprobe-or-avprobe-not-found-please-install-one" target="_blank" rel="noopener">ffprobe or avprobe not found. Please install one</a><br><a href="https://www.clien.net/service/board/cm_iphonien/11726569" target="_blank" rel="noopener">acc 256이 mp3 320보다 음질이 더 좋습니다.</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/" data-id="ck8tqyw610029xkvj6twffgqr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-args 인자를 받는 명령어 만들기" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/12/args%20%EC%9D%B8%EC%9E%90%EB%A5%BC%20%EB%B0%9B%EB%8A%94%20%EB%AA%85%EB%A0%B9%EC%96%B4%20%EB%A7%8C%EB%93%A4%EA%B8%B0/" class="article-date">
+  <time datetime="2020-02-11T15:00:00.000Z" itemprop="datePublished">2020-02-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/12/args%20%EC%9D%B8%EC%9E%90%EB%A5%BC%20%EB%B0%9B%EB%8A%94%20%EB%AA%85%EB%A0%B9%EC%96%B4%20%EB%A7%8C%EB%93%A4%EA%B8%B0/">args 인자를 받는 명령어 만들기</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="상황"><a href="#상황" class="headerlink" title="상황"></a>상황</h1><p>youtube-dl로 mp3를 받아보려고 하는데 옵션이 너무 길어 alias로 줄이려고 했다.<br>그런데 필수 인자로 url이 있기 때문에 url을 인자로 넘겨주는 방법을 찾아야 했다.</p>
+<h1 id="해결"><a href="#해결" class="headerlink" title="해결"></a>해결</h1><p>bash에서 인자를 받으려면 function을 써야 한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">hello</span></span>() &#123;</span><br><span class="line">   <span class="built_in">echo</span> <span class="string">"Hello <span class="variable">$1</span>!"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>터미널 세션이 갱신되어야(=재부팅) 이 함수를 쓸 수 있지만, source 명령어를 통해 지금 세션에서 바뀐 설정을 적용시킬 수 있다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line">hello abc</span><br><span class="line">Hello abc! <span class="comment"># 출력</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="참고문헌"><a href="#참고문헌" class="headerlink" title="참고문헌"></a>참고문헌</h1><p><a href="https://stackoverflow.com/questions/7131670/make-a-bash-alias-that-takes-a-parameter" target="_blank" rel="noopener">어떻게 alias에 인자를 넘겨주나요?</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/12/args%20%EC%9D%B8%EC%9E%90%EB%A5%BC%20%EB%B0%9B%EB%8A%94%20%EB%AA%85%EB%A0%B9%EC%96%B4%20%EB%A7%8C%EB%93%A4%EA%B8%B0/" data-id="ck8tqyw5t001mxkvj4q3peo3k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-프로그래밍 - 가상환경 venv 사용법" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/07/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%20venv%20%EC%82%AC%EC%9A%A9%EB%B2%95/" class="article-date">
+  <time datetime="2020-02-07T14:51:25.000Z" itemprop="datePublished">2020-02-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/07/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%20venv%20%EC%82%AC%EC%9A%A9%EB%B2%95/">가상환경 venv 사용법</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install virtualenv</span><br></pre></td></tr></table></figure>
+
+<h1 id="새로운-가상환경-만들기"><a href="#새로운-가상환경-만들기" class="headerlink" title="새로운 가상환경 만들기"></a>새로운 가상환경 만들기</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virtualenv folder_name</span><br></pre></td></tr></table></figure>
+
+<h1 id="가상환경으로-들어가기"><a href="#가상환경으로-들어가기" class="headerlink" title="가상환경으로 들어가기"></a>가상환경으로 들어가기</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> folder_name/bin/activate</span><br><span class="line">git <span class="built_in">clone</span> git@github.com:nodejs/node.git <span class="comment"># 기존 프로젝트를 가져온다.</span></span><br><span class="line">pip3 install -r requirements.txt <span class="comment"># 보통 프로젝트에 함께 들어있는 실행환경을 설치한다.</span></span><br><span class="line">pip3 install ...</span><br></pre></td></tr></table></figure>
+
+<h1 id="가상환경에서-나가기"><a href="#가상환경에서-나가기" class="headerlink" title="가상환경에서 나가기"></a>가상환경에서 나가기</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/07/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%20venv%20%EC%82%AC%EC%9A%A9%EB%B2%95/" data-id="ck8tqyw7a005lxkvj134ihzzk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-프로그래밍 - 최적화 알고리즘 - SLSQP (scipy)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/07/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20-%20SLSQP%20(scipy)/" class="article-date">
+  <time datetime="2020-02-07T14:51:21.000Z" itemprop="datePublished">2020-02-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/07/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20-%20SLSQP%20(scipy)/">최적화 알고리즘 - SLSQP (scipy)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="글-본론"><a href="#글-본론" class="headerlink" title="글 본론"></a>글 본론</h1><h2 id="1-내가-처한-상황"><a href="#1-내가-처한-상황" class="headerlink" title="1) 내가 처한 상황"></a>1) 내가 처한 상황</h2><p>좀 더 실질적인 상황 설명 : 지역1, 지역2, 지역3을 돌아야 하는데 재료1 50개, 재료2 70개, 재료3 80개가 필요하다. 각 지역 당 {재료1,재료2,재료3} 드랍 갯수를 정리하면 다음과 같다.<br>지역1 : {1,2,1}<br>지역2 : {2,1,3}<br>지역3 : {3,2,1}<br>각 지역을 몇번씩 돌아야 원하는 재료를 모두 파밍할 수 있을까?</p>
+<h2 id="2-이렇게-구현합니다"><a href="#2-이렇게-구현합니다" class="headerlink" title="2) 이렇게 구현합니다"></a>2) 이렇게 구현합니다</h2><p>$x_1+x_2+x_3$의 <strong>최솟값</strong> 을 구하고자 한다.</p>
+<p>단, 다음 조건을 만족해야 한다.<br>$x_1 + 2x_2 + 3x_3 - 50 &gt;= 0$<br>$2x_1 + x_2 + 2x_3 - 70 &gt;= 0$<br>$3x_1 + 3x_2 + x_3 - 80 &gt;= 0$</p>
+<h2 id="3-파이선-코드입니다"><a href="#3-파이선-코드입니다" class="headerlink" title="3) 파이선 코드입니다"></a>3) 파이선 코드입니다</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> minimize</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">objective = <span class="keyword">lambda</span> x : x[<span class="number">0</span>]+x[<span class="number">1</span>]+x[<span class="number">2</span>] <span class="comment"># 최소값을 구하고자 하는 함수.</span></span><br><span class="line">x0 = np.zeros(<span class="number">3</span>)</span><br><span class="line">x0 = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>] <span class="comment"># 초기값</span></span><br><span class="line">bounds = ((<span class="number">0</span>,<span class="number">9999</span>),(<span class="number">0</span>,<span class="number">9999</span>),(<span class="number">0</span>,<span class="number">9999</span>)) <span class="comment"># SLSQP는 상한, 하한값을 지정해주어야 한다.</span></span><br><span class="line">constraints_list = [] <span class="comment"># 제약조건</span></span><br><span class="line"><span class="comment"># eq는 등호 조건, ineq는 부등호(&gt;=) 조건이다.</span></span><br><span class="line">constraints_list.append(&#123;<span class="string">'type'</span>: <span class="string">'ineq'</span>, <span class="string">'fun'</span>: <span class="keyword">lambda</span> x:x[<span class="number">0</span>]*<span class="number">1</span>+x[<span class="number">1</span>]*<span class="number">2</span>+x[<span class="number">2</span>]*<span class="number">3</span><span class="number">-50</span>&#125;)</span><br><span class="line">constraints_list.append(&#123;<span class="string">'type'</span>: <span class="string">'ineq'</span>, <span class="string">'fun'</span>: <span class="keyword">lambda</span> x:x[<span class="number">0</span>]*<span class="number">2</span>+x[<span class="number">1</span>]*<span class="number">1</span>+x[<span class="number">2</span>]*<span class="number">2</span><span class="number">-70</span>&#125;)</span><br><span class="line">constraints_list.append(&#123;<span class="string">'type'</span>: <span class="string">'ineq'</span>, <span class="string">'fun'</span>: <span class="keyword">lambda</span> x:x[<span class="number">0</span>]*<span class="number">3</span>+x[<span class="number">1</span>]*<span class="number">3</span>+x[<span class="number">2</span>]*<span class="number">1</span><span class="number">-80</span>&#125;)</span><br><span class="line">constraints = (constraints_list)</span><br><span class="line"></span><br><span class="line">result = minimize(objective,x0,method=<span class="string">'SLSQP'</span>,bounds=bounds,constraints=constraints).x</span><br><span class="line"></span><br><span class="line">[print(int(round(element))) <span class="keyword">for</span> element <span class="keyword">in</span> result]</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="왜-이런-걸-찾게-되었나"><a href="#왜-이런-걸-찾게-되었나" class="headerlink" title="왜 이런 걸 찾게 되었나."></a>왜 이런 걸 찾게 되었나.</h1><p>게임을 하다 이런 생각이 들었다. 지역마다 주는 보상이 다르고, 피로도 소모량도 다른데 원하는 재료를 최소 피로도 소모로 파밍할 수 있지 않을까? A, B, C 지역의 재료 보상이 겹치는 것도 있고 얻는 확률도 다르면, 원하는 물건을 얻기 위해 A는 몇번 B는 몇번 가야하느냐, 이런 문제였다.</p>
+<p>나름대로 머리를 굴렸지만 생각 이상으로 쉽지 않다는 걸 알았다. 그러다 예전에 본 <a href="https://gall.dcinside.com/board/view/?id=ogame&no=44533" target="_blank" rel="noopener">영농플레이어들을 위한 자원탕진 플래너 “흙”을 소개합니다</a>라는 글이 생각났다. 이 글은 <strong>엑셀의 해 찾기 기능</strong> 을 쓰고 있었다.</p>
+<p>내가 정확히 필요로 하던 정보였다.<br><strong>지금 가진 자원을 최대로 소모하는 방어시설 구매 종류와 수량 구하기</strong><br><strong>= 지금 가진 피로도를 최소로 소모하는 던전 종류와 횟수 구하기</strong><br><strong>= 지금 가진 자원을 최대/최소로 사용하여 정해둔 목표치를 맞추기</strong><br>이렇게 적을 수 있는 셈이다.</p>
+<h1 id="GRG-Simplex-Algorithm-그리고-SLSQP"><a href="#GRG-Simplex-Algorithm-그리고-SLSQP" class="headerlink" title="GRG, Simplex Algorithm 그리고 SLSQP"></a>GRG, Simplex Algorithm 그리고 SLSQP</h1><h2 id="1-GRG"><a href="#1-GRG" class="headerlink" title="1) GRG"></a>1) GRG</h2><p>이제 데이터베이스를 찾고 파이썬에서 구현하는 일만 남아있었다. 나는 후자부터 찾기로 했다. 엑셀은 <strong>GRG Nonlinear 방식</strong> 을 쓰고 있다고 적혀 있었고, 나는 GRG python, generalized reduced gradient in python 같은 검색어를 구글에 적어봤지만 바로 사용할 수 있는 건 없었다. 좀 더 정확히는 <a href="https://github.com/ishank011/grgdescent" target="_blank" rel="noopener">Github에서 구하기는 했는데</a>… 너무 어려웠다. 전공 책을 그대로 알고리즘으로 구현한 이 분에게 박수.</p>
+<h2 id="2-Simplex-Algorithm"><a href="#2-Simplex-Algorithm" class="headerlink" title="2) Simplex Algorithm"></a>2) Simplex Algorithm</h2><p>나는 다른 방법을 찾기로 했다. 기본적으로 이 기능은 몇 가지 부등식을 만족하는(<strong>제약조건</strong>) 함수의 값을 구하는 문제였다. <a href="https://redtea.kr/pb/pb.php?id=qna&no=8742#78260" target="_blank" rel="noopener">이 글</a>로부터 Simplex Algorithm이라는 부등식을 방정식으로 바꾸는 혁명적인 방법을 찾아냈다…만… 아래에서 설명할 SLSQP를 먼저 찾게 되었다.</p>
+<h2 id="3-잠깐-딴소리"><a href="#3-잠깐-딴소리" class="headerlink" title="3) 잠깐 딴소리"></a>3) 잠깐 딴소리</h2><p>데이터 사이언스를 전문으로 하시는 어떤 분이 <strong>라이브러리 임포트해서 변수 몇개 조작하고 결과 내는 사람들이 인공지능을 개발하고 있다</strong> 고 했다. 예전에는 “아, 그래도 컴퓨터로 구현하려면 기술의 이론은 알아야지 ㅋㅋ”라고 생각했는데, 지금 와서는 잘 모르겠다. 스택 오버플로우 개발자 제프 앳우드는 자동차 기술자가 있는 건 다른 사람들이 자동차를 수리할 필요가 없게 만들기 위해서인 것처럼, 프로그래머가 있는 건 다른 사람들이 프로그래밍할 수고를 덜어주기 위해서라고 말했다. 어쩌면 일단 구현하고 나중에 리팩토링하는 것처럼 먼저 써보고 나중에 이론을 배우는 건 어떨까.(이론을 모르면 접근할 수 없는 low한 영역은 말고.)</p>
+<h2 id="4-SLSQP"><a href="#4-SLSQP" class="headerlink" title="4) SLSQP"></a>4) SLSQP</h2><p>Simplex Algorithm python을 검색해본 결과 만난 링크가 <a href="http://apmonitor.com/che263/index.php/Main/PythonOptimization" target="_blank" rel="noopener">여기</a>다. 소스 코드를 받아 수정했고 결과는 맨 위 본론 부분과 같다.</p>
+<h1 id="마치며"><a href="#마치며" class="headerlink" title="마치며"></a>마치며</h1><p>매 기능을 구현할 때마다 이렇게 고생할 것 같다. 그래도 깃헙 블로그에 이렇게 올릴 수 있어서 다행이다. 예전같았으면 코드를 에버노트에 그냥 복붙하고 말았겠지.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/07/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20-%20SLSQP%20(scipy)/" data-id="ck8tqyw7g005vxkvjbewj7h95" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-프로그래밍 - 리눅스 우분투 Git 사용법" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/07/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EB%A6%AC%EB%88%85%EC%8A%A4%20%EC%9A%B0%EB%B6%84%ED%88%AC%20Git%20%EC%82%AC%EC%9A%A9%EB%B2%95/" class="article-date">
+  <time datetime="2020-02-07T14:51:20.000Z" itemprop="datePublished">2020-02-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/07/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EB%A6%AC%EB%88%85%EC%8A%A4%20%EC%9A%B0%EB%B6%84%ED%88%AC%20Git%20%EC%82%AC%EC%9A%A9%EB%B2%95/">리눅스 우분투 Git 사용법</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git</span><br></pre></td></tr></table></figure>
+
+<h2 id="설정"><a href="#설정" class="headerlink" title="설정"></a>설정</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name John Doe</span><br><span class="line">git config --global user.email johndoe@example.com</span><br><span class="line"></span><br><span class="line">vim ~/.gitconfig <span class="comment"># 잘 설정되었는지 확인한다.</span></span><br></pre></td></tr></table></figure>
+
+<p>만약 정보를 잘못 입력했다면 다음 명령어로 일괄 삭제할 수 있다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span>-all user.name</span><br><span class="line">git config --global --<span class="built_in">unset</span>-all user.email</span><br></pre></td></tr></table></figure>
+
+<h2 id="원격-gt-로컬-최초-다운로드-clone"><a href="#원격-gt-로컬-최초-다운로드-clone" class="headerlink" title="원격 -&gt; 로컬 최초 다운로드 : clone"></a>원격 -&gt; 로컬 최초 다운로드 : clone</h2><p>mkdir 명령어로 폴더를 만들 필요가 없다.<br>주소는 각 리포지토리에서 Clone or download를 누르면 복사할 수 있다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/facebook/react-native.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="원격-lt-gt-로컬-일상작업-pull-commit-push"><a href="#원격-lt-gt-로컬-일상작업-pull-commit-push" class="headerlink" title="원격 &lt;-&gt; 로컬 일상작업 : pull / commit / push"></a>원격 &lt;-&gt; 로컬 일상작업 : pull / commit / push</h2><p>여러 사람들이 함께 개발한다면 git pull로 변경사항이 없는 지 업데이트한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br><span class="line">username 입력</span><br><span class="line">비밀번호 입력</span><br></pre></td></tr></table></figure>
+
+<p>코드를 수정했다면 원격 저장소에 add, commit, push로 올릴 수 있다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git add filename.txt</span><br><span class="line">git commit -m <span class="string">"update filename.txt"</span> <span class="comment"># -m은 commit 코멘트 작성 옵션.</span></span><br><span class="line">git push</span><br><span class="line">username 입력</span><br><span class="line">비밀번호 입력</span><br></pre></td></tr></table></figure>
+
+<h2 id="기타-SSH-Key-인증-pull-push-때-username과-비밀번호-안-물어보게-하기"><a href="#기타-SSH-Key-인증-pull-push-때-username과-비밀번호-안-물어보게-하기" class="headerlink" title="기타 : SSH Key 인증 : pull, push 때 username과 비밀번호 안 물어보게 하기"></a>기타 : SSH Key 인증 : pull, push 때 username과 비밀번호 안 물어보게 하기</h2><ol>
+<li>먼저 공개키를 생성한다.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"johndoe@gmail.com"</span></span><br><span class="line">엔터</span><br><span class="line">엔터</span><br><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">cat id_rsa.pub</span><br><span class="line">출력되는 내용을 전부 복사한다.</span><br><span class="line">rm id_rsa.pub <span class="comment"># 공개 키는 삭제한다.</span></span><br></pre></td></tr></table></figure></li>
+<li><a href="https://github.com/settings/keys" target="_blank" rel="noopener">Settings - SSH and GPG Keys</a>로 이동한다.</li>
+<li>Title은 아무거나 입력, keys는 방금 복사한 내용을 붙여넣기한 뒤 Add SSH Key 클릭.</li>
+<li>설정은 모두 끝났고 다음 작업을 수행하면 된다.<ol>
+<li>아직 clone되지 않은 리포지토리<ol>
+<li>Clone or download를 누르고 Use SSH를 눌러 나오는 링크를 복사한다.</li>
+<li>이걸로 git clone <a href="mailto:git@github.com">git@github.com</a>:facebook/react-native.git</li>
+<li>이제 pull, push 등이 별도 인증이 필요없어진다.</li>
+</ol>
+</li>
+<li>이미 clone된 리포지토리<ol>
+<li>Clone or download를 누르고 Use SSH를 눌러 나오는 링크를 복사한다.</li>
+<li>해당 폴더 이동 후 git remote set-url origin <a href="mailto:git@github.com">git@github.com</a>:facebook/react-native.git</li>
+<li>이제 pull, push 등이 별도 인증이 필요없어진다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="참고자료"><a href="#참고자료" class="headerlink" title="참고자료"></a>참고자료</h2><p><a href="https://zeddios.tistory.com/120" target="_blank" rel="noopener">SSH KEY로 Github 인증하기</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/07/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EB%A6%AC%EB%88%85%EC%8A%A4%20%EC%9A%B0%EB%B6%84%ED%88%AC%20Git%20%EC%82%AC%EC%9A%A9%EB%B2%95/" data-id="ck8tqyw7b005mxkvjeni98gmn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-다운로드 링크 만들기 - 아파치" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/24/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20%EB%A7%81%ED%81%AC%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%EC%B9%98/" class="article-date">
+  <time datetime="2020-01-24T01:20:00.000Z" itemprop="datePublished">2020-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/24/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20%EB%A7%81%ED%81%AC%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%EC%B9%98/">다운로드 링크 만들기 - 아파치</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="상황"><a href="#상황" class="headerlink" title="상황"></a>상황</h2><ul>
+<li><a href="https://ezgif.com/video-to-gif" target="_blank" rel="noopener">mp4를 gif 형태로 바꿔주는 사이트</a>가 있다.</li>
+<li>이런 사이트처럼 파일, 혹은 쿼리문을 받고 그걸 가지고 리눅스 서버에서 프로그래밍을 통해 결과물을 다운로드 링크로 제공하고자 한다.</li>
+<li>다운로드 링크는 apache로 구현이 가능하다.</li>
+</ul>
+<h2 id="설치"><a href="#설치" class="headerlink" title="설치"></a>설치</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install apache2</span><br></pre></td></tr></table></figure>
+
+<h2 id="사용법"><a href="#사용법" class="headerlink" title="사용법"></a>사용법</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp yourfile /var/www/html/yourfile <span class="comment"># 파일을 아파치의 공유 폴더로 옮긴다.</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://your-ip-address/yourfile" target="_blank" rel="noopener">http://your-ip-address/yourfile</a> 이라는 링크로 접속할 수 있다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- download가 없으면 하이퍼링크가 된다. --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://your-ip-address/yourfile"</span>&gt;</span>yourfile<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- download를 붙이면 다운로드 링크가 된다. --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://your-ip-address/yourfile"</span> <span class="attr">download</span>&gt;</span>yourfile_download_link<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="참고자료"><a href="#참고자료" class="headerlink" title="참고자료"></a>참고자료</h2><ul>
+<li><a href="https://stackoverflow.com/questions/10956587/how-to-create-a-downloadable-public-link-for-files-on-server" target="_blank" rel="noopener">서버의 파일을 어떻게 다운로드 가능한 링크로 만드나요?</a></li>
+<li><a href="https://www.codingfactory.net/10231" target="_blank" rel="noopener">HTML / a / 링크(link) 만들기</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/24/%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C%20%EB%A7%81%ED%81%AC%20%EB%A7%8C%EB%93%A4%EA%B8%B0%20-%20%EC%95%84%ED%8C%8C%EC%B9%98/" data-id="ck8tqyw5y001zxkvj54sh5vhk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -157,6 +737,11 @@
   
 
 
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+  </nav>
+
 </section>
         
           <aside id="sidebar">
@@ -165,7 +750,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992/">공학수학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%84%B1%EA%B2%A9%EA%B3%BC%EC%A0%81%EC%9D%91/">성격과적응</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992/">전기자기학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02/">회로이론2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/">Private</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/">게임</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/XCOM-2/">XCOM 2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC/">프로스트펑크</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EC%9D%BC%EA%B8%B0/">일기</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/">블로그 관리</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/">업무</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4/">스마트스토어</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Github/">Github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%94%EB%B2%84%EA%B9%85/">디버깅</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%97%90%EB%94%94%ED%84%B0/">에디터</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -180,7 +765,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
     </div>
   </div>
 
@@ -193,7 +778,23 @@
       <ul>
         
           <li>
-            <a href="/2020/01/24/%ED%95%99%EC%8A%B5%EC%BB%A8%EC%84%A4%ED%8C%85%20%ED%95%B5%EC%8B%AC/">학습컨설팅 핵심</a>
+            <a href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/">Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/">파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Vultur에서 윈도우 설치하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">윈도우에서 리눅스처럼 Tor 서비스 사용하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/">유튜브 다운로더 youtube-dl</a>
           </li>
         
       </ul>

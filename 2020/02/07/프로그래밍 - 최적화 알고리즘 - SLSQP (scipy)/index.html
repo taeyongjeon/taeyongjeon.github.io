@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>최적화 알고리즘 - SLSQP (scipy) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="글 본론1) 내가 처한 상황좀 더 실질적인 상황 설명 : 지역1, 지역2, 지역3을 돌아야 하는데 재료1 50개, 재료2 70개, 재료3 80개가 필요하다. 각 지역 당 {재료1,재료2,재료3} 드랍 갯수를 정리하면 다음과 같다.지역1 : {1,2,1}지역2 : {2,1,3}지역3 : {3,2,1}각 지역을 몇번씩 돌아야 원하는 재료를 모두 파밍할 수 있을">
+<meta property="og:type" content="article">
+<meta property="og:title" content="최적화 알고리즘 - SLSQP (scipy)">
+<meta property="og:url" content="http://yoursite.com/2020/02/07/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20-%20SLSQP%20(scipy)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="글 본론1) 내가 처한 상황좀 더 실질적인 상황 설명 : 지역1, 지역2, 지역3을 돌아야 하는데 재료1 50개, 재료2 70개, 재료3 80개가 필요하다. 각 지역 당 {재료1,재료2,재료3} 드랍 갯수를 정리하면 다음과 같다.지역1 : {1,2,1}지역2 : {2,1,3}지역3 : {3,2,1}각 지역을 몇번씩 돌아야 원하는 재료를 모두 파밍할 수 있을">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-02-07T14:51:21.000Z">
+<meta property="article:modified_time" content="2020-03-18T14:12:59.073Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-프로그래밍 - 최적화 알고리즘 - SLSQP (scipy)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/07/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20-%20SLSQP%20(scipy)/" class="article-date">
+  <time datetime="2020-02-07T14:51:21.000Z" itemprop="datePublished">2020-02-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a>►<a class="article-category-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      최적화 알고리즘 - SLSQP (scipy)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="글-본론"><a href="#글-본론" class="headerlink" title="글 본론"></a>글 본론</h1><h2 id="1-내가-처한-상황"><a href="#1-내가-처한-상황" class="headerlink" title="1) 내가 처한 상황"></a>1) 내가 처한 상황</h2><p>좀 더 실질적인 상황 설명 : 지역1, 지역2, 지역3을 돌아야 하는데 재료1 50개, 재료2 70개, 재료3 80개가 필요하다. 각 지역 당 {재료1,재료2,재료3} 드랍 갯수를 정리하면 다음과 같다.<br>지역1 : {1,2,1}<br>지역2 : {2,1,3}<br>지역3 : {3,2,1}<br>각 지역을 몇번씩 돌아야 원하는 재료를 모두 파밍할 수 있을까?</p>
+<h2 id="2-이렇게-구현합니다"><a href="#2-이렇게-구현합니다" class="headerlink" title="2) 이렇게 구현합니다"></a>2) 이렇게 구현합니다</h2><p>$x_1+x_2+x_3$의 <strong>최솟값</strong> 을 구하고자 한다.</p>
+<p>단, 다음 조건을 만족해야 한다.<br>$x_1 + 2x_2 + 3x_3 - 50 &gt;= 0$<br>$2x_1 + x_2 + 2x_3 - 70 &gt;= 0$<br>$3x_1 + 3x_2 + x_3 - 80 &gt;= 0$</p>
+<h2 id="3-파이선-코드입니다"><a href="#3-파이선-코드입니다" class="headerlink" title="3) 파이선 코드입니다"></a>3) 파이선 코드입니다</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> minimize</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">objective = <span class="keyword">lambda</span> x : x[<span class="number">0</span>]+x[<span class="number">1</span>]+x[<span class="number">2</span>] <span class="comment"># 최소값을 구하고자 하는 함수.</span></span><br><span class="line">x0 = np.zeros(<span class="number">3</span>)</span><br><span class="line">x0 = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>] <span class="comment"># 초기값</span></span><br><span class="line">bounds = ((<span class="number">0</span>,<span class="number">9999</span>),(<span class="number">0</span>,<span class="number">9999</span>),(<span class="number">0</span>,<span class="number">9999</span>)) <span class="comment"># SLSQP는 상한, 하한값을 지정해주어야 한다.</span></span><br><span class="line">constraints_list = [] <span class="comment"># 제약조건</span></span><br><span class="line"><span class="comment"># eq는 등호 조건, ineq는 부등호(&gt;=) 조건이다.</span></span><br><span class="line">constraints_list.append(&#123;<span class="string">'type'</span>: <span class="string">'ineq'</span>, <span class="string">'fun'</span>: <span class="keyword">lambda</span> x:x[<span class="number">0</span>]*<span class="number">1</span>+x[<span class="number">1</span>]*<span class="number">2</span>+x[<span class="number">2</span>]*<span class="number">3</span><span class="number">-50</span>&#125;)</span><br><span class="line">constraints_list.append(&#123;<span class="string">'type'</span>: <span class="string">'ineq'</span>, <span class="string">'fun'</span>: <span class="keyword">lambda</span> x:x[<span class="number">0</span>]*<span class="number">2</span>+x[<span class="number">1</span>]*<span class="number">1</span>+x[<span class="number">2</span>]*<span class="number">2</span><span class="number">-70</span>&#125;)</span><br><span class="line">constraints_list.append(&#123;<span class="string">'type'</span>: <span class="string">'ineq'</span>, <span class="string">'fun'</span>: <span class="keyword">lambda</span> x:x[<span class="number">0</span>]*<span class="number">3</span>+x[<span class="number">1</span>]*<span class="number">3</span>+x[<span class="number">2</span>]*<span class="number">1</span><span class="number">-80</span>&#125;)</span><br><span class="line">constraints = (constraints_list)</span><br><span class="line"></span><br><span class="line">result = minimize(objective,x0,method=<span class="string">'SLSQP'</span>,bounds=bounds,constraints=constraints).x</span><br><span class="line"></span><br><span class="line">[print(int(round(element))) <span class="keyword">for</span> element <span class="keyword">in</span> result]</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="왜-이런-걸-찾게-되었나"><a href="#왜-이런-걸-찾게-되었나" class="headerlink" title="왜 이런 걸 찾게 되었나."></a>왜 이런 걸 찾게 되었나.</h1><p>게임을 하다 이런 생각이 들었다. 지역마다 주는 보상이 다르고, 피로도 소모량도 다른데 원하는 재료를 최소 피로도 소모로 파밍할 수 있지 않을까? A, B, C 지역의 재료 보상이 겹치는 것도 있고 얻는 확률도 다르면, 원하는 물건을 얻기 위해 A는 몇번 B는 몇번 가야하느냐, 이런 문제였다.</p>
+<p>나름대로 머리를 굴렸지만 생각 이상으로 쉽지 않다는 걸 알았다. 그러다 예전에 본 <a href="https://gall.dcinside.com/board/view/?id=ogame&no=44533" target="_blank" rel="noopener">영농플레이어들을 위한 자원탕진 플래너 “흙”을 소개합니다</a>라는 글이 생각났다. 이 글은 <strong>엑셀의 해 찾기 기능</strong> 을 쓰고 있었다.</p>
+<p>내가 정확히 필요로 하던 정보였다.<br><strong>지금 가진 자원을 최대로 소모하는 방어시설 구매 종류와 수량 구하기</strong><br><strong>= 지금 가진 피로도를 최소로 소모하는 던전 종류와 횟수 구하기</strong><br><strong>= 지금 가진 자원을 최대/최소로 사용하여 정해둔 목표치를 맞추기</strong><br>이렇게 적을 수 있는 셈이다.</p>
+<h1 id="GRG-Simplex-Algorithm-그리고-SLSQP"><a href="#GRG-Simplex-Algorithm-그리고-SLSQP" class="headerlink" title="GRG, Simplex Algorithm 그리고 SLSQP"></a>GRG, Simplex Algorithm 그리고 SLSQP</h1><h2 id="1-GRG"><a href="#1-GRG" class="headerlink" title="1) GRG"></a>1) GRG</h2><p>이제 데이터베이스를 찾고 파이썬에서 구현하는 일만 남아있었다. 나는 후자부터 찾기로 했다. 엑셀은 <strong>GRG Nonlinear 방식</strong> 을 쓰고 있다고 적혀 있었고, 나는 GRG python, generalized reduced gradient in python 같은 검색어를 구글에 적어봤지만 바로 사용할 수 있는 건 없었다. 좀 더 정확히는 <a href="https://github.com/ishank011/grgdescent" target="_blank" rel="noopener">Github에서 구하기는 했는데</a>… 너무 어려웠다. 전공 책을 그대로 알고리즘으로 구현한 이 분에게 박수.</p>
+<h2 id="2-Simplex-Algorithm"><a href="#2-Simplex-Algorithm" class="headerlink" title="2) Simplex Algorithm"></a>2) Simplex Algorithm</h2><p>나는 다른 방법을 찾기로 했다. 기본적으로 이 기능은 몇 가지 부등식을 만족하는(<strong>제약조건</strong>) 함수의 값을 구하는 문제였다. <a href="https://redtea.kr/pb/pb.php?id=qna&no=8742#78260" target="_blank" rel="noopener">이 글</a>로부터 Simplex Algorithm이라는 부등식을 방정식으로 바꾸는 혁명적인 방법을 찾아냈다…만… 아래에서 설명할 SLSQP를 먼저 찾게 되었다.</p>
+<h2 id="3-잠깐-딴소리"><a href="#3-잠깐-딴소리" class="headerlink" title="3) 잠깐 딴소리"></a>3) 잠깐 딴소리</h2><p>데이터 사이언스를 전문으로 하시는 어떤 분이 <strong>라이브러리 임포트해서 변수 몇개 조작하고 결과 내는 사람들이 인공지능을 개발하고 있다</strong> 고 했다. 예전에는 “아, 그래도 컴퓨터로 구현하려면 기술의 이론은 알아야지 ㅋㅋ”라고 생각했는데, 지금 와서는 잘 모르겠다. 스택 오버플로우 개발자 제프 앳우드는 자동차 기술자가 있는 건 다른 사람들이 자동차를 수리할 필요가 없게 만들기 위해서인 것처럼, 프로그래머가 있는 건 다른 사람들이 프로그래밍할 수고를 덜어주기 위해서라고 말했다. 어쩌면 일단 구현하고 나중에 리팩토링하는 것처럼 먼저 써보고 나중에 이론을 배우는 건 어떨까.(이론을 모르면 접근할 수 없는 low한 영역은 말고.)</p>
+<h2 id="4-SLSQP"><a href="#4-SLSQP" class="headerlink" title="4) SLSQP"></a>4) SLSQP</h2><p>Simplex Algorithm python을 검색해본 결과 만난 링크가 <a href="http://apmonitor.com/che263/index.php/Main/PythonOptimization" target="_blank" rel="noopener">여기</a>다. 소스 코드를 받아 수정했고 결과는 맨 위 본론 부분과 같다.</p>
+<h1 id="마치며"><a href="#마치며" class="headerlink" title="마치며"></a>마치며</h1><p>매 기능을 구현할 때마다 이렇게 고생할 것 같다. 그래도 깃헙 블로그에 이렇게 올릴 수 있어서 다행이다. 예전같았으면 코드를 에버노트에 그냥 복붙하고 말았겠지.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/07/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20-%20SLSQP%20(scipy)/" data-id="ck8tqyw7g005vxkvjbewj7h95" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/07/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD%20venv%20%EC%82%AC%EC%9A%A9%EB%B2%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          가상환경 venv 사용법
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/07/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EB%A6%AC%EB%88%85%EC%8A%A4%20%EC%9A%B0%EB%B6%84%ED%88%AC%20Git%20%EC%82%AC%EC%9A%A9%EB%B2%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">리눅스 우분투 Git 사용법</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992/">공학수학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%84%B1%EA%B2%A9%EA%B3%BC%EC%A0%81%EC%9D%91/">성격과적응</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992/">전기자기학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02/">회로이론2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/">Private</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/">게임</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/XCOM-2/">XCOM 2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC/">프로스트펑크</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EC%9D%BC%EA%B8%B0/">일기</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/">블로그 관리</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/">업무</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4/">스마트스토어</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Github/">Github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%94%EB%B2%84%EA%B9%85/">디버깅</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%97%90%EB%94%94%ED%84%B0/">에디터</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/">Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/">파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Vultur에서 윈도우 설치하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">윈도우에서 리눅스처럼 Tor 서비스 사용하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/">유튜브 다운로더 youtube-dl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

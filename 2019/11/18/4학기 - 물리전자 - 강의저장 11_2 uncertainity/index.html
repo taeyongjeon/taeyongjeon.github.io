@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>물리전자 - 강의저장 11_2 uncertainity | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Infinite Potential Well Summary of Cpmfomed Electron Potential Well에 전자를 넣으면 이런 특성이 생긴다. 전자는 벽을 넘을 수 없기 때문에, 이 안에서 운동한다. 퍼텐셜 에너지&#x3D;0이므로 운동 에너지만 갖고, 운동 에너지는 연속적이지 않다. discrete하다. 에너지 값은 $n^2$을 따른다. 에너지가">
+<meta property="og:type" content="article">
+<meta property="og:title" content="물리전자 - 강의저장 11_2 uncertainity">
+<meta property="og:url" content="http://yoursite.com/2019/11/18/4%ED%95%99%EA%B8%B0%20-%20%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90%20-%20%EA%B0%95%EC%9D%98%EC%A0%80%EC%9E%A5%2011_2%20uncertainity/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Infinite Potential Well Summary of Cpmfomed Electron Potential Well에 전자를 넣으면 이런 특성이 생긴다. 전자는 벽을 넘을 수 없기 때문에, 이 안에서 운동한다. 퍼텐셜 에너지&#x3D;0이므로 운동 에너지만 갖고, 운동 에너지는 연속적이지 않다. discrete하다. 에너지 값은 $n^2$을 따른다. 에너지가">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EA%B0%84%EC%84%AD.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%ED%95%98%EC%9D%B4%EC%A0%A0%EB%B2%A0%EB%A5%B4%EA%B7%B8_%EA%B0%84%EC%84%AD.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EB%B3%80%EC%9C%84%EC%99%80_%EB%AA%A8%EB%A9%98%ED%85%80.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EB%B6%88%ED%99%95%EC%A0%95%EC%84%B1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%ED%99%95%EB%A5%A0_%EA%B5%AC%EB%A6%84.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EB%B6%88%ED%99%95%EC%A0%95%EC%84%B1_2.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%ED%84%B0%EB%84%90%EB%A7%81.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EC%96%91%EC%9E%90_%ED%84%B0%EB%84%90%EB%A7%81.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EC%A7%80%EC%88%98%EC%A0%81_%EA%B0%90%EC%86%8C.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/reflection.jpg">
+<meta property="og:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/leak.jpg">
+<meta property="article:published_time" content="2019-11-18T14:31:47.000Z">
+<meta property="article:modified_time" content="2020-03-18T14:12:59.042Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EA%B0%84%EC%84%AD.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-4학기 - 물리전자 - 강의저장 11_2 uncertainity" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/18/4%ED%95%99%EA%B8%B0%20-%20%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90%20-%20%EA%B0%95%EC%9D%98%EC%A0%80%EC%9E%A5%2011_2%20uncertainity/" class="article-date">
+  <time datetime="2019-11-18T14:31:47.000Z" itemprop="datePublished">2019-11-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a>►<a class="article-category-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      물리전자 - 강의저장 11_2 uncertainity
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>Infinite Potential Well<ol>
+<li>Summary of Cpmfomed Electron<ol>
+<li>Potential Well에 전자를 넣으면 이런 특성이 생긴다.</li>
+<li>전자는 벽을 넘을 수 없기 때문에, 이 안에서 운동한다.</li>
+<li>퍼텐셜 에너지=0이므로 운동 에너지만 갖고, 운동 에너지는 연속적이지 않다. discrete하다.</li>
+<li>에너지 값은 $n^2$을 따른다.</li>
+<li>에너지가 높을수록 짧은 파장 운동을 한다.</li>
+</ol>
+</li>
+<li>Heisenberg’s Uncertainty Principle<ol>
+<li>개요<ol>
+<li>질문 : 왜 $\Psi$의 값은 의미가 없는가?<br>답변 : 불확정성 원리 때문이다.<br>여기서는 불확정성 원리가 어떻게 이런 결론을 내는 지 배운다.</li>
+</ol>
+</li>
+<li>파동의 간섭<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EA%B0%84%EC%84%AD.jpg" alt=""><ol>
+<li>Fringe는 줄무늬라는 뜻</li>
+<li>두 광자 1, 2가 있다.<ol>
+<li>밝은 줄무늬 : 1, 2가 평행하게, 그리고 정수배의 파장 $\lambda$로 만난다.</li>
+<li>어두운 줄무늬 : 1,2가 평행하게, 그리고 정수배의 반파장 $\frac \lambda 2$로 만난다.<ol>
+<li>꼭 $\frac 12$일 필요는 없다. 이 값에 가까워질 수록 어두워질 뿐이다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Heisenberg’s Uncertainty Principle        <ol>
+<li>하이젠베르그의 슬릿<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%ED%95%98%EC%9D%B4%EC%A0%A0%EB%B2%A0%EB%A5%B4%EA%B7%B8_%EA%B0%84%EC%84%AD.jpg" alt=""><ol>
+<li>모멘텀 p, 슬릿의 간격 a, 파동이 나아가는 방향각 $\theta$, 그리고 y 방향 모멘텀 성분인 $\triangle p$</li>
+<li>$sin\theta = \frac{\triangle p}{p_x}$<br>$\quad\quad\quad$영의 이중 슬릿 실험에서 아래와 같은 식을 도출한 적이 있다.<br>$dsin\theta = \lambda$<br>$\quad\quad\quad sin\theta=tan\theta$ ($\theta$가 작은 값)<br>$tan\theta=\frac{\lambda}{a}$<br>$\quad\quad\quad tan\theta = \frac{\Delta p_{y}}{p_{x}}$ (위 그림)<br>$\quad\quad\quad p_x=\frac{h}{\lambda}$ (드브로이 정리)<br>$\quad\quad\quad \Delta y=a$ (위 그림)<br>$\frac{\Delta p_{y}}{p_{x}}=\Delta p_{y} \cdot \frac{\lambda}{h}=\frac{\lambda}{a}=\frac{\lambda}{\Delta y}$<br>$\Delta y \cdot \Delta p_{y}=h$<br>식 완성!</li>
+<li>그래서, 이 식이 뭔데?<ol>
+<li>$\Delta y \cdot \Delta p_{y}=h$</li>
+<li>y 방향 쪽의 변위 y와 y 방향 쪽의 모멘텀 p의 곱은 언제나 플랑크 상수 h만큼을 가지고 있다.</li>
+</ol>
+</li>
+<li>물리적으로 나타나는 현상<ol>
+<li><strong>변위를 좁히면 모멘텀이 크게, 변위를 키우면 모멘텀이 작게 나타난다.</strong><br>이게 하이젠베르그의 불확정성 원리에 대한 설명이다.</li>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EB%B3%80%EC%9C%84%EC%99%80_%EB%AA%A8%EB%A9%98%ED%85%80.jpg" alt=""><ol>
+<li>$\Delta y$가 슬릿의 길이 a이다.</li>
+<li>$\Delta p_y$가 y방향 모멘텀이다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Localized Wave<ol>
+<li>Localized Wave의 경우 불확정성 정리의 우항이 $\frac 12$가 된다.</li>
+<li>파수는 다음과 같다.<br>$\mathrm{K}=\frac{2 \pi}{\lambda}$<br>$\quad \quad \quad \lambda=\frac{h}{p_{x}}$<br>$=\frac{2 \pi}{h} p_{x}$<br>$\Delta k=\frac{2 \pi}{h} \Delta p_{x}$</li>
+<li>이로부터<br>$\Delta x \cdot \Delta k=\frac{1}{2}$<br>$\quad \quad \quad$ 푸리에 변환 때문에 이런 값이 생기는 거니까, 일단 받아들일 것.<br>$\Delta x \frac{2 \pi}{h} \Delta p_{x}=\frac{1}{2}$<br>$\Delta x \cdot \Delta p_{x} \approx \frac{h}{4 \pi} \approx \frac{\hbar}{2}$</li>
+<li>우항이 1인 경우</li>
+</ol>
+</li>
+<li>Gaussian Wave<ol>
+<li>파수는 $\Delta k=\frac{2 \pi}{h} \Delta p_{x}$이다.</li>
+<li>이로부터<br>$\Delta x \cdot \Delta k=1$<br>$\Delta x \frac{2 \pi}{h} \Delta p_{x}=1$<br>$\Delta x \cdot \Delta p_{x} \approx \frac{h}{2 \pi} \approx \hbar$</li>
+</ol>
+</li>
+<li>Waves<ol>
+<li>파동에는 $delta$, 삼각함수형태, top hat=Localized Wave, Gaussian 등의 다양한 종류가 있다.</li>
+</ol>
+</li>
+<li>에너지와 시간 관계<ol>
+<li>$\Delta t \cdot \Delta E \approx \hbar$<ol>
+<li>계산<br>$\Delta x \cdot \Delta p_{x} \approx \hbar$<br>$\quad \quad \quad$ 운동에너지 형태를 만들어주기 위해 모멘텀에 v를 곱해주고 나눠준다.<br>$\frac{\Delta x}{v} \cdot v \Delta p_{x} \approx \hbar$<br>$\frac{\Delta x}{v} \cdot \Delta E \approx \hbar$<br>$\quad \quad \quad \quad v=\frac{\Delta x}{\Delta t}$<br>$\Delta t \cdot \Delta E \approx \hbar$</li>
+</ol>
+</li>
+<li>의미<ol>
+<li>시간을 정교하게 말하고자 한다면 에너지의 오차가 커지고,<br>에너지를 정확하게 말하고자 한다면 시간의 오차가 커진다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Infinite Potential Well 계속<ol>
+<li>Heisenberg’s Uncertainty Principle<ol>
+<li>개념<ol>
+<li>입자의 위치(x값)와 모멘텀(p값)을 동시에, 정확하게 아는 것은 불가능하다.<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EB%B6%88%ED%99%95%EC%A0%95%EC%84%B1.jpg" alt=""></li>
+</ol>
+</li>
+<li>$\Delta x \cdot \Delta p \geq \frac{h}{2\pi} \geq \hbar$<br>$\Delta t \cdot \Delta E \geq \frac{h}{2\pi} \geq \hbar$</li>
+</ol>
+</li>
+<li>이게 어디 쓰이는데?<ol>
+<li>우리는 원자 입자의 궤도trajectory에 대해서 이야기를 할 수 없다.</li>
+<li>입자는 확률적 상태probabilistic state로 존재한다.<ol>
+<li>입자는 여러 위치 후보값 중 하나를 가질 것이다.</li>
+<li>입자는 여러 모멘텀 후보값 중 하나를 가질 것이다.</li>
+<li>Probability Cloud<br><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%ED%99%95%EB%A5%A0_%EA%B5%AC%EB%A6%84.jpg" alt=""></li>
+</ol>
+</li>
+<li>그래서, 양자 세계에서 사람들은 더 이상 입자의 움직임(위치와 모멘텀)을 파악하는 걸 포기하고, 확률로 이야기하게 되었음.</li>
+</ol>
+</li>
+<li>예제<ol>
+<li>전자의 위치가 $\Delta x=10^{-9} \mathrm{m}$의 정확성을 갖는다. 이 때 고려할 수 있는 가장 정확한 속도값은?</li>
+<li>계산<ol>
+<li>$\Delta x \cdot \Delta p \geq \frac{h}{2\pi}$<br>$\Delta v \geq 1.16 \times 10^{5} \mathrm{m} / \mathrm{s}$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>물리적인 의미<ol>
+<li>물리적으로, 위치와 모멘텀의 곱은 모든 확률의 합과 같다.</li>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EB%B6%88%ED%99%95%EC%A0%95%EC%84%B1_2.jpg" alt=""><ol>
+<li>우리는 입자의 존재를 확률로 다루어야 한다고 결론지었다.</li>
+<li>그럼, 어떤 영역(위 그림에서는 Box)에서 입자들의 존재 확률은 (각 위치의 확률)의 총합일 것이다.</li>
+<li>위 그림에서, $\Delta p$와 $\Delta x$가 있다.</li>
+<li>여기서 $\Delta x$는 확률함수의 파형을 모두 합한 형태다.</li>
+<li>그런데, 각각의 에너지 준위에서 존재확률이 다를 것이므로, 그것까지 고려하기 위해 $\Delta p$도 곱한다.</li>
+<li>그래서 p와 x의 곱인 것이다.<br>&nbsp;</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Tunneling Phenomenon<ol>
+<li>개요<ol>
+<li>수조 두 개를 세워놓고 한 쪽만 물을 적당히 채웠다. 이러면 빈 수조로 물이 흘러갈리가 없다.</li>
+<li>그런데, 절연체로 완전히 막아둔 두 개의 공간에서 하나만 전자로 채우면, 시간이 지난 뒤 다른 곳에도 전자가 존재하는 이상한 현상이 일어난다.</li>
+<li>이를 Tunneling이라 한다.</li>
+</ol>
+</li>
+<li>고전역학과 양자역학의 Barrier<ol>
+<li>고전역학에서 Barrier에 의해 막혀 튕겨나가는 것을 reflect라고 한다.</li>
+<li>양자역학에선 입자 하나를 다루지 않고 파동wave을 다루기 때문에, 벽을 향해 파동이 움직인다고 가정한다. Barrier에 wave가 부딛히면 일부는 reflect되고, 일부는 통과한다(터널링).</li>
+</ol>
+</li>
+<li>Quantum Leak<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%ED%84%B0%EB%84%90%EB%A7%81.jpg" alt=""><ol>
+<li>Barrier를 통과할 때 wave가 나타나지 않는다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Potential Barrier Penetration<ol>
+<li>파동함수는 고전적인 운동의 한계를 넘어 potential barrier penetration이라는 현상을 일으킨다.</li>
+<li>Finite Potential Well에서(즉 V가 무한이 아님) 파동함수는 Well을 빠져나갈 수 있음.</li>
+</ol>
+</li>
+<li>What is the Quantum Tunneling?<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EC%96%91%EC%9E%90_%ED%84%B0%EB%84%90%EB%A7%81.jpg" alt=""><ol>
+<li>파동함수 $\Psi_1$이 barrier를 만나면 일부는 reflect되고 남은 값은 Tunneling을 통해 $\Psi_3$으로 존재하게 된다.</li>
+<li>얼마나 터널링되느냐? 이는 Potential Barrier의 width(그림에서 길이 a)와 Potential energy에 따라서 결정된다.</li>
+</ol>
+</li>
+<li>potential barrier width(=a)가 좁을 경우<ol>
+<li>입자는 barrier을 penetrate할 수 있다.<br>그리고 다른 영역으로 나올 수 있다. 이 현상을 quantum tunneling이라 한다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Electron Density in Potential Step<ol>
+<li><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/%EC%A7%80%EC%88%98%EC%A0%81_%EA%B0%90%EC%86%8C.jpg" alt=""><ol>
+<li>영역 2에서 전자의 존재 확률은 지수적으로 감소한다.<br>$e^{-2kx}$의 값이 곧 존재 확률이다(앞에서, 이 식이 파동함수(삼각함수 형태)의 형태가 아니라고 이미 말했다.)<br>이 값이 0.1이면 10% 확률로 존재한다(=Density). 10%만이 터널링 현상을 통해 통과했다, 이런 식으로 받아들이면 된다.</li>
+<li>x 값은 barrier의 width이다.</li>
+<li>k 값은 상수이다. 이 값은 inverse decay length라고 한다.<br>$\kappa=\frac{2 \pi \sqrt{2 m\left(\mathrm{V}_{\mathrm{o}}-\mathrm{E}\right)}}{h}$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Electron Tunneling<ol>
+<li>k 값에서, V가 클 경우 양자 터널링이 일어나지 않음을 알 수 있다.</li>
+</ol>
+</li>
+<li>Heisenberg Uncertainty Principle and Quantum Tunneling<ol>
+<li>불확정성 원리와 양자 터널링이 동시에 성립하는가?<ol>
+<li>성립한다.</li>
+</ol>
+</li>
+<li>양자 입자는 $\Delta E$만큼의 에너지를 빌리고, barrier를 넘은 다음, 그 에너지를 돌려준다.<br>이 현상에 $\Delta t$라는 시간 안에 일어난다.<br>이 과정은 불확정성 원리를 위배하지 않는다.</li>
+</ol>
+</li>
+<li>Quantum Tunneling for a Ball<ol>
+<li>(예제) 탁구공이 있다. 2g, $E=10^{-3}J$이고 넘어야 할 barrier는 높이 20cm, 폭 2cm이다.<br>이때 탁구공이 벽 너머에 나타날 확률은?</li>
+<li>풀이<ol>
+<li>$e^{-2kx}$라는 식을 쓴다.</li>
+<li>x값은 2cm이다. k값에서 h는 플랑크 상수, m은 2g, E는 $E=10^{-3}J$이고 $V_0=mgh=3.92 \times 10^{-3}J$이다.<ol>
+<li>$\kappa=\frac{2 \pi \sqrt{2 m\left(\mathrm{V}_{\mathrm{o}}-\mathrm{E}\right)}}{h}$</li>
+</ol>
+</li>
+<li>$T=e^{ -2 \times 3.24 \times 10^{31} \times 0.02}$<br>무척 작은 값이다.</li>
+</ol>
+</li>
+<li>즉, 일상생활에서는 터널링이 일어나지 않는다.</li>
+</ol>
+</li>
+<li>Quantum Tunneling for Elecron<ol>
+<li>(예제) 전자. 에너지 1eV이고 barrier는 2eV, 폭 0.1nm이다.</li>
+<li>풀이<ol>
+<li>모든 값이 주어져 있으므로 T를 구하면<br>T=0.36, 즉 36%의 전자가 barrier를 넘는다는 의미이다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Reflection from a lower potential<ol>
+<li>반사 확률<br><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/reflection.jpg" alt=""><ol>
+<li>고전역학에서, 낮은 에너지로 내려간 입자가 돌아올 확률은 ‘없다’고 표현한다.</li>
+<li>양자역학에서, 돌아올 확률은 ‘없다’가 아니라 ‘지극히 낮다’고 표현한다(0이 아니기 때문)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Quantum Leak<ol>
+<li>Quantum Leak나 Quantum Tunneling이나 똑같은 의미다. 같은 거라고 이해하면 된다.</li>
+<li><strong>그래서, 각 영역 1, 2, 3에서 실제 파동함수는 어떻게 구할까?</strong><br><img src="/images/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/leak.jpg" alt=""><ol>
+<li>영역 1과 3에서 퍼텐셜 에너지=0이므로(왜냐하면 그렇게 약속한 게 Potential Well이니까.) 쉽게 계산이 가능하다.</li>
+<li>근데 영역 2는 안 그렇거든. $V=V_0$이니까 이걸 고려해야 된다.</li>
+<li>그래서 구한 값은 위 그림과 같다.<br>영역 1은 입사파와 반사파가 모두 있다.<br>영역 2는 파동이 아니다. 지수적으로 감소한다.<br>영역 3은 반사파가 없다. 오로지 투과파만 있음.</li>
+</ol>
+</li>
+<li>STM<ol>
+<li>장비 이름이다.</li>
+<li>Quantum Leak를 알면 만들 수 있다.</li>
+<li>단점이 있는데 이를 극복한 장치가 SPM이다.</li>
+<li>STM은 오로지 conductor의 atomic scale image만을 mapping할 수 있다.<br>SPM은 어떤 물질이든지 image를 찍어낼 수 있다.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Tunneling Phenomenon 계속<ol>
+<li>Transmission/Reflection Coefficient<ol>
+<li>Transmission Coefficient<ol>
+<li>T라고 적는다.<br>$T=\frac{\left|\psi_{I II}(x)\right|^{2}}{\left|\psi_{I}(x)\right|^{2}}=\frac{\mathrm{C} _ {1}^{2}}{\mathrm{A} _ {1}^{2}}=\frac{1}{1+\operatorname{Dsinh}^{2}(\alpha \mathrm{a})}$<br>$\mathrm{D}=\frac{\mathrm{V_0}^{2}}{4 \mathrm{E}(\mathrm{V}_0-\mathrm{E})}$</li>
+<li>장벽에 더 넓거나 높다면, $\alpha a&gt;&gt;1$이 된다.<br>즉, $T=T_{0} \exp (-2 \alpha a) \approx 0$가 된다.<br>$\quad$ 이때 $T_{0}=\frac{16 E\left(V_{0}-E\right)}{V_{0}^{2}}$이다.</li>
+</ol>
+</li>
+<li>Reflection Coefficient<ol>
+<li>R이라고 적는다.<br>$R=\frac{A_{2}^{2}}{A_{1}^{2}}=1-T$<br>$\quad R+T=1$이다.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/18/4%ED%95%99%EA%B8%B0%20-%20%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90%20-%20%EA%B0%95%EC%9D%98%EC%A0%80%EC%9E%A5%2011_2%20uncertainity/" data-id="ck8tqyw550007xkvjf66mfqr7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/24/4%ED%95%99%EA%B8%B0%20-%20%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90%20-%20%EA%B0%95%EC%9D%98%EC%A0%80%EC%9E%A5%2012_1%20tunneling_%ED%98%84%EC%83%81%EC%9D%98_%EC%9D%91%EC%9A%A9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          물리전자 - 강의저장 12_1 tunneling_현상의_응용
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/18/4%ED%95%99%EA%B8%B0%20-%20%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992%20-%208%EC%9E%A5%20EXAMPLE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">전기자기학2 - 8장 EXAMPLE</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/">4학기(2019-2)</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EA%B3%B5%ED%95%99%EC%88%98%ED%95%992/">공학수학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EB%AC%BC%EB%A6%AC%EC%A0%84%EC%9E%90/">물리전자</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%84%B1%EA%B2%A9%EA%B3%BC%EC%A0%81%EC%9D%91/">성격과적응</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%992/">전기자기학2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/4%ED%95%99%EA%B8%B0-2019-2/%ED%9A%8C%EB%A1%9C%EC%9D%B4%EB%A1%A02/">회로이론2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/">Private</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/">게임</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/XCOM-2/">XCOM 2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EA%B2%8C%EC%9E%84/%ED%94%84%EB%A1%9C%EC%8A%A4%ED%8A%B8%ED%8E%91%ED%81%AC/">프로스트펑크</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Private/%EC%9D%BC%EA%B8%B0/">일기</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EA%B3%B5%EB%B6%80/">공부</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B4%80%EB%A6%AC/">블로그 관리</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/">업무</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%97%85%EB%AC%B4/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4/">스마트스토어</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/">프로그래밍</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Github/">Github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%94%94%EB%B2%84%EA%B9%85/">디버깅</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EB%A6%AC%EB%88%85%EC%8A%A4/">리눅스</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%97%90%EB%94%94%ED%84%B0/">에디터</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%9C%88%EB%8F%84%EC%9A%B0/">윈도우</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/14/Github%20Gist%EB%A1%9C%20%EC%BD%94%EB%93%9C%20%EB%B8%94%EB%A1%9D(Code%20Snippet)%20%EA%B4%80%EB%A6%AC%20%EB%B0%8F%20Sublime%20Text%EC%99%80%20%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0/">Github Gist로 코드 블록(Code Snippet) 관리 및 Sublime Text와 연동하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/07/%ED%8C%8C%EC%9D%BC%20%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98(%EB%A7%A4%EC%A7%81%20%EB%84%98%EB%B2%84)%20-%20FBX%EC%99%80%20TGA%20%EC%B0%BE%EC%95%84%EB%82%B4%EA%B8%B0/">파일 시그니처(매직 넘버) - FBX와 TGA 찾아내기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/26/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20Vultur%EC%97%90%EC%84%9C%20%EC%9C%88%EB%8F%84%EC%9A%B0%20%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">Vultur에서 윈도우 설치하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/22/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%20-%20%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C%20%EB%A6%AC%EB%88%85%EC%8A%A4%EC%B2%98%EB%9F%BC%20Tor%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/">윈도우에서 리눅스처럼 Tor 서비스 사용하기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/21/%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%8D%94%20youtube-dl/">유튜브 다운로더 youtube-dl</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
